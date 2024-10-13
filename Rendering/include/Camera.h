@@ -10,6 +10,7 @@
 #include "Math/include/Point3.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "memory"
 
 class Camera {
 
@@ -17,9 +18,20 @@ private:
     Point3 eye;
     int nColumns;
     int nRows;
+    std::unique_ptr<GLFWwindow, decltype(&glfwDestroyWindow)> window{nullptr, glfwDestroyWindow};
+
+    void initializeOpenGL();
 
 public:
-    void raytrace(Scene& scn, int blocksize);
+    void raytrace(Scene &scn, int blocksize);
+
+    void initialize();
+
+    Camera(int nRows, int nColumns) {
+        this->nRows = nRows;
+        this->nColumns = nColumns;
+    }
+
 
 };
 

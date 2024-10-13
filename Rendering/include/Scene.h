@@ -7,6 +7,7 @@
 #include "Core/include/Color3.h"
 #include "Math/include/Point3.h"
 #include "Core/include/Ray.h"
+
 #include "Geometry/include/Intersection.h"
 
 class Scene {
