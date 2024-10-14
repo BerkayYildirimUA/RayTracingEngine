@@ -14,7 +14,7 @@
 
 int main() {
 
-    Camera camera(1080, 720);
+    Camera camera(100, 100);
     camera.initialize();
 
     return 0;

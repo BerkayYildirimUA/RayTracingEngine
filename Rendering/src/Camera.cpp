@@ -6,7 +6,7 @@
 #include "Core/include/Color3.h"
 #include "iostream"
 
-void Camera::raytrace(Scene &scn, int blocksize) {
+void Camera::raytrace(Scene &scn, int blockSize) {
     Ray theRay;
     theRay.setStart(eye);
 
@@ -22,7 +22,7 @@ void Camera::raytrace(Scene &scn, int blocksize) {
             //theRay.setDir(); //TODO set dir
             Color3 clr = scn.shade(theRay);
             glColor3f(clr.R, clr.B, clr.B);
-            glRecti(col, row, col + blocksize, row + blocksize);
+            glRecti(col, row, col + blockSize, row + blockSize);
         }
     }
 }

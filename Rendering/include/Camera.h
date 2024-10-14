@@ -23,7 +23,7 @@ private:
     void initializeOpenGL();
 
 public:
-    void raytrace(Scene &scn, int blocksize);
+    void raytrace(Scene &scn, int blockSize);
 
     void initialize();
 
