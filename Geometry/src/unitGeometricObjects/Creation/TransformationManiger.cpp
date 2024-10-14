@@ -134,9 +134,15 @@ void TransformationManager::pushInverseRotatePointZ(double angle) {
 
 Eigen::Matrix<double, 4, 4> TransformationManager::getTotalTransformation() {
 
-    Eigen::Matrix<double, 4, 4> totalTransform = Eigen::Matrix<double, 4, 4>::Identity();
+    if (transformStack.empty()) {
+        throw std::runtime_error("Stack is Empty");
+    }
+
+    Eigen::Matrix<double, 4, 4> totalTransform = transformStack.top();
+    transformStack.pop();
+
     while (!transformStack.empty()) {
-        totalTransform = transformStack.top() * totalTransform;
+        totalTransform = totalTransform * transformStack.top();
         transformStack.pop();
     }
 

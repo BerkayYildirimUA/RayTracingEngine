@@ -5,6 +5,7 @@
 #include "iostream"
 #include "Math/include/Transformations.h"
 #include "Math/include/InverseTransformations.h"
+#include "Geometry/include/unitGeometricObjects/creation/TransformationManager.h"
 
 TEST_CASE("Translation", "[Transformations]") {
 
@@ -71,6 +72,26 @@ TEST_CASE("Z-rotation and inverse", "[Transformations]") {
 
     Eigen::Matrix<double, 4, 1> expected;
     expected << 1, 2, 3, 1;
+
+    REQUIRE(result.isApprox(expected, 1e-3));
+}
+
+TEST_CASE("example book page 220", "[Transformations]") {
+    TransformationManager manger;
+
+    manger.pushRotatePointX(45);
+    manger.pushRotatePointY(30);
+    manger.pushRotatePointZ(60);
+
+    Eigen::Matrix<double, 4, 4> result = manger.getTotalTransformation();
+
+
+
+    Eigen::Matrix<double, 4, 4> expected;
+    expected << 0.433, -0.436, 0.789, 0,
+    0.75, 0.66, -0.047, 0,
+    -0.5, 0.612, 0.612, 0,
+    0, 0, 0, 1;
 
     REQUIRE(result.isApprox(expected, 1e-3));
 }

@@ -10,4 +10,6 @@ add_test( Z-rotation D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/c
 set_tests_properties( Z-rotation PROPERTIES WORKING_DIRECTORY D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug SKIP_RETURN_CODE 4)
 add_test( [==[Z-rotation and inverse]==] D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/RayTracingEngineTests.exe [==[Z-rotation and inverse]==]  )
 set_tests_properties( [==[Z-rotation and inverse]==] PROPERTIES WORKING_DIRECTORY D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug SKIP_RETURN_CODE 4)
-set( RayTracingEngineTests_TESTS Translation Scaling X-rotation Y-rotation Z-rotation [==[Z-rotation and inverse]==])
+add_test( [==[example book page 220]==] D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/RayTracingEngineTests.exe [==[example book page 220]==]  )
+set_tests_properties( [==[example book page 220]==] PROPERTIES WORKING_DIRECTORY D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug SKIP_RETURN_CODE 4)
+set( RayTracingEngineTests_TESTS Translation Scaling X-rotation Y-rotation Z-rotation [==[Z-rotation and inverse]==] [==[example book page 220]==])
