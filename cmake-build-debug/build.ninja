@@ -161,6 +161,13 @@ build CMakeFiles/RayTracingEngine.dir/main.cpp.obj: CXX_COMPILER__RayTracingEngi
   OBJECT_DIR = CMakeFiles\RayTracingEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\RayTracingEngine.dir
 
+build CMakeFiles/RayTracingEngine.dir/Geometry/include/unitGeometricObjects/UnitCube.cpp.obj: CXX_COMPILER__RayTracingEngine_unscanned_Debug D$:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/Geometry/include/unitGeometricObjects/UnitCube.cpp || cmake_object_order_depends_target_RayTracingEngine
+  DEP_FILE = CMakeFiles\RayTracingEngine.dir\Geometry\include\unitGeometricObjects\UnitCube.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -ID:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine -ID:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/Core/include -ID:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/Geometry/include -ID:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/Math/include -ID:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/Rendering/include -ID:/Libs/glfw-3.3.8/include -ID:/Libs/Glad/include -ID:/Libs/eigen-3.4.0
+  OBJECT_DIR = CMakeFiles\RayTracingEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\RayTracingEngine.dir\Geometry\include\unitGeometricObjects
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target RayTracingEngine
@@ -169,7 +176,7 @@ build CMakeFiles/RayTracingEngine.dir/main.cpp.obj: CXX_COMPILER__RayTracingEngi
 #############################################
 # Link the executable RayTracingEngine.exe
 
-build RayTracingEngine.exe: CXX_EXECUTABLE_LINKER__RayTracingEngine_Debug CMakeFiles/RayTracingEngine.dir/Core/src/Color3.cpp.obj CMakeFiles/RayTracingEngine.dir/Core/src/Ray.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/HitInfo.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/Intersection.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/Creation/ObjectFactory.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/Creation/TransformationManiger.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/HitObject.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/UnitCircle.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/InverseTransformations.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/Point3.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/Transformations.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/Vector3.cpp.obj CMakeFiles/RayTracingEngine.dir/Rendering/src/Camera.cpp.obj CMakeFiles/RayTracingEngine.dir/Rendering/src/Scene.cpp.obj CMakeFiles/RayTracingEngine.dir/D_/Libs/Glad/src/glad.c.obj CMakeFiles/RayTracingEngine.dir/main.cpp.obj | glfw_build/src/libglfw3.a || glfw_build/src/libglfw3.a
+build RayTracingEngine.exe: CXX_EXECUTABLE_LINKER__RayTracingEngine_Debug CMakeFiles/RayTracingEngine.dir/Core/src/Color3.cpp.obj CMakeFiles/RayTracingEngine.dir/Core/src/Ray.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/HitInfo.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/Intersection.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/Creation/ObjectFactory.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/Creation/TransformationManiger.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/HitObject.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/UnitCircle.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/InverseTransformations.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/Point3.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/Transformations.cpp.obj CMakeFiles/RayTracingEngine.dir/Math/src/Vector3.cpp.obj CMakeFiles/RayTracingEngine.dir/Rendering/src/Camera.cpp.obj CMakeFiles/RayTracingEngine.dir/Rendering/src/Scene.cpp.obj CMakeFiles/RayTracingEngine.dir/D_/Libs/Glad/src/glad.c.obj CMakeFiles/RayTracingEngine.dir/main.cpp.obj CMakeFiles/RayTracingEngine.dir/Geometry/include/unitGeometricObjects/UnitCube.cpp.obj | glfw_build/src/libglfw3.a || glfw_build/src/libglfw3.a
   FLAGS = -g
   LINK_LIBRARIES = glfw_build/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\RayTracingEngine.dir

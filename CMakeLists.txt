@@ -37,7 +37,9 @@ set(ALL_SOURCES
 # Main executable
 add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
         Geometry/src/unitGeometricObjects/Creation/TransformationManiger.cpp
-        Geometry/include/unitGeometricObjects/creation/TransformationManager.h)
+        Geometry/include/unitGeometricObjects/creation/TransformationManager.h
+        Geometry/src/unitGeometricObjects/UnitCube.cpp
+        Geometry/include/unitGeometricObjects/UnitCube.h)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
