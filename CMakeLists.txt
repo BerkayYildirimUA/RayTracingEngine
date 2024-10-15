@@ -51,7 +51,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 
 # Test executable
-add_executable(RayTracingEngineTests ${ALL_SOURCES} ${TEST_SOURCES})
+add_executable(RayTracingEngineTests ${ALL_SOURCES} ${TEST_SOURCES}
+        Tests/GeomatricObjectsTests.cpp)
 target_link_libraries(RayTracingEngineTests PRIVATE
         glfw
         Catch2::Catch2WithMain

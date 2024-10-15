@@ -9,6 +9,10 @@
 #include "Eigen/Core"
 #include "optional"
 
+/*
+ * TODO: make inverse and normal at the same time.
+ */
+
 class TransformationManager {
 private:
     std::stack<Eigen::Matrix<double, 4, 4>> transformStack;

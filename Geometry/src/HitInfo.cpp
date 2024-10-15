@@ -3,3 +3,5 @@
 //
 
 #include "../include/HitInfo.h"
+
+HitInfo::HitInfo() {}

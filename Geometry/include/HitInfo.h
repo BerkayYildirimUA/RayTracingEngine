@@ -20,6 +20,8 @@ public:
     int surface;
     Point3 hitPoint;
     Vector3 hitNormal;
+
+    HitInfo();
 };
 
 

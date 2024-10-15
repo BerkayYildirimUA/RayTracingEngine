@@ -14,9 +14,9 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection) const {
     Ray genRay = transformRayToObjectSpace(incomingRay);
     double A, B, C;
 
-    A = calcNorm(incomingRay.start, incomingRay.start);
+    A = calcNorm(incomingRay.dir, incomingRay.dir);
     B = calcNorm(incomingRay.start, incomingRay.dir);
-    C = calcNorm(incomingRay.dir, incomingRay.dir);
+    C = calcNorm(incomingRay.start, incomingRay.start) - 1.0;
 
     double discrim = B*B - A*C; // ax^2 + 2bx + c --> 4b^2 - 4AC
 
@@ -30,6 +30,11 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection) const {
 
     if (t1 > 0.00001){
         auto &info = intersection.hits[0];
+
+        if (!info) {
+            info = std::make_unique<HitInfo>();
+        }
+
         info->hitTime = t1;
         info->hitObject = const_cast<UnitCircle*>(this)->shared_from_this();
         info->isEntering = true;
@@ -41,8 +46,13 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection) const {
     }
 
     double t2 = (-B + discRoot)/A;
-    if (t2 > 0.00001){
+    if (t2 > 0.00001 && (t1 - t2 > 0.00001)){
         auto &info = intersection.hits[numberOfHits];
+
+        if (!info) {
+            info = std::make_unique<HitInfo>();
+        }
+
         info->hitTime = t2;
         info->hitObject = const_cast<UnitCircle*>(this)->shared_from_this();
         info->isEntering = false;

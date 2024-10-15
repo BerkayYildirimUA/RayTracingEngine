@@ -11,8 +11,12 @@
 
 class Intersection {
 public:
-    std::vector<std::unique_ptr<HitInfo>> hits;
+    std::array<std::unique_ptr<HitInfo>, 8> hits;
     int numHits = 0;
+
+    void set(Intersection& intersection);
+
+
 };
 
 

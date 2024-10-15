@@ -18,8 +18,8 @@ public:
     virtual bool hit(const Ray &incomingRay, Intersection& intersection) const = 0;
 
 protected:
-    Eigen::Matrix<double, 4, 4> inverseTransform;
-    Eigen::Matrix<double, 4, 4> transform;
+    Eigen::Matrix<double, 4, 4> inverseTransform = Eigen::Matrix4d::Identity();
+    Eigen::Matrix<double, 4, 4> transform = Eigen::Matrix4d::Identity();
 
     Ray transformRayToObjectSpace (const Ray& incomingRay) const;
 
