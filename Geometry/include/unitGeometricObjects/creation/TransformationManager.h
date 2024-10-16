@@ -15,7 +15,7 @@
 
 class TransformationManager {
 private:
-    std::stack<Eigen::Matrix<double, 4, 4>> transformStack;
+    std::stack<Eigen::Matrix4d> transformStack;
     std::optional<bool> isInverse;
 
 
@@ -43,7 +43,7 @@ public:
     void pushInverseRotatePointZ(double angle);
 
 
-    Eigen::Matrix<double, 4, 4> getTotalTransformation();
+    Eigen::Matrix4d getTotalTransformation();
 
 
 };

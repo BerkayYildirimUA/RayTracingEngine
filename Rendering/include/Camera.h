@@ -25,7 +25,7 @@ private:
 public:
     void raytrace(Scene &scn, int blockSize);
 
-    void initialize();
+    void initialize(Scene &scn, Point3 &eye);
 
     Camera(int nRows, int nColumns) {
         this->nRows = nRows;

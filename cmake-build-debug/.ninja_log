@@ -33,7 +33,7 @@
 5427	6274	7500791363126859	CMakeFiles/RayTracingEngine.dir/Tests/Test.cpp.obj	80056e2629058ec3
 2976	5314	7505488436098155	CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/ObjectFactory.cpp.obj	31de730f4f49f5c1
 19	59	7500814014952838	clean	657297461e4d84f3
-6	871	7506836292212749	build.ninja	819c902b446fc9d4
+6	871	7507781234171259	build.ninja	819c902b446fc9d4
 19	1470	7500855560541591	CMakeFiles/RayTracingEngineTests.dir/Ray.cpp.obj	c79238e96afe8d1f
 2544	5339	7506835126689319	D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/RayTracingEngineTests-b12d07c_tests.cmake	d5dd51cb45026cf6
 25	2047	7500855439649787	CMakeFiles/RayTracingEngineTests.dir/Math/TransferFunctions.cpp.obj	78e20848d5084791
@@ -66,3 +66,12 @@
 28	2544	7506835073623902	CMakeFiles/RayTracingEngineTests.dir/Tests/GeomatricObjectsTests.cpp.obj	bd16d0f280ad0896
 51	2353	7506830749547604	CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/Creation/ObjectFactory.cpp.obj	fdec2f40972b46a9
 58	2680	7506830749617410	CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/Creation/TransformationManiger.cpp.obj	fef14d09e3036104
+53	2542	7507787725821232	CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/UnitCube.cpp.obj	a145211247fda333
+60	2630	7507787725891045	CMakeFiles/RayTracingEngine.dir/Rendering/src/Camera.cpp.obj	743575403f188f94
+74	2663	7507787726030670	CMakeFiles/RayTracingEngine.dir/Rendering/src/Scene.cpp.obj	3843be785484f0c6
+46	2710	7507787725761386	CMakeFiles/RayTracingEngine.dir/Geometry/src/unitGeometricObjects/UnitCircle.cpp.obj	a6ebd81f3f8825c1
+2543	4310	7507787750724738	CMakeFiles/RayTracingEngine.dir/main.cpp.obj	732c85ab7831adc0
+4310	6836	7507787768397489	RayTracingEngine.exe	f7a2b578a6ca6e1b
+37	2116	7507790369977617	CMakeFiles/RayTracingEngine.dir/Rendering/src/Camera.cpp.obj	743575403f188f94
+45	2255	7507790370057397	CMakeFiles/RayTracingEngine.dir/main.cpp.obj	732c85ab7831adc0
+2255	2950	7507790392158141	RayTracingEngine.exe	f7a2b578a6ca6e1b

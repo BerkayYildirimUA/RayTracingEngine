@@ -12,7 +12,7 @@
 class Vector3 {
 
 public:
-    Eigen::Matrix<double, 4, 1> vector;
+    Eigen::Vector4d vector;
 
     void set(double new_x, double new_y, double new_z) { vector << new_x, new_y, new_z, 0;}
 
@@ -21,8 +21,13 @@ public:
     Vector3(double x, double y, double z) { vector << x, y, z, 0;}
 
     Vector3() { vector << 0, 0, 0, 0;}
-    explicit Vector3(const Eigen::Matrix<double, 3, 1>& cords) {vector << cords, 0;}
-    explicit Vector3(const Eigen::Matrix<double, 4, 1>& cords) {vector << cords.head<3>(), 0;}};
+    explicit Vector3(Eigen::Vector4d&& cords) {vector = std::move(cords);}
+
+};
+
+
+
+
 
 
 #endif //RAYTRACINGENGINE_VECTOR3_H

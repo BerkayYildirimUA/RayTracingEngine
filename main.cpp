@@ -3,6 +3,9 @@
 #include <GLFW/glfw3.h>
 #include "Math/include/Transformations.h"
 #include "Rendering/include/Camera.h"
+#include "Geometry/include/unitGeometricObjects/creation/ObjectFactory.h"
+#include "Geometry/include/unitGeometricObjects/UnitCircle.h"
+
 
 /*
  * using the following book for the installation of OpenGl.
@@ -15,7 +18,20 @@
 int main() {
 
     Camera camera(1000, 1000);
-    camera.initialize();
+
+    Scene scene;
+
+    std::vector<std::shared_ptr<HitObject>> vector;
+    vector.reserve(1);
+
+
+    vector.emplace_back(ObjectFactory::createObject<UnitCircle>());
+
+    scene.setObjects(vector);
+
+    Point3 point(-3, 0, 0);
+
+    camera.initialize(scene, point);
 
     return 0;
 }

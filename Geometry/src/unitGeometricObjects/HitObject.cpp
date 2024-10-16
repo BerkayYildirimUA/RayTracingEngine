@@ -18,14 +18,13 @@ double HitObject::calcNorm(const Point3 &point1, const Point3 &point2) const {
 
 Ray HitObject::transformRayToObjectSpace(const Ray& ray) const {
 
-    Point3 newStart(static_cast<Eigen::Matrix<double, 4, 1>>(inverseTransform * ray.start.point));
-    Vector3 newDir(static_cast<Eigen::Matrix<double, 4, 1>>(inverseTransform * ray.dir.vector));
+    Point3 newStart(inverseTransform * ray.start.point);
+    Vector3 newDir(inverseTransform * ray.dir.vector);
+
+    Ray newRay(std::move(newStart), std::move(newDir));
 
 
-    Ray newRay(newStart, newDir);
-
-
-    return newRay;
+    return std::move(newRay);
 }
 
 

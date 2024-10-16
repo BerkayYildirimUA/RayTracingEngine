@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-debug\CMakeFiles\5a92a49c994618b7a14c8c0a452ee44f\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Libs\glfw-3.3.8\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Libs\glfw-3.3.8\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\Libs\glfw-3.3.8\CMake\GenerateMappings.cmake" />
+    <None Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-debug\glfw_build\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E92ACCC0-DE03-34E4-A0AE-11973B8EFADA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{A2B851C7-5525-3F5C-80AE-3EB2B9CD48D0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

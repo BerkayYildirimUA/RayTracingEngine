@@ -13,25 +13,25 @@ class Transformations {
 
 public:
     // Transform points
-    static Eigen::Matrix<double, 4, 1> translatePoint(const Eigen::Matrix<double, 4, 1>& point, double x, double y, double z);
-    static Eigen::Matrix<double, 4, 1> scalePoint(const Eigen::Matrix<double, 4, 1>& point, double x, double y, double z);
-    static Eigen::Matrix<double, 4, 1> rotatePointX(const Eigen::Matrix<double, 4, 1>& point, double angle);
-    static Eigen::Matrix<double, 4, 1> rotatePointY(const Eigen::Matrix<double, 4, 1>& point, double angle);
-    static Eigen::Matrix<double, 4, 1> rotatePointZ(const Eigen::Matrix<double, 4, 1>& point, double angle);
+    static Eigen::Vector4d translatePoint(const Eigen::Vector4d& point, double x, double y, double z);
+    static Eigen::Vector4d scalePoint(const Eigen::Vector4d& point, double x, double y, double z);
+    static Eigen::Vector4d rotatePointX(const Eigen::Vector4d& point, double angle);
+    static Eigen::Vector4d rotatePointY(const Eigen::Vector4d& point, double angle);
+    static Eigen::Vector4d rotatePointZ(const Eigen::Vector4d& point, double angle);
 
     // Create transformation matrices
-    static Eigen::Matrix<double, 4, 4> createTranslationMatrix(double x, double y, double z);
-    static Eigen::Matrix<double, 4, 4> createScalingMatrix(double x, double y, double z);
-    static Eigen::Matrix<double, 4, 4> createRotationMatrixX(double angle);
-    static Eigen::Matrix<double, 4, 4> createRotationMatrixY(double angle);
-    static Eigen::Matrix<double, 4, 4> createRotationMatrixZ(double angle);
+    static Eigen::Matrix4d createTranslationMatrix(double x, double y, double z);
+    static Eigen::Matrix4d createScalingMatrix(double x, double y, double z);
+    static Eigen::Matrix4d createRotationMatrixX(double angle);
+    static Eigen::Matrix4d createRotationMatrixY(double angle);
+    static Eigen::Matrix4d createRotationMatrixZ(double angle);
 
     // Combine transformations
-    static Eigen::Matrix<double, 4, 4> applyTranslation(const Eigen::Matrix<double, 4, 4>& matrix, double x, double y, double z);
-    static Eigen::Matrix<double, 4, 4> applyScaling(const Eigen::Matrix<double, 4, 4>& matrix, double x, double y, double z);
-    static Eigen::Matrix<double, 4, 4> applyRotationX(const Eigen::Matrix<double, 4, 4>& matrix, double angle);
-    static Eigen::Matrix<double, 4, 4> applyRotationY(const Eigen::Matrix<double, 4, 4>& matrix, double angle);
-    static Eigen::Matrix<double, 4, 4> applyRotationZ(const Eigen::Matrix<double, 4, 4>& matrix, double angle);
+    static Eigen::Matrix4d applyTranslation(const Eigen::Matrix4d& matrix, double x, double y, double z);
+    static Eigen::Matrix4d applyScaling(const Eigen::Matrix4d& matrix, double x, double y, double z);
+    static Eigen::Matrix4d applyRotationX(const Eigen::Matrix4d& matrix, double angle);
+    static Eigen::Matrix4d applyRotationY(const Eigen::Matrix4d& matrix, double angle);
+    static Eigen::Matrix4d applyRotationZ(const Eigen::Matrix4d& matrix, double angle);
 
 
 private:

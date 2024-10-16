@@ -11,7 +11,7 @@
 class Point3 {
 
 public:
-    Eigen::Matrix<double, 4, 1> point;
+    Eigen::Vector4d point;
 
     void set(double new_x, double new_y, double new_z) { point << new_x, new_y, new_z, 1; }
 
@@ -21,8 +21,7 @@ public:
 
     Point3() { point << 0, 0, 0, 1; }
 
-    explicit Point3(const Eigen::Matrix<double, 3, 1>& cords) {point << cords, 1;}
-    explicit Point3(const Eigen::Matrix<double, 4, 1>& cords) {point << cords.head<3>(), 1;}
+    explicit Point3(Eigen::Vector4d&& cords) {    point = std::move(cords);}
 
 };
 

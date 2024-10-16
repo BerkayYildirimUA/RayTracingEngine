@@ -13,6 +13,7 @@
 
 class Scene {
 
+private:
     std::vector<std::shared_ptr<HitObject>> listOfObjectPointers;
 
 public:

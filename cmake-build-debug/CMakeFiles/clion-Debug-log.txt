@@ -1,5 +1,25 @@
-"C:\Program Files\JetBrains\CLion 2024.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.1.4/bin/ninja/win/x64/ninja.exe" -G Ninja -S D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine -B D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-debug
+"C:\Program Files\JetBrains\CLion 2024.1.4\bin\cmake\win\x64\bin\cmake.exe" "-DCMAKE_C_COMPILER=C:/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/icx.exe" "-DCMAKE_CXX_COMPILER=C:/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/icx.exe" -G "Visual Studio 17 2022" -S D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine -B D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-debug
+-- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.19045.
+-- The C compiler identification is MSVC 19.40.33813.0
+-- The CXX compiler identification is MSVC 19.40.33813.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - not found
+-- Found Threads: TRUE  
 -- Using Win32 for window creation
--- Configuring done (0.7s)
--- Generating done (0.1s)
+-- Configuring done (9.3s)
+-- Generating done (0.2s)
 -- Build files have been written to: D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug

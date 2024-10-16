@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-debug\CMakeFiles\c9d75914f2e6bdce5af7cc28983e1ddc\RUN_TESTS_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E92ACCC0-DE03-34E4-A0AE-11973B8EFADA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

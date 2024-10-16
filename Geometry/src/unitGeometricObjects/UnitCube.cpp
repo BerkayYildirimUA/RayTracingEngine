@@ -11,4 +11,5 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) const {
     double tIn = -1000000.0, tOut = 1000000.0;
     int inSurf, outSurf;
 
+    return false;
 }
