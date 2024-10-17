@@ -11,7 +11,7 @@
 
 void Camera::raytrace(Scene &scn, int blockSize) {
     Ray theRay;
-    theRay.setStart(eye);
+    theRay.setStart(std::move(eye));
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -20,26 +20,26 @@ void Camera::raytrace(Scene &scn, int blockSize) {
     glOrtho(0, nColumns, 0, nRows, -1, 1);
     glDisable(GL_LIGHTING);
 
+    Vector3 u(1.0, 0.0, 0.0); // Right vector of the camera
+    Vector3 v(0.0, 1.0, 0.0); // Up vector of the camera
+    Vector3 Nn(0.0, 0.0, -1.0); // Forward (view direction) vector of the camera
+    Vector3 dir;
+
+    // Screen size (W and H)
+    float W = 2.0f;  // Assuming normalized device coordinates range from -1 to 1
+    float H = 2.0f;
+
     for (int row = 0; row <= nRows; row++) {
         for (int col = 0; col <= nRows; col++) {
-
-            Vector3 u(1.0, 0.0, 0.0); // Right vector of the camera
-            Vector3 v(0.0, 1.0, 0.0); // Up vector of the camera
-            Vector3 Nn(0.0, 0.0, -1.0); // Forward (view direction) vector of the camera
-
-            // Screen size (W and H)
-            float W = 2.0f;  // Assuming normalized device coordinates range from -1 to 1
-            float H = 2.0f;
 
             float ndcX = (2.0f * col / nColumns) - 1.0f;
             float ndcY = (2.0f * row / nRows) - 1.0f;
 
             Eigen::Vector4d dir_vector = -Nn.vector + W * ndcX * u.vector + H * ndcY * v.vector;
 
+            dir.vector(dir_vector);
 
-            Vector3 dir(std::move(dir_vector));
-
-            theRay.setDir(dir);
+            theRay.setDir(std::move(dir));
             Color3 clr = scn.shade(theRay);
             glColor3f(clr.R, clr.B, clr.B);
             glRecti(col, row, col + blockSize, row + blockSize);
@@ -114,7 +114,7 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         // check and call events and swap the buffers
-        raytrace(scn, 1);
+        raytrace(scn, 10);
         glfwSwapBuffers(window.get());
         glfwPollEvents();
 
