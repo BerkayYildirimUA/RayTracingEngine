@@ -17,6 +17,7 @@ public:
     void set(double new_x, double new_y, double new_z) { vector << new_x, new_y, new_z, 0;}
 
     void set(Vector3 & newVector) { vector = newVector.vector;}
+    void set(Vector3 && newVector) { vector = std::move(newVector.vector);}
 
     Vector3(double x, double y, double z) { vector << x, y, z, 0;}
 

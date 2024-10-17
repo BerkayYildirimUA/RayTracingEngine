@@ -7,6 +7,7 @@ C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Mod
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCXXInformation.cmake
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCompilerIdDetection.cmake
+C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeDependentOption.cmake
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeDetermineCompileFeatures.cmake
@@ -101,11 +102,13 @@ C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Mod
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-MSVC.cmake
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows.cmake
 C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake
-D:/Libs/Catch2_install/lib/cmake/Catch2/Catch.cmake
-D:/Libs/Catch2_install/lib/cmake/Catch2/Catch2Config.cmake
-D:/Libs/Catch2_install/lib/cmake/Catch2/Catch2ConfigVersion.cmake
-D:/Libs/Catch2_install/lib/cmake/Catch2/Catch2Targets-noconfig.cmake
-D:/Libs/Catch2_install/lib/cmake/Catch2/Catch2Targets.cmake
+D:/Libs/vcpkg/installed/x64-windows/share/Catch2/Catch.cmake
+D:/Libs/vcpkg/installed/x64-windows/share/Catch2/Catch2Config.cmake
+D:/Libs/vcpkg/installed/x64-windows/share/Catch2/Catch2ConfigVersion.cmake
+D:/Libs/vcpkg/installed/x64-windows/share/Catch2/Catch2Targets-debug.cmake
+D:/Libs/vcpkg/installed/x64-windows/share/Catch2/Catch2Targets-release.cmake
+D:/Libs/vcpkg/installed/x64-windows/share/Catch2/Catch2Targets.cmake
+D:/Libs/vcpkg/scripts/buildsystems/vcpkg.cmake
 D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/CMakeLists.txt
 D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/3.28.1/CMakeCCompiler.cmake
 D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/3.28.1/CMakeCXXCompiler.cmake

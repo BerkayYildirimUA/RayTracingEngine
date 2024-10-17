@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-      Build started 16/10/2024 13:27:05.
+      Build started 17/10/2024 02:04:56.
       
       Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -35,20 +35,20 @@ events:
         Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
       VcpkgTripletSelection:
-        Using triplet "x64-windows" from "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\"
+        Using triplet "x64-windows" from "D:\\Libs\\vcpkg\\installed\\x64-windows\\"
         Using normalized configuration "Release"
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Libs\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
         CMakeCCompilerId.c
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\Libs\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Libs\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\Libs\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
         CompilerIdC.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.exe
       AppLocalFromInstalled:
-        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Libs\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.exe" "D:\\Libs\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
         'pwsh.exe' is not recognized as an internal or external command,
         operable program or batch file.
-        The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"" exited with code 9009.
-        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Libs\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.exe" "D:\\Libs\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"" exited with code 9009.
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\Libs\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.exe" "D:\\Libs\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
@@ -62,7 +62,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:02.15
+      Time Elapsed 00:00:00.99
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -88,7 +88,7 @@ events:
       The output was:
       0
       MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-      Build started 16/10/2024 13:27:07.
+      Build started 17/10/2024 02:04:57.
       
       Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -99,20 +99,20 @@ events:
         Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
       VcpkgTripletSelection:
-        Using triplet "x64-windows" from "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\"
+        Using triplet "x64-windows" from "D:\\Libs\\vcpkg\\installed\\x64-windows\\"
         Using normalized configuration "Release"
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Libs\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
         CMakeCXXCompilerId.cpp
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\Libs\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Libs\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\Libs\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
         CompilerIdCXX.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.exe
       AppLocalFromInstalled:
-        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Libs\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\Libs\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
         'pwsh.exe' is not recognized as an internal or external command,
         operable program or batch file.
-        The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"" exited with code 9009.
-        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Libs\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\Libs\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"" exited with code 9009.
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\Libs\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\Libs\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -126,7 +126,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.97
+      Time Elapsed 00:00:01.04
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -145,59 +145,54 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-uqaon1"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-uqaon1"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "D:/Libs/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "D:/Libs/vcpkg"
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-uqaon1'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0ef97.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_74784.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 16/10/2024 13:27:09.
+        Build started 17/10/2024 02:04:58.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\cmTC_0ef97.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\cmTC_74784.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_0ef97.dir\\Debug\\".
+          Creating directory "cmTC_74784.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\Debug\\".
-          Creating directory "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\Debug\\".
+          Creating directory "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\unsuccessfulbuild".
-        VcpkgTripletSelection:
-          Using triplet "x64-windows" from "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\"
-          Using normalized configuration "Release"
+          Creating "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0ef97.dir\\Debug\\\\" /Fd"cmTC_0ef97.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_74784.dir\\Debug\\\\" /Fd"cmTC_74784.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0ef97.dir\\Debug\\\\" /Fd"cmTC_0ef97.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_74784.dir\\Debug\\\\" /Fd"cmTC_74784.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\Debug\\cmTC_0ef97.exe" /INCREMENTAL /ILK:"cmTC_0ef97.dir\\Debug\\cmTC_0ef97.ilk" /NOLOGO /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-uqaon1/Debug/cmTC_0ef97.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-uqaon1/Debug/cmTC_0ef97.lib" /MACHINE:X64  /machine:x64 cmTC_0ef97.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_0ef97.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\Debug\\cmTC_0ef97.exe
-        AppLocalFromInstalled:
-          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\Debug\\cmTC_0ef97.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\cmTC_0ef97.write.1u.tlog" "cmTC_0ef97.dir\\Debug\\vcpkg.applocal.log"
-          'pwsh.exe' is not recognized as an internal or external command,
-          operable program or batch file.
-          The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\Debug\\cmTC_0ef97.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\cmTC_0ef97.write.1u.tlog" "cmTC_0ef97.dir\\Debug\\vcpkg.applocal.log"" exited with code 9009.
-          "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\Debug\\cmTC_0ef97.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\cmTC_0ef97.write.1u.tlog" "cmTC_0ef97.dir\\Debug\\vcpkg.applocal.log"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\Debug\\cmTC_74784.exe" /INCREMENTAL /ILK:"cmTC_74784.dir\\Debug\\cmTC_74784.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7/Debug/cmTC_74784.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7/Debug/cmTC_74784.lib" /MACHINE:X64  /machine:x64 cmTC_74784.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_74784.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\Debug\\cmTC_74784.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\unsuccessfulbuild".
-          Touching "cmTC_0ef97.dir\\Debug\\cmTC_0ef97.tlog\\cmTC_0ef97.lastbuildstate".
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-uqaon1\\cmTC_0ef97.vcxproj" (default targets).
+          Deleting file "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\unsuccessfulbuild".
+          Touching "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\cmTC_74784.lastbuildstate".
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\cmTC_74784.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.90
+        Time Elapsed 00:00:00.52
         
       exitCode: 0
   -
@@ -209,59 +204,54 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7e268h"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7e268h"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "D:/Libs/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "D:/Libs/vcpkg"
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7e268h'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_30aba.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1fa5e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 16/10/2024 13:27:10.
+        Build started 17/10/2024 02:04:59.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\cmTC_30aba.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\cmTC_1fa5e.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_30aba.dir\\Debug\\".
+          Creating directory "cmTC_1fa5e.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\Debug\\".
-          Creating directory "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\Debug\\".
+          Creating directory "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\unsuccessfulbuild".
-        VcpkgTripletSelection:
-          Using triplet "x64-windows" from "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\"
-          Using normalized configuration "Release"
+          Creating "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_30aba.dir\\Debug\\\\" /Fd"cmTC_30aba.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1fa5e.dir\\Debug\\\\" /Fd"cmTC_1fa5e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_30aba.dir\\Debug\\\\" /Fd"cmTC_30aba.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1fa5e.dir\\Debug\\\\" /Fd"cmTC_1fa5e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\Debug\\cmTC_30aba.exe" /INCREMENTAL /ILK:"cmTC_30aba.dir\\Debug\\cmTC_30aba.ilk" /NOLOGO /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7e268h/Debug/cmTC_30aba.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7e268h/Debug/cmTC_30aba.lib" /MACHINE:X64  /machine:x64 cmTC_30aba.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_30aba.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\Debug\\cmTC_30aba.exe
-        AppLocalFromInstalled:
-          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\Debug\\cmTC_30aba.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\cmTC_30aba.write.1u.tlog" "cmTC_30aba.dir\\Debug\\vcpkg.applocal.log"
-          'pwsh.exe' is not recognized as an internal or external command,
-          operable program or batch file.
-          The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\Debug\\cmTC_30aba.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\cmTC_30aba.write.1u.tlog" "cmTC_30aba.dir\\Debug\\vcpkg.applocal.log"" exited with code 9009.
-          "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\Debug\\cmTC_30aba.exe" "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\bin" "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\cmTC_30aba.write.1u.tlog" "cmTC_30aba.dir\\Debug\\vcpkg.applocal.log"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\Debug\\cmTC_1fa5e.exe" /INCREMENTAL /ILK:"cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi/Debug/cmTC_1fa5e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi/Debug/cmTC_1fa5e.lib" /MACHINE:X64  /machine:x64 cmTC_1fa5e.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_1fa5e.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\Debug\\cmTC_1fa5e.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\unsuccessfulbuild".
-          Touching "cmTC_30aba.dir\\Debug\\cmTC_30aba.tlog\\cmTC_30aba.lastbuildstate".
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-7e268h\\cmTC_30aba.vcxproj" (default targets).
+          Deleting file "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\unsuccessfulbuild".
+          Touching "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\cmTC_1fa5e.lastbuildstate".
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\cmTC_1fa5e.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.94
+        Time Elapsed 00:00:00.53
         
       exitCode: 0
   -
@@ -271,58 +261,60 @@ events:
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "D:/Libs/vcpkg/scripts/buildsystems/vcpkg.cmake:859 (_find_package)"
       - "D:/Libs/glfw-3.3.8/CMakeLists.txt:62 (find_package)"
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9vhkwb"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9vhkwb"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-05xi3v"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-05xi3v"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
       CMAKE_MODULE_PATH: "D:/Libs/glfw-3.3.8/CMake/modules"
+      VCPKG_INSTALLED_DIR: "D:/Libs/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "D:/Libs/vcpkg"
     buildResult:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9vhkwb'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-05xi3v'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0a722.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6c318.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 16/10/2024 13:27:11.
+        Build started 17/10/2024 02:05:00.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\cmTC_0a722.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_0a722.dir\\Debug\\".
+          Creating directory "cmTC_6c318.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\Debug\\".
-          Creating directory "cmTC_0a722.dir\\Debug\\cmTC_0a722.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\Debug\\".
+          Creating directory "cmTC_6c318.dir\\Debug\\cmTC_6c318.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_0a722.dir\\Debug\\cmTC_0a722.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_0a722.dir\\Debug\\cmTC_0a722.tlog\\unsuccessfulbuild".
-        VcpkgTripletSelection:
-          Using triplet "x64-windows" from "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\"
-          Using normalized configuration "Release"
+          Creating "cmTC_6c318.dir\\Debug\\cmTC_6c318.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_6c318.dir\\Debug\\cmTC_6c318.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0a722.dir\\Debug\\\\" /Fd"cmTC_0a722.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6c318.dir\\Debug\\\\" /Fd"cmTC_6c318.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0a722.dir\\Debug\\\\" /Fd"cmTC_0a722.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\src.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6c318.dir\\Debug\\\\" /Fd"cmTC_6c318.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c"
           src.c
-        D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\cmTC_0a722.vcxproj]
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\cmTC_0a722.vcxproj" (default targets) -- FAILED.
+        D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj]
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\cmTC_0a722.vcxproj" (default target) (1) ->
+        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-9vhkwb\\cmTC_0a722.vcxproj]
+          D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.37
+        Time Elapsed 00:00:00.36
         
       exitCode: 1
   -
@@ -331,60 +323,62 @@ events:
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "D:/Libs/vcpkg/scripts/buildsystems/vcpkg.cmake:859 (_find_package)"
       - "D:/Libs/glfw-3.3.8/CMakeLists.txt:62 (find_package)"
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l9qjlf"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l9qjlf"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
       CMAKE_MODULE_PATH: "D:/Libs/glfw-3.3.8/CMake/modules"
+      VCPKG_INSTALLED_DIR: "D:/Libs/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "D:/Libs/vcpkg"
     buildResult:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l9qjlf'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_8b759.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0690b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 16/10/2024 13:27:12.
+        Build started 17/10/2024 02:05:00.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\cmTC_8b759.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_8b759.dir\\Debug\\".
+          Creating directory "cmTC_0690b.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\Debug\\".
-          Creating directory "cmTC_8b759.dir\\Debug\\cmTC_8b759.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\Debug\\".
+          Creating directory "cmTC_0690b.dir\\Debug\\cmTC_0690b.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_8b759.dir\\Debug\\cmTC_8b759.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_8b759.dir\\Debug\\cmTC_8b759.tlog\\unsuccessfulbuild".
-        VcpkgTripletSelection:
-          Using triplet "x64-windows" from "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\"
-          Using normalized configuration "Release"
+          Creating "cmTC_0690b.dir\\Debug\\cmTC_0690b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_0690b.dir\\Debug\\cmTC_0690b.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_8b759.dir\\Debug\\\\" /Fd"cmTC_8b759.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0690b.dir\\Debug\\\\" /Fd"cmTC_0690b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_8b759.dir\\Debug\\\\" /Fd"cmTC_8b759.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0690b.dir\\Debug\\\\" /Fd"cmTC_0690b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\Debug\\cmTC_8b759.exe" /INCREMENTAL /ILK:"cmTC_8b759.dir\\Debug\\cmTC_8b759.ilk" /NOLOGO /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\manual-link" pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l9qjlf/Debug/cmTC_8b759.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l9qjlf/Debug/cmTC_8b759.lib" /MACHINE:X64  /machine:x64 cmTC_8b759.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\cmTC_8b759.vcxproj]
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\cmTC_8b759.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\Debug\\cmTC_0690b.exe" /INCREMENTAL /ILK:"cmTC_0690b.dir\\Debug\\cmTC_0690b.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi/Debug/cmTC_0690b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi/Debug/cmTC_0690b.lib" /MACHINE:X64  /machine:x64 cmTC_0690b.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj]
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\cmTC_8b759.vcxproj" (default target) (1) ->
+        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-l9qjlf\\cmTC_8b759.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.41
+        Time Elapsed 00:00:00.44
         
       exitCode: 1
   -
@@ -393,60 +387,62 @@ events:
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
       - "C:/Program Files/JetBrains/CLion 2024.1.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "D:/Libs/vcpkg/scripts/buildsystems/vcpkg.cmake:859 (_find_package)"
       - "D:/Libs/glfw-3.3.8/CMakeLists.txt:62 (find_package)"
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-0r3zgd"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-0r3zgd"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
       CMAKE_MODULE_PATH: "D:/Libs/glfw-3.3.8/CMake/modules"
+      VCPKG_INSTALLED_DIR: "D:/Libs/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "D:/Libs/vcpkg"
     buildResult:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-0r3zgd'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_af64d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ff9a7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 16/10/2024 13:27:12.
+        Build started 17/10/2024 02:05:01.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\cmTC_af64d.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_af64d.dir\\Debug\\".
+          Creating directory "cmTC_ff9a7.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\Debug\\".
-          Creating directory "cmTC_af64d.dir\\Debug\\cmTC_af64d.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\Debug\\".
+          Creating directory "cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_af64d.dir\\Debug\\cmTC_af64d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_af64d.dir\\Debug\\cmTC_af64d.tlog\\unsuccessfulbuild".
-        VcpkgTripletSelection:
-          Using triplet "x64-windows" from "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\"
-          Using normalized configuration "Release"
+          Creating "cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_af64d.dir\\Debug\\\\" /Fd"cmTC_af64d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ff9a7.dir\\Debug\\\\" /Fd"cmTC_ff9a7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /I"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_af64d.dir\\Debug\\\\" /Fd"cmTC_af64d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ff9a7.dir\\Debug\\\\" /Fd"cmTC_ff9a7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\Debug\\cmTC_af64d.exe" /INCREMENTAL /ILK:"cmTC_af64d.dir\\Debug\\cmTC_af64d.ilk" /NOLOGO /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\manual-link" pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Extra\\Peggle\\haggle-master\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-0r3zgd/Debug/cmTC_af64d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-0r3zgd/Debug/cmTC_af64d.lib" /MACHINE:X64  /machine:x64 cmTC_af64d.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\cmTC_af64d.vcxproj]
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\cmTC_af64d.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\Debug\\cmTC_ff9a7.exe" /INCREMENTAL /ILK:"cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f/Debug/cmTC_ff9a7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f/Debug/cmTC_ff9a7.lib" /MACHINE:X64  /machine:x64 cmTC_ff9a7.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj]
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\cmTC_af64d.vcxproj" (default target) (1) ->
+        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-0r3zgd\\cmTC_af64d.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.41
+        Time Elapsed 00:00:00.46
         
       exitCode: 1
 ...

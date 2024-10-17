@@ -10,13 +10,17 @@ UnitCircle::UnitCircle() {
 
 }
 
-bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection) const {
-    Ray genRay = transformRayToObjectSpace(incomingRay);
+bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
+    transformRayToObjectSpace(incomingRay);
     double A, B, C;
 
-    A = calcNorm(incomingRay.dir, incomingRay.dir);
-    B = calcNorm(incomingRay.start, incomingRay.dir);
-    C = calcNorm(incomingRay.start, incomingRay.start) - 1.0;
+    Eigen::Vector3d direction(incomingRay.dir.vector.x(), incomingRay.dir.vector.y(), incomingRay.dir.vector.z());
+    Eigen::Vector3d start(incomingRay.start.point.x(), incomingRay.start.point.y(), incomingRay.start.point.z());
+
+
+    A = calcNorm(direction, direction);
+    B = calcNorm(start, direction);
+    C = calcNorm(start, start) - 1.0;
 
     double discrim = B*B - A*C; // ax^2 + 2bx + c --> 4b^2 - 4AC
 
@@ -46,7 +50,7 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection) const {
     }
 
     double t2 = (-B + discRoot)/A;
-    if (t2 > 0.00001 && (t1 - t2 > 0.00001)){
+    if (t2 > 0.00001 && (std::abs(t1 - t2) > 0.00001)){
         auto &info = intersection.hits[numberOfHits];
 
         if (!info) {

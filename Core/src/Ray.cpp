@@ -4,12 +4,12 @@
 
 #include "Core/include/Ray.h"
 
-void Ray::setStart(const Point3 &start) {
-
+void Ray::setStart(Point3 &&newStart) {
+    this->start = std::move(newStart);
 }
 
-void Ray::setDir(const Vector3 &dir) {
-
+void Ray::setDir(Vector3 &&newDir) {
+    this->dir = std::move(newDir);
 }
 
 Eigen::Matrix<double, 3, 1> Ray::calcPoint(double t) {

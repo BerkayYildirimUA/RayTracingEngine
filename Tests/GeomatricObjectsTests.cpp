@@ -21,7 +21,7 @@ TEST_CASE("test circle hit book page 620", "[Circle]") {
     Vector3 dir(-3, -2, -3);
 
 
-    Ray ray(point3, dir);
+    Ray ray(std::move(point3), std::move(dir));
 
     REQUIRE(circle->hit(ray, intersection));
 
@@ -50,7 +50,7 @@ TEST_CASE("test circle hit", "[Circle]") {
     Vector3 dir(-1, -1, -1);
 
 
-    Ray ray(point3, dir);
+    Ray ray(std::move(point3), std::move(dir));
 
     REQUIRE(circle->hit(ray, intersection));
 
@@ -79,7 +79,7 @@ TEST_CASE("test circle hit edge", "[Circle]") {
     Vector3 dir(-1, 0, 0);
 
 
-    Ray ray(point3, dir);
+    Ray ray(std::move(point3), std::move(dir));
 
     REQUIRE(circle->hit(ray, intersection));
 

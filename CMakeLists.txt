@@ -3,8 +3,10 @@ project(RayTracingEngine)
 
 set(CMAKE_CXX_STANDARD 17)
 
+
 # External libraries paths
-list(APPEND CMAKE_PREFIX_PATH "D:/Libs/Catch2_install")
+
+
 set(GLFW_PATH "D:/Libs/glfw-3.3.8")
 set(GLAD_PATH "D:/Libs/Glad")
 set(EIGEN_PATH "D:/Libs/eigen-3.4.0")
@@ -16,8 +18,8 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(${GLFW_PATH} ${CMAKE_CURRENT_BINARY_DIR}/glfw_build)
 
 # Catch2
-find_package(Catch2 3 REQUIRED)
-list(APPEND CMAKE_MODULE_PATH ${Catch2_DIR})
+find_package(Catch2 CONFIG REQUIRED)
+
 
 # Collect all source files
 file(GLOB_RECURSE CORE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/Core/src/*.cpp")
@@ -71,7 +73,6 @@ target_include_directories(RayTracingEngineTests PRIVATE
         ${GLAD_PATH}/include
         ${EIGEN_PATH}
 )
-target_compile_definitions(RayTracingEngineTests PRIVATE CATCH_CONFIG_MAIN)
 
 # CTest and Catch2 test discovery
 enable_testing()

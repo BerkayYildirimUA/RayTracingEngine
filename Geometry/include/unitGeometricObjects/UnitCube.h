@@ -9,7 +9,7 @@
 
 class UnitCube : public HitObject {
 public:
-    bool hit(const Ray &incomingRay, Intersection &intersection) const override;
+    bool hit(const Ray &incomingRay, Intersection &intersection) override;
 
 };
 
