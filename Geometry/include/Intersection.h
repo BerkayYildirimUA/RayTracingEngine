@@ -16,7 +16,7 @@ public:
 
     void set(Intersection& intersection);
 
-
+    std::unique_ptr<HitInfo> &getHits(int i);
 };
 
 

@@ -27,6 +27,12 @@ public:
 
     void initialize(Scene &scn, Point3 &eye);
 
+    const Point3 &getEye() const;
+
+    int getNColumns() const;
+
+    int getNRows() const;
+
     Camera(int nRows, int nColumns) {
         this->nRows = nRows;
         this->nColumns = nColumns;

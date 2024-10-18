@@ -11,6 +11,10 @@ class UnitCube : public HitObject {
 public:
     bool hit(const Ray &incomingRay, Intersection &intersection) override;
 
+private:
+
+    Vector3 cubeNormal(int side);
+
 };
 
 

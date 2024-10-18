@@ -33,11 +33,7 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
     double t1 = (-B - discRoot)/A;
 
     if (t1 > 0.00001){
-        auto &info = intersection.hits[0];
-
-        if (!info) {
-            info = std::make_unique<HitInfo>();
-        }
+        auto &info = intersection.getHits(0);
 
         info->hitTime = t1;
         info->hitObject = const_cast<UnitCircle*>(this)->shared_from_this();
@@ -51,11 +47,7 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
 
     double t2 = (-B + discRoot)/A;
     if (t2 > 0.00001 && (std::abs(t1 - t2) > 0.00001)){
-        auto &info = intersection.hits[numberOfHits];
-
-        if (!info) {
-            info = std::make_unique<HitInfo>();
-        }
+        auto &info = intersection.getHits(0);
 
         info->hitTime = t2;
         info->hitObject = const_cast<UnitCircle*>(this)->shared_from_this();

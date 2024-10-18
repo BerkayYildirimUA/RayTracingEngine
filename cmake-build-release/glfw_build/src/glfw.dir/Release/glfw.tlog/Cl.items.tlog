@@ -1,0 +1,15 @@
+D:\Libs\glfw-3.3.8\src\context.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\context.obj
+D:\Libs\glfw-3.3.8\src\init.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\init.obj
+D:\Libs\glfw-3.3.8\src\input.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\input.obj
+D:\Libs\glfw-3.3.8\src\monitor.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\monitor.obj
+D:\Libs\glfw-3.3.8\src\vulkan.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\vulkan.obj
+D:\Libs\glfw-3.3.8\src\window.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\window.obj
+D:\Libs\glfw-3.3.8\src\win32_init.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\win32_init.obj
+D:\Libs\glfw-3.3.8\src\win32_joystick.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\win32_joystick.obj
+D:\Libs\glfw-3.3.8\src\win32_monitor.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\win32_monitor.obj
+D:\Libs\glfw-3.3.8\src\win32_time.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\win32_time.obj
+D:\Libs\glfw-3.3.8\src\win32_thread.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\win32_thread.obj
+D:\Libs\glfw-3.3.8\src\win32_window.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\win32_window.obj
+D:\Libs\glfw-3.3.8\src\wgl_context.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\wgl_context.obj
+D:\Libs\glfw-3.3.8\src\egl_context.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\egl_context.obj
+D:\Libs\glfw-3.3.8\src\osmesa_context.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\glfw_build\src\glfw.dir\Release\osmesa_context.obj

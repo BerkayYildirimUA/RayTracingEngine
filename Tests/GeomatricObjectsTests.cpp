@@ -11,6 +11,7 @@
 #include "Geometry/include/unitGeometricObjects/UnitCircle.h"
 #include "Geometry/include/unitGeometricObjects/creation/ObjectFactory.h"
 #include "memory"
+#include "Geometry/include/unitGeometricObjects/UnitCube.h"
 
 TEST_CASE("test circle hit book page 620", "[Circle]") {
 
@@ -70,7 +71,7 @@ TEST_CASE("test circle hit", "[Circle]") {
 
 }
 
-TEST_CASE("test circle hit edge", "[Circle]") {
+TEST_CASE("test circle hit sides", "[Circle]") {
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>();
 
@@ -93,4 +94,25 @@ TEST_CASE("test circle hit edge", "[Circle]") {
     Point3 point(0, 1, 0);
 
     REQUIRE(point.point.isApprox(intersection.hits[0]->hitPoint.point, 0.001));
+}
+
+TEST_CASE("test cube hit edge", "[Cube]") {
+
+    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>();
+
+    Intersection intersection;
+    Point3 point3(5, 1, 1);
+    Vector3 dir(-2, 0, 0);
+
+
+    Ray ray(std::move(point3), std::move(dir));
+
+    REQUIRE(cube->hit(ray, intersection));
+
+    REQUIRE(intersection.numHits == 2);
+    REQUIRE(intersection.hits[0]->isEntering);
+    REQUIRE(intersection.hits[1]->isEntering);
+
+    REQUIRE(intersection.hits[0]->hitPoint.point.isApprox(Point3(-0.5, 0.25, 1).point, 0.001));
+    REQUIRE(intersection.hits[1]->hitPoint.point.isApprox(Point3(-1, -0.5, 0).point, 0.001));
 }

@@ -29,7 +29,7 @@ int main() {
 
     scene.setObjects(vector);
 
-    Point3 point(-3, 0, 0);
+    Point3 point(-5, 0, 0);
 
     camera.initialize(scene, point);
 

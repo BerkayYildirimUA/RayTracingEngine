@@ -15,3 +15,11 @@ void Ray::setDir(Vector3 &&newDir) {
 Eigen::Matrix<double, 3, 1> Ray::calcPoint(double t) {
     return start.point.head<3>() + dir.vector.head<3>()*t ;
 }
+
+void Ray::setStart(const Point3 &start) {
+    Ray::start = start;
+}
+
+void Ray::setDir(const Vector3 &dir) {
+    Ray::dir = dir;
+}

@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-      Build started 17/10/2024 02:04:56.
+      Build started 17/10/2024 02:25:11.
       
       Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -62,7 +62,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.99
+      Time Elapsed 00:00:01.41
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -88,7 +88,7 @@ events:
       The output was:
       0
       MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-      Build started 17/10/2024 02:04:57.
+      Build started 17/10/2024 02:25:13.
       
       Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -126,7 +126,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.04
+      Time Elapsed 00:00:00.97
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -145,8 +145,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-08cdkl"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-08cdkl"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -159,40 +159,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-08cdkl'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_74784.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_358cc.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 17/10/2024 02:04:58.
+        Build started 17/10/2024 02:25:14.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\cmTC_74784.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-08cdkl\\cmTC_358cc.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_74784.dir\\Debug\\".
+          Creating directory "cmTC_358cc.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\Debug\\".
-          Creating directory "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-08cdkl\\Debug\\".
+          Creating directory "cmTC_358cc.dir\\Debug\\cmTC_358cc.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\unsuccessfulbuild".
+          Creating "cmTC_358cc.dir\\Debug\\cmTC_358cc.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_358cc.dir\\Debug\\cmTC_358cc.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_74784.dir\\Debug\\\\" /Fd"cmTC_74784.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_358cc.dir\\Debug\\\\" /Fd"cmTC_358cc.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_74784.dir\\Debug\\\\" /Fd"cmTC_74784.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_358cc.dir\\Debug\\\\" /Fd"cmTC_358cc.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\Debug\\cmTC_74784.exe" /INCREMENTAL /ILK:"cmTC_74784.dir\\Debug\\cmTC_74784.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7/Debug/cmTC_74784.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wumwt7/Debug/cmTC_74784.lib" /MACHINE:X64  /machine:x64 cmTC_74784.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_74784.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\Debug\\cmTC_74784.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-08cdkl\\Debug\\cmTC_358cc.exe" /INCREMENTAL /ILK:"cmTC_358cc.dir\\Debug\\cmTC_358cc.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-08cdkl/Debug/cmTC_358cc.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-08cdkl/Debug/cmTC_358cc.lib" /MACHINE:X64  /machine:x64 cmTC_358cc.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_358cc.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-08cdkl\\Debug\\cmTC_358cc.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\unsuccessfulbuild".
-          Touching "cmTC_74784.dir\\Debug\\cmTC_74784.tlog\\cmTC_74784.lastbuildstate".
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-wumwt7\\cmTC_74784.vcxproj" (default targets).
+          Deleting file "cmTC_358cc.dir\\Debug\\cmTC_358cc.tlog\\unsuccessfulbuild".
+          Touching "cmTC_358cc.dir\\Debug\\cmTC_358cc.tlog\\cmTC_358cc.lastbuildstate".
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-08cdkl\\cmTC_358cc.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.52
+        Time Elapsed 00:00:00.53
         
       exitCode: 0
   -
@@ -204,8 +204,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-edk6sd"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-edk6sd"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -218,40 +218,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-edk6sd'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1fa5e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_71b2d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 17/10/2024 02:04:59.
+        Build started 17/10/2024 02:25:15.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\cmTC_1fa5e.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-edk6sd\\cmTC_71b2d.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_1fa5e.dir\\Debug\\".
+          Creating directory "cmTC_71b2d.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\Debug\\".
-          Creating directory "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-edk6sd\\Debug\\".
+          Creating directory "cmTC_71b2d.dir\\Debug\\cmTC_71b2d.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\unsuccessfulbuild".
+          Creating "cmTC_71b2d.dir\\Debug\\cmTC_71b2d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_71b2d.dir\\Debug\\cmTC_71b2d.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1fa5e.dir\\Debug\\\\" /Fd"cmTC_1fa5e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_71b2d.dir\\Debug\\\\" /Fd"cmTC_71b2d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1fa5e.dir\\Debug\\\\" /Fd"cmTC_1fa5e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_71b2d.dir\\Debug\\\\" /Fd"cmTC_71b2d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\JetBrains\\CLion 2024.1.4\\bin\\cmake\\win\\x64\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\Debug\\cmTC_1fa5e.exe" /INCREMENTAL /ILK:"cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi/Debug/cmTC_1fa5e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rn14mi/Debug/cmTC_1fa5e.lib" /MACHINE:X64  /machine:x64 cmTC_1fa5e.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_1fa5e.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\Debug\\cmTC_1fa5e.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-edk6sd\\Debug\\cmTC_71b2d.exe" /INCREMENTAL /ILK:"cmTC_71b2d.dir\\Debug\\cmTC_71b2d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-edk6sd/Debug/cmTC_71b2d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-edk6sd/Debug/cmTC_71b2d.lib" /MACHINE:X64  /machine:x64 cmTC_71b2d.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_71b2d.vcxproj -> D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-edk6sd\\Debug\\cmTC_71b2d.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\unsuccessfulbuild".
-          Touching "cmTC_1fa5e.dir\\Debug\\cmTC_1fa5e.tlog\\cmTC_1fa5e.lastbuildstate".
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-rn14mi\\cmTC_1fa5e.vcxproj" (default targets).
+          Deleting file "cmTC_71b2d.dir\\Debug\\cmTC_71b2d.tlog\\unsuccessfulbuild".
+          Touching "cmTC_71b2d.dir\\Debug\\cmTC_71b2d.tlog\\cmTC_71b2d.lastbuildstate".
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-edk6sd\\cmTC_71b2d.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.53
+        Time Elapsed 00:00:00.56
         
       exitCode: 0
   -
@@ -266,8 +266,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-05xi3v"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-05xi3v"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-byat4o"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-byat4o"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -281,40 +281,39 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-05xi3v'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-byat4o'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6c318.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_af713.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 17/10/2024 02:05:00.
+        Build started 17/10/2024 02:25:16.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\cmTC_af713.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_6c318.dir\\Debug\\".
+          Creating directory "cmTC_af713.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\Debug\\".
-          Creating directory "cmTC_6c318.dir\\Debug\\cmTC_6c318.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\Debug\\".
+          Creating directory "cmTC_af713.dir\\Debug\\cmTC_af713.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_6c318.dir\\Debug\\cmTC_6c318.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_6c318.dir\\Debug\\cmTC_6c318.tlog\\unsuccessfulbuild".
+          Creating "cmTC_af713.dir\\Debug\\cmTC_af713.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_af713.dir\\Debug\\cmTC_af713.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6c318.dir\\Debug\\\\" /Fd"cmTC_6c318.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_af713.dir\\Debug\\\\" /Fd"cmTC_af713.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\src.c"
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6c318.dir\\Debug\\\\" /Fd"cmTC_6c318.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_af713.dir\\Debug\\\\" /Fd"cmTC_af713.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\src.c"
           src.c
-        D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj]
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj" (default targets) -- FAILED.
+        D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\cmTC_af713.vcxproj]
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\cmTC_af713.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj" (default target) (1) ->
+        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\cmTC_af713.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-05xi3v\\cmTC_6c318.vcxproj]
+          D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-byat4o\\cmTC_af713.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.36
+        Time Elapsed 00:00:00.37
         
       exitCode: 1
   -
@@ -328,8 +327,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qr2ra6"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qr2ra6"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -343,42 +342,42 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qr2ra6'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0690b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_76be4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 17/10/2024 02:05:00.
+        Build started 17/10/2024 02:25:16.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\cmTC_76be4.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_0690b.dir\\Debug\\".
+          Creating directory "cmTC_76be4.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\Debug\\".
-          Creating directory "cmTC_0690b.dir\\Debug\\cmTC_0690b.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\Debug\\".
+          Creating directory "cmTC_76be4.dir\\Debug\\cmTC_76be4.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_0690b.dir\\Debug\\cmTC_0690b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_0690b.dir\\Debug\\cmTC_0690b.tlog\\unsuccessfulbuild".
+          Creating "cmTC_76be4.dir\\Debug\\cmTC_76be4.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_76be4.dir\\Debug\\cmTC_76be4.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0690b.dir\\Debug\\\\" /Fd"cmTC_0690b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_76be4.dir\\Debug\\\\" /Fd"cmTC_76be4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0690b.dir\\Debug\\\\" /Fd"cmTC_0690b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_76be4.dir\\Debug\\\\" /Fd"cmTC_76be4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\Debug\\cmTC_0690b.exe" /INCREMENTAL /ILK:"cmTC_0690b.dir\\Debug\\cmTC_0690b.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi/Debug/cmTC_0690b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bsggbi/Debug/cmTC_0690b.lib" /MACHINE:X64  /machine:x64 cmTC_0690b.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj]
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\Debug\\cmTC_76be4.exe" /INCREMENTAL /ILK:"cmTC_76be4.dir\\Debug\\cmTC_76be4.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qr2ra6/Debug/cmTC_76be4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qr2ra6/Debug/cmTC_76be4.lib" /MACHINE:X64  /machine:x64 cmTC_76be4.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\cmTC_76be4.vcxproj]
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\cmTC_76be4.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj" (default target) (1) ->
+        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\cmTC_76be4.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bsggbi\\cmTC_0690b.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qr2ra6\\cmTC_76be4.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.44
+        Time Elapsed 00:00:00.56
         
       exitCode: 1
   -
@@ -392,8 +391,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f"
-      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f"
+      source: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hvrfpj"
+      binary: "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hvrfpj"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -407,42 +406,42 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f'
+        Change Dir: 'D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hvrfpj'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ff9a7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4ba86.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 17/10/2024 02:05:01.
+        Build started 17/10/2024 02:25:17.
         
-        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj" on node 1 (default targets).
+        Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\cmTC_4ba86.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_ff9a7.dir\\Debug\\".
+          Creating directory "cmTC_4ba86.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\Debug\\".
-          Creating directory "cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.tlog\\".
+          Creating directory "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\Debug\\".
+          Creating directory "cmTC_4ba86.dir\\Debug\\cmTC_4ba86.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.tlog\\unsuccessfulbuild".
+          Creating "cmTC_4ba86.dir\\Debug\\cmTC_4ba86.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4ba86.dir\\Debug\\cmTC_4ba86.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ff9a7.dir\\Debug\\\\" /Fd"cmTC_ff9a7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4ba86.dir\\Debug\\\\" /Fd"cmTC_4ba86.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33813 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ff9a7.dir\\Debug\\\\" /Fd"cmTC_ff9a7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4ba86.dir\\Debug\\\\" /Fd"cmTC_4ba86.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\Debug\\cmTC_ff9a7.exe" /INCREMENTAL /ILK:"cmTC_ff9a7.dir\\Debug\\cmTC_ff9a7.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f/Debug/cmTC_ff9a7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4y764f/Debug/cmTC_ff9a7.lib" /MACHINE:X64  /machine:x64 cmTC_ff9a7.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj]
-        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\Debug\\cmTC_4ba86.exe" /INCREMENTAL /ILK:"cmTC_4ba86.dir\\Debug\\cmTC_4ba86.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hvrfpj/Debug/cmTC_4ba86.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hvrfpj/Debug/cmTC_4ba86.lib" /MACHINE:X64  /machine:x64 cmTC_4ba86.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\cmTC_4ba86.vcxproj]
+        Done Building Project "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\cmTC_4ba86.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj" (default target) (1) ->
+        "D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\cmTC_4ba86.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-4y764f\\cmTC_ff9a7.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-hvrfpj\\cmTC_4ba86.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.46
+        Time Elapsed 00:00:00.42
         
       exitCode: 1
 ...

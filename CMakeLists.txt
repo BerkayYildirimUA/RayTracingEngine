@@ -74,6 +74,11 @@ target_include_directories(RayTracingEngineTests PRIVATE
         ${EIGEN_PATH}
 )
 
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+endif()
+
+
 # CTest and Catch2 test discovery
 enable_testing()
 include(CTest)

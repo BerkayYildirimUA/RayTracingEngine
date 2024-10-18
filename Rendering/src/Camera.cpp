@@ -8,10 +8,9 @@
 #include <chrono>
 #include <thread>
 
-
 void Camera::raytrace(Scene &scn, int blockSize) {
     Ray theRay;
-    theRay.setStart(std::move(eye));
+    theRay.setStart(std::move(this->eye));
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -22,12 +21,12 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
     Vector3 u(1.0, 0.0, 0.0); // Right vector of the camera
     Vector3 v(0.0, 1.0, 0.0); // Up vector of the camera
-    Vector3 Nn(0.0, 0.0, -1.0); // Forward (view direction) vector of the camera
+    Vector3 Nn(0.0, 0.0, -5.0); // Forward (view direction) vector of the camera
     Vector3 dir;
 
     // Screen size (W and H)
-    float W = 2.0f;  // Assuming normalized device coordinates range from -1 to 1
-    float H = 2.0f;
+    float W = this->nRows/2;  // Assuming normalized device coordinates range from -1 to 1
+    float H = this->nColumns/2;
 
     for (int row = 0; row <= nRows; row++) {
         for (int col = 0; col <= nRows; col++) {
@@ -39,6 +38,8 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
             dir.vector(dir_vector);
 
+            std::cout << dir_vector << "\n";
+
             theRay.setDir(std::move(dir));
             Color3 clr = scn.shade(theRay);
             glColor3f(clr.R, clr.B, clr.B);
@@ -46,6 +47,7 @@ void Camera::raytrace(Scene &scn, int blockSize) {
         }
     }
 }
+
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -101,7 +103,7 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         return;
     }
 
-    const int MAX_FPS = 5;
+    const int MAX_FPS = 60;
     const double FRAME_TIME = 1.0 / MAX_FPS;
 
     // rendering loop
@@ -110,7 +112,7 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         auto frame_start = std::chrono::high_resolution_clock::now();
 
 
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         // check and call events and swap the buffers
@@ -129,5 +131,17 @@ void Camera::initialize(Scene &scn, Point3& eye) {
     }
 
     glfwTerminate();
+}
+
+const Point3 &Camera::getEye() const {
+    return eye;
+}
+
+int Camera::getNColumns() const {
+    return nColumns;
+}
+
+int Camera::getNRows() const {
+    return nRows;
 }
 

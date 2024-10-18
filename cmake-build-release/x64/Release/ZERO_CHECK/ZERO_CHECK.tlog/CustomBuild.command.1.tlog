@@ -1,0 +1,10 @@
+^D:\UA\SEMESTER7\COMPUTERGRAPHICS\CPPCODE\RAYTRACINGENGINE\CMAKE-BUILD-RELEASE\CMAKEFILES\6FBA16E548D83D031EB54DC3C81A99CC\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\JetBrains\CLion 2024.1.4\bin\cmake\win\x64\bin\cmake.exe" -SD:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine -BD:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/RayTracingEngine.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
