@@ -47,7 +47,7 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
 
     double t2 = (-B + discRoot)/A;
     if (t2 > 0.00001 && (std::abs(t1 - t2) > 0.00001)){
-        auto &info = intersection.getHits(0);
+        auto &info = intersection.getHits(numberOfHits);
 
         info->hitTime = t2;
         info->hitObject = const_cast<UnitCircle*>(this)->shared_from_this();

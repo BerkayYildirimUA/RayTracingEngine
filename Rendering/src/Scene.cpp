@@ -40,7 +40,7 @@ void Scene::getFirstHit(Ray &ray, Intersection &best) {
         if(!listOfObjectPointer->hit(ray, inter)){
             continue;
         }
-        if (best.numHits == 0 || inter.hits[0]->hitTime < best.hits[0]->hitTime){
+        if (best.numHits == 0 || inter.getHits(0)->hitTime < best.getHits(0)->hitTime){
             best.set(inter);
         }
 

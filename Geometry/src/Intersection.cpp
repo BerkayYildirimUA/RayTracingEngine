@@ -13,9 +13,17 @@ void Intersection::set(Intersection &intersection) {
 std::unique_ptr<HitInfo> &Intersection::getHits(int i) {
     auto &info = hits[i];
 
-    if (!info) {
+    if (isNull(i)) {
         info = std::make_unique<HitInfo>();
     }
 
     return info;
+}
+
+bool Intersection::isNull(int i) {
+    if (!hits[i]) {
+        return true;
+    }
+
+    return false;
 }

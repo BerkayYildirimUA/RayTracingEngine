@@ -10,13 +10,16 @@
 #include "HitInfo.h"
 
 class Intersection {
-public:
+private:
     std::array<std::unique_ptr<HitInfo>, 8> hits;
+public:
     int numHits = 0;
 
     void set(Intersection& intersection);
 
     std::unique_ptr<HitInfo> &getHits(int i);
+
+    bool isNull(int i);
 };
 
 
