@@ -53,9 +53,10 @@ public:
 
     void updateResolution(int newWidth, int newHeight) {
         this->aspectRatio = static_cast<double>(newWidth) / newHeight;
-        distance = screenHight / tan(Transformations::degreeToRad(viewAngle) /2);
-        screenWidth = newWidth;
         screenHight = newHeight;
+        screenWidth = newWidth;
+        distance = screenHight / tan(Transformations::degreeToRad(viewAngle) /2);
+
     }
 
 };

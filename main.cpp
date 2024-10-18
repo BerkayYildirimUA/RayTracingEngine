@@ -24,7 +24,7 @@ int main() {
     vector.emplace_back(ObjectFactory::createObject<UnitCircle>());
     scene.setObjects(vector);
 
-    Point3 point(5, 0, 0);
+    Point3 point(0, 0, -5);
 
     Camera camera(1280, 720, 60);
 

@@ -19,6 +19,7 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
 
 
     A = calcNorm(direction, direction);
+    assert(A > 0);
     B = calcNorm(start, direction);
     C = calcNorm(start, start) - 1.0;
 

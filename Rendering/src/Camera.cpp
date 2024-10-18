@@ -7,6 +7,11 @@
 #include "iostream"
 #include <chrono>
 #include <thread>
+#include <fstream>
+#include <filesystem>
+#include <iostream>
+#include <fstream>
+
 
 void Camera::raytrace(Scene &scn, int blockSize) {
     Ray theRay;
@@ -22,6 +27,8 @@ void Camera::raytrace(Scene &scn, int blockSize) {
     glLoadIdentity();
     glOrtho(0, screenWidth, 0, screenHight, -1, 1);
     glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+
 
     Vector3 dir;
 
@@ -29,22 +36,48 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
     Vector3 distanceVector(normalDistanceVector.vector * distance);
 
-    for (int row = 0; row < (screenWidth/2); row++) {
-        for (int col = 0; col < (screenHight/2); col++) {
+    //Eigen::MatrixXd redChannel(nColumns, nRows);
+
+
+    for (int row = 0; row < nRows; row++) {
+        for (int col = 0; col < nColumns; col++) {
 
             double rightVectorAmplitude = (screenWidth/2) * (2.0 * col / nColumns);
             double upVectorAmplitude = (screenHight/2) * (2.0*row / nRows);
 
             Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector + upVectorAmplitude * normalUpVector.vector;
 
-            dir.vector(dir_vector);
+            dir.vector = std::move(dir_vector);
 
             theRay.setDir(std::move(dir));
             Color3 clr = scn.shade(theRay);
-            glColor3f(clr.R, clr.B, clr.B);
-            glRecti(col, row, col + blockSize, row + blockSize);
+
+            int flippedRow = nRows - row - 1;
+
+            glColor3f(clr.R, clr.G, clr.B);
+            glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
+
         }
     }
+
+    /*std::ofstream file("color_matrix.txt");
+
+    if (file.is_open()) {
+        // Write the red channel matrix
+        file << "Red Channel:\n" << redChannel << "\n";
+        file.close();
+
+        // Verify if the file was written successfully
+        std::string filePath = std::filesystem::absolute("color_matrix.txt").string();
+        if (std::filesystem::exists(filePath)) {
+            std::cout << "File successfully written to: " << filePath << std::endl;
+        } else {
+            std::cerr << "Error: File was not created in the expected location." << std::endl;
+        }
+    } else {
+        std::cerr << "Error: Unable to create or write to 'color_matrix.txt'.\n";
+    }*/
+
 }
 
 
@@ -65,10 +98,10 @@ void Camera::initializeOpenGL() {
         return;
     }
 
-    //openGL 3.3, using only core functions
+    //openGL 3.3, need GLFW_OPENGL_COMPAT_PROFILE for glColor3f to work
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
     window = std::unique_ptr<GLFWwindow, decltype(&glfwDestroyWindow)>(
             glfwCreateWindow(screenWidth, screenHight, "RayTracing", nullptr, nullptr),
@@ -93,11 +126,31 @@ void Camera::initializeOpenGL() {
 
     glfwSetWindowUserPointer(window.get(), this);
 
+    glfwGetFramebufferSize(window.get(), &screenWidth, &screenHight);
     glViewport(0, 0, screenWidth, screenHight);
     glfwSetFramebufferSizeCallback(window.get(), framebuffer_size_callback);
 
 
 }
+
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (action == GLFW_PRESS) {
+        if (key == GLFW_KEY_UP) {
+            std::cout << "Escape key pressed." << std::endl;
+            glfwSetWindowShouldClose(window, GLFW_TRUE); // Close window on ESC key
+        } else if (key == GLFW_KEY_DOWN) {
+            std::cout << "W key pressed." << std::endl;
+            // Add logic for W key press
+        } else if (key == GLFW_KEY_LEFT) {
+            std::cout << "A key pressed." << std::endl;
+            // Add logic for A key press
+        } else if (key == GLFW_KEY_RIGHT) {
+            std::cout << "A key pressed." << std::endl;
+            // Add logic for A key press
+        }
+    }
+}
+
 
 void Camera::initialize(Scene &scn, Point3& eye) {
     this->initializeOpenGL();
@@ -108,7 +161,7 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         return;
     }
 
-    const int MAX_FPS = 30;
+    const int MAX_FPS = 60;
     const double FRAME_TIME = 1.0 / MAX_FPS;
 
     // rendering loop

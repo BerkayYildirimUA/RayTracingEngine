@@ -24,6 +24,8 @@ public:
     Vector3() { vector << 0, 0, 0, 0;}
     explicit Vector3(Eigen::Vector4d&& cords) {vector = std::move(cords);}
 
+
+
 };
 
 
