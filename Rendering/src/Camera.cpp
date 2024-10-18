@@ -12,33 +12,32 @@ void Camera::raytrace(Scene &scn, int blockSize) {
     Ray theRay;
     theRay.setStart(std::move(this->eye));
 
+    int nColumns = screenWidth / blockSize;
+    int nRows = screenHight / blockSize;
+
+
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(0, nColumns, 0, nRows, -1, 1);
+    glOrtho(0, screenWidth, 0, screenHight, -1, 1);
     glDisable(GL_LIGHTING);
 
-    Vector3 u(1.0, 0.0, 0.0); // Right vector of the camera
-    Vector3 v(0.0, 1.0, 0.0); // Up vector of the camera
-    Vector3 Nn(0.0, 0.0, -5.0); // Forward (view direction) vector of the camera
     Vector3 dir;
 
     // Screen size (W and H)
-    float W = this->nRows/2;  // Assuming normalized device coordinates range from -1 to 1
-    float H = this->nColumns/2;
 
-    for (int row = 0; row <= nRows; row++) {
-        for (int col = 0; col <= nRows; col++) {
+    Vector3 distanceVector(normalDistanceVector.vector * distance);
 
-            float ndcX = (2.0f * col / nColumns) - 1.0f;
-            float ndcY = (2.0f * row / nRows) - 1.0f;
+    for (int row = 0; row < (screenWidth/2); row++) {
+        for (int col = 0; col < (screenHight/2); col++) {
 
-            Eigen::Vector4d dir_vector = -Nn.vector + W * ndcX * u.vector + H * ndcY * v.vector;
+            double rightVectorAmplitude = (screenWidth/2) * (2.0 * col / nColumns);
+            double upVectorAmplitude = (screenHight/2) * (2.0*row / nRows);
+
+            Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector + upVectorAmplitude * normalUpVector.vector;
 
             dir.vector(dir_vector);
-
-            std::cout << dir_vector << "\n";
 
             theRay.setDir(std::move(dir));
             Color3 clr = scn.shade(theRay);
@@ -51,8 +50,12 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
+    auto camera = static_cast<Camera*>(glfwGetWindowUserPointer(window));
 
-    std::cout << width << ", " << height << std::endl;
+    if (camera){
+        camera->updateResolution(width, height);
+    }
+
 }
 
 void Camera::initializeOpenGL() {
@@ -68,7 +71,7 @@ void Camera::initializeOpenGL() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     window = std::unique_ptr<GLFWwindow, decltype(&glfwDestroyWindow)>(
-            glfwCreateWindow(nColumns, nRows, "RayTracing", nullptr, nullptr),
+            glfwCreateWindow(screenWidth, screenHight, "RayTracing", nullptr, nullptr),
             glfwDestroyWindow
     );
 
@@ -88,7 +91,9 @@ void Camera::initializeOpenGL() {
         return;
     }
 
-    glViewport(0, 0, 800, 600);
+    glfwSetWindowUserPointer(window.get(), this);
+
+    glViewport(0, 0, screenWidth, screenHight);
     glfwSetFramebufferSizeCallback(window.get(), framebuffer_size_callback);
 
 
@@ -103,7 +108,7 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         return;
     }
 
-    const int MAX_FPS = 60;
+    const int MAX_FPS = 30;
     const double FRAME_TIME = 1.0 / MAX_FPS;
 
     // rendering loop
@@ -116,7 +121,7 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         // check and call events and swap the buffers
-        raytrace(scn, 10);
+        raytrace(scn, 1);
         glfwSwapBuffers(window.get());
         glfwPollEvents();
 
@@ -137,11 +142,4 @@ const Point3 &Camera::getEye() const {
     return eye;
 }
 
-int Camera::getNColumns() const {
-    return nColumns;
-}
-
-int Camera::getNRows() const {
-    return nRows;
-}
 

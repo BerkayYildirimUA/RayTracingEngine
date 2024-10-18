@@ -39,13 +39,13 @@ public:
         return Transformations::createScalingMatrix(-x, -y, -z);
     }
     static Eigen::Matrix4d createInverseRotationMatrixX(double angle){
-        return Transformations::createRotationMatrixX(angle);
+        return Transformations::createRotationMatrixX(-angle);
     }
     static Eigen::Matrix4d createInverseRotationMatrixY(double angle){
-        return Transformations::createRotationMatrixY(angle);
+        return Transformations::createRotationMatrixY(-angle);
     }
     static Eigen::Matrix4d createInverseRotationMatrixZ(double angle){
-        return Transformations::createRotationMatrixZ(angle);
+        return Transformations::createRotationMatrixZ(-angle);
     }
 
     // Combine transformations

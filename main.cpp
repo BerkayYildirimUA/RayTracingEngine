@@ -17,19 +17,16 @@
 
 int main() {
 
-    Camera camera(1000, 1000);
-
     Scene scene;
 
     std::vector<std::shared_ptr<HitObject>> vector;
     vector.reserve(1);
-
-
     vector.emplace_back(ObjectFactory::createObject<UnitCircle>());
-
     scene.setObjects(vector);
 
-    Point3 point(-5, 0, 0);
+    Point3 point(5, 0, 0);
+
+    Camera camera(1280, 720, 60);
 
     camera.initialize(scene, point);
 

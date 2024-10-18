@@ -34,7 +34,6 @@ public:
     static Eigen::Matrix4d applyRotationZ(const Eigen::Matrix4d& matrix, double angle);
 
 
-private:
     static double degreeToRad(double degree);
 
 };
