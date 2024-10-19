@@ -4,7 +4,7 @@
 #include "iostream"
 #include "Math/include/Transformations.h"
 #include "Math/include/InverseTransformations.h"
-#include "Geometry/include/unitGeometricObjects/creation/TransformationManager.h"
+#include "Math/include/TransformationManager.h"
 
 TEST_CASE("Translation", "[Transformations]") {
 

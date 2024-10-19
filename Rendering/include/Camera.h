@@ -11,12 +11,13 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "memory"
+#include "iostream"
 
 class Camera {
 
 private:
     Point3 eye;
-    Vector3 normalRightVector = {1, 0, 0}, normalUpVector = {0, 1, 0}, normalDistanceVector {0, 0, -1};
+    Vector3 normalRightVector = {1, 0, 0}, normalUpVector = {0, 1, 0}, normalDistanceVector {0, 0, -1}; // u, v, n
     double viewAngle, aspectRatio;
 
     int screenWidth, screenHight;
@@ -56,6 +57,13 @@ public:
         screenHight = newHeight;
         screenWidth = newWidth;
         distance = screenHight / tan(Transformations::degreeToRad(viewAngle) /2);
+
+    }
+
+    void slide(double deltaDistance,double deltaRight, double deltaUp){
+        eye.point.x() += deltaDistance * normalDistanceVector.vector.x() + deltaRight * normalRightVector.vector.x() + deltaUp * normalUpVector.vector.x();
+        eye.point.y() += deltaDistance * normalDistanceVector.vector.y() + deltaRight * normalRightVector.vector.y() + deltaUp * normalUpVector.vector.y();
+        eye.point.x() += deltaDistance * normalDistanceVector.vector.z() + deltaRight * normalRightVector.vector.z() + deltaUp * normalUpVector.vector.z();
 
     }
 

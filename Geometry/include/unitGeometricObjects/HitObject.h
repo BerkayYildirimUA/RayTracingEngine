@@ -9,6 +9,8 @@
 #include "Geometry/include/Intersection.h"
 #include "Math/include/Transformations.h"
 #include "memory"
+#include "Math/include/TransformationManager.h"
+
 
 class Intersection;
 
@@ -16,6 +18,17 @@ class HitObject : public std::enable_shared_from_this<HitObject> {
 public:
 
     virtual bool hit(const Ray &incomingRay, Intersection& intersection) = 0;
+
+    const Eigen::Matrix4d &getInverseTransform() const;
+
+    const Eigen::Matrix4d &getTransform() const;
+
+    virtual void setTransformations(TransformationManager &manager){
+        std::pair<Eigen::Matrix4d, Eigen::Matrix4d> pair = manager.getTotalTransformation();
+
+        transform = pair.first;
+        inverseTransform = pair.second;
+    }
 
 protected:
     Eigen::Matrix4d inverseTransform = Eigen::Matrix4d::Identity();

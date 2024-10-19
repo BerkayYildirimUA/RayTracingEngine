@@ -38,10 +38,12 @@ set(ALL_SOURCES
 
 # Main executable
 add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
-        Geometry/src/unitGeometricObjects/Creation/TransformationManiger.cpp
-        Geometry/include/unitGeometricObjects/creation/TransformationManager.h
+        Math/src/TransformationManiger.cpp
+        Math/include/TransformationManager.h
         Geometry/src/unitGeometricObjects/UnitCube.cpp
-        Geometry/include/unitGeometricObjects/UnitCube.h)
+        Geometry/include/unitGeometricObjects/UnitCube.h
+        Geometry/src/RandomTesting/BlackHole.cpp
+        Geometry/include/RandomTesting/BlackHole.h)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
@@ -76,6 +78,10 @@ target_include_directories(RayTracingEngineTests PRIVATE
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O2 -g")
 endif()
 
 

@@ -6,16 +6,12 @@
 #include "../../include/HitInfo.h"
 #include "memory"
 
-UnitCircle::UnitCircle() {
-
-}
-
 bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
-    transformRayToObjectSpace(incomingRay);
+    this->transformRayToObjectSpace(incomingRay);
     double A, B, C;
 
-    Eigen::Vector3d direction(incomingRay.dir.vector.x(), incomingRay.dir.vector.y(), incomingRay.dir.vector.z());
-    Eigen::Vector3d start(incomingRay.start.point.x(), incomingRay.start.point.y(), incomingRay.start.point.z());
+    Eigen::Vector3d direction(genRay.dir.vector.x(), genRay.dir.vector.y(), genRay.dir.vector.z());
+    Eigen::Vector3d start(genRay.start.point.x(), genRay.start.point.y(), genRay.start.point.z());
 
 
     A = calcNorm(direction, direction);

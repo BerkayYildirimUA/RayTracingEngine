@@ -11,7 +11,6 @@
 
 class UnitCircle : public HitObject {
 public:
-    UnitCircle();
     bool hit(const Ray &incomingRay, Intersection &intersection) override;
 
 };

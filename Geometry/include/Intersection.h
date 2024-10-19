@@ -8,12 +8,14 @@
 #include <vector>
 #include <memory>
 #include "HitInfo.h"
+#include "Core/include/Ray.h"
 
 class Intersection {
 private:
     std::array<std::unique_ptr<HitInfo>, 8> hits;
 public:
     int numHits = 0;
+    std::vector<Ray> secondaryRays;
 
     void set(Intersection& intersection);
 

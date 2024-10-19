@@ -8,6 +8,7 @@
 #include "stack"
 #include "Eigen/Core"
 #include "optional"
+#include "utility"
 
 /*
  * TODO: make inverse and normal at the same time.
@@ -16,11 +17,13 @@
 class TransformationManager {
 private:
     std::stack<Eigen::Matrix4d> transformStack;
-    std::optional<bool> isInverse;
+    std::stack<Eigen::Matrix4d> invTransformStack;
 
 
 public:
-    TransformationManager();
+    TransformationManager() = default;
+
+    TransformationManager(const TransformationManager& other) : transformStack(other.transformStack), invTransformStack(other.invTransformStack) {}
 
     void pushTranslation(double x, double y, double z);
 
@@ -32,6 +35,10 @@ public:
 
     void pushRotatePointZ(double angle);
 
+    std::pair<Eigen::Matrix4d, Eigen::Matrix4d> getTotalTransformation();
+
+private:
+
     void pushInverseTranslation(double x, double y, double z);
 
     void pushInverseScale(double x, double y, double z);
@@ -41,10 +48,6 @@ public:
     void pushInverseRotatePointY(double angle);
 
     void pushInverseRotatePointZ(double angle);
-
-
-    Eigen::Matrix4d getTotalTransformation();
-
 
 };
 
