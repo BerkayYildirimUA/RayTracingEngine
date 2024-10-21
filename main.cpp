@@ -6,8 +6,6 @@
 #include "Geometry/include/unitGeometricObjects/ObjectFactory.h"
 #include "Geometry/include/unitGeometricObjects/UnitCircle.h"
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
-#include "Geometry/include/RandomTesting/BlackHole.h"
-
 
 
 
@@ -27,7 +25,7 @@ int main() {
     manager.pushTranslation(-3, 0, 0);
 
     std::vector<std::shared_ptr<HitObject>> vector;
-    vector.reserve(5);
+    vector.reserve(6);
     vector.emplace_back(ObjectFactory::createObject<UnitCircle>());
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
 
@@ -41,11 +39,13 @@ int main() {
 
     vector.emplace_back(ObjectFactory::createObject<UnitCircle>(manager));
 
+    manager.pushTranslation(0, 2, 0);
+    manager.pushScale(10, 2, 2);
 
-    manager.pushTranslation(0, 0, -3);
-    vector.emplace_back(ObjectFactory::createObject<BlackHole>(manager));
 
-    Point3 point(0, 0, -50);
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
+
+    Point3 point(0, 0, -15);
     Camera camera(1000, 1000, 60);
     scene.setObjects(vector);
 

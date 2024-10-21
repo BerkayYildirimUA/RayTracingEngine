@@ -6,7 +6,6 @@
 #include "Core/include/Ray.h"
 #include "Geometry/include/HitInfo.h"
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
-#include "Geometry/include/RandomTesting/BlackHole.h"
 #include "iostream"
 
 Color3 Scene::shade(Ray &ray) {
@@ -32,34 +31,6 @@ Color3 Scene::shade(Ray &ray) {
     return color;
 }
 
-
-void getFirstHitRecur(Ray &ray, Intersection &best, int dept, std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers) {
-    Intersection inter;
-    best.numHits = 0;
-    dept++;
-
-    if (dept >= 10){
-        return;
-    }
-
-    //for each objet in turn, ^pionted to by pObj
-
-    for (auto & listOfObjectPointer : listOfObjectPointers){
-
-        if(!listOfObjectPointer->hit(ray, inter)){
-            continue;
-        }
-        if (best.numHits == 0 || inter.getHits(0)->hitTime < best.getHits(0)->hitTime){
-            best.set(inter);
-        }
-
-
-        for (auto &secRay : inter.secondaryRays) {
-            getFirstHitRecur(secRay, inter, dept, listOfObjectPointers);
-        }
-    }
-}
-
 void Scene::getFirstHit(Ray &ray, Intersection &best) {
     Intersection inter;
     best.numHits = 0;
@@ -73,11 +44,6 @@ void Scene::getFirstHit(Ray &ray, Intersection &best) {
         }
         if (best.numHits == 0 || inter.getHits(0)->hitTime < best.getHits(0)->hitTime) {
             best.set(inter);
-        }
-
-        for (auto &secRay: inter.secondaryRays) {
-            //getFirstHit(secRay, inter);
-            getFirstHitRecur(secRay, inter, 0, listOfObjectPointers);
         }
     }
 }
