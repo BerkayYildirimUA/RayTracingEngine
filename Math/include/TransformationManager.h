@@ -23,7 +23,7 @@ private:
 public:
     TransformationManager() = default;
 
-    TransformationManager(const TransformationManager& other) : transformStack(other.transformStack), invTransformStack(other.invTransformStack) {}
+    //TransformationManager(const TransformationManager& other) : transformStack(other.transformStack), invTransformStack(other.invTransformStack) {}
 
     void pushTranslation(double x, double y, double z);
 
