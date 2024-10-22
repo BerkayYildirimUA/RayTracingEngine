@@ -10,7 +10,7 @@
 #include "Math/include/Transformations.h"
 #include "memory"
 #include "Math/include/TransformationManager.h"
-
+#include "Matrial/Material.h"
 
 class Intersection;
 
@@ -30,11 +30,15 @@ public:
         inverseTransform = pair.second;
     }
 
+    explicit HitObject(const Material &material);
+
 protected:
     Eigen::Matrix4d inverseTransform = Eigen::Matrix4d::Identity();
     Eigen::Matrix4d transform = Eigen::Matrix4d::Identity();
     Ray genRay = Ray();
+    Material material;
 
+protected:
     void transformRayToObjectSpace (const Ray& incomingRay);
 
     double calcNorm(const Point3 &point, const Vector3 &vector) const;

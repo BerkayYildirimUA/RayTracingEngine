@@ -62,3 +62,7 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
 
 }
 
+UnitCircle::UnitCircle(const Material &material1) : HitObject(material1) {
+
+}
+

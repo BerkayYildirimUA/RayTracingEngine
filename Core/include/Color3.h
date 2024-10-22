@@ -5,42 +5,38 @@
 #ifndef RAYTRACINGENGINE_COLOR3_H
 #define RAYTRACINGENGINE_COLOR3_H
 
+#include "Eigen/Core"
 
 class Color3 {
 
 public:
-    float R, G, B;
+    Eigen::Vector3d colors;
 
-    Color3() { R = G = B = 0; }
+    Color3() { colors << 0, 0, 0; }
 
     Color3(float r, float g, float b) {
-        R = r;
-        G = g;
-        B = b;
+        colors << r, g, b;
     }
 
-    Color3(Color3 &color) {
-        R = color.R;
-        G = color.G;
-        B = color.B;
+    Color3(const Color3 &color) {
+        colors = color.colors;
     }
 
     void set(float r, float g, float b) {
-        R = r;
-        G = g;
-        B = b;
+        colors.x() = r;
+        colors.y() = g;
+        colors.z() = b;
     }
 
-    void set(Color3 &color) {
-        R = color.R;
-        G = color.G;
-        B = color.B;
+    void set(const Color3 &color) {
+        colors = color.colors;
+
     }
 
     void add(float r, float g, float b) {
-        R += r;
-        G += g;
-        B += b;
+        colors.x() += r;
+        colors.y() += g;
+        colors.z() += b;
     }
 
     void add(Color3 &src, Color3 &refl);

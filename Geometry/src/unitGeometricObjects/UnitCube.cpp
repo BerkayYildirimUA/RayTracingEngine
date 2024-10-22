@@ -119,3 +119,7 @@ Vector3 UnitCube::cubeNormal(int side) {
     }
     return {-1000, -1000, -1000};
 }
+
+UnitCube::UnitCube(const Material &material1) : HitObject(material1) {
+
+}

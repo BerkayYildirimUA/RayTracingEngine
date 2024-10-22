@@ -9,6 +9,8 @@
 
 class UnitCube : public HitObject {
 public:
+    explicit UnitCube(const Material &material1);
+
     bool hit(const Ray &incomingRay, Intersection &intersection) override;
 
 private:

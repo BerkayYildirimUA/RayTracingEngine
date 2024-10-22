@@ -9,13 +9,15 @@
 #include "Math/include/InverseTransformations.h"
 #include "Math/include/TransformationManager.h"
 #include "Geometry/include/unitGeometricObjects/UnitCircle.h"
-#include "Geometry/include/unitGeometricObjects/ObjectFactory.h"
+#include "Geometry/include/ObjectFactory.h"
 #include "memory"
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
 
 TEST_CASE("test circle hit book page 620", "[Circle]") {
 
-    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>();
+    Material material(0.5, 0.5, 0.5, 0.5);
+
+    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
     Intersection intersection;
     Point3 point3(3, 2, 3);
@@ -43,8 +45,9 @@ TEST_CASE("test circle hit book page 620", "[Circle]") {
 }
 
 TEST_CASE("test circle hit", "[Circle]") {
+    Material material(0.5, 0.5, 0.5, 0.5);
 
-    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>();
+    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
     Intersection intersection;
     Point3 point3(4, 4, 5);
@@ -72,8 +75,9 @@ TEST_CASE("test circle hit", "[Circle]") {
 }
 
 TEST_CASE("test circle hit sides", "[Circle]") {
+    Material material(0.5, 0.5, 0.5, 0.5);
 
-    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>();
+    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
     Intersection intersection;
     Point3 point3(1, 1, 0);
@@ -97,8 +101,9 @@ TEST_CASE("test circle hit sides", "[Circle]") {
 }
 
 TEST_CASE("test cube hit side", "[Cube]") {
+    Material material(0.5, 0.5, 0.5, 0.5);
 
-    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>();
+    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
     Intersection intersection;
     Point3 point3(0, 1, 2);
@@ -118,8 +123,9 @@ TEST_CASE("test cube hit side", "[Cube]") {
 }
 
 TEST_CASE("test cube hit edge", "[Cube]") {
+    Material material(0.5, 0.5, 0.5, 0.5);
 
-    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>();
+    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
     Intersection intersection;
     Point3 point3(5, 1, 1);
@@ -139,8 +145,9 @@ TEST_CASE("test cube hit edge", "[Cube]") {
 }
 
 TEST_CASE("test cube visual bug", "[Cube]") {
+    Material material(0.5, 0.5, 0.5, 0.5);
 
-    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>();
+    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
     Intersection intersection;
     Point3 point3(-1.2, -1.1, -5);
