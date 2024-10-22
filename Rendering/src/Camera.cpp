@@ -170,13 +170,13 @@ void Camera::initialize(Scene &scn, Point3 &eye) {
         return;
     }
 
-    const int MAX_FPS = 60;
-    const double FRAME_TIME = 1.0 / MAX_FPS;
+   // const int MAX_FPS = 60;
+   //const double FRAME_TIME = 1.0 / MAX_FPS;
 
     // rendering loop
     while (!glfwWindowShouldClose(window.get())) {
 
-        auto frame_start = std::chrono::high_resolution_clock::now();
+        //auto frame_start = std::chrono::high_resolution_clock::now();
 
 
         //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -186,14 +186,13 @@ void Camera::initialize(Scene &scn, Point3 &eye) {
         raytrace(scn, 1);
         glfwSwapBuffers(window.get());
         glfwPollEvents();
-
+/*
         auto frame_end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = frame_end - frame_start;
-
         // If the frame finished early, sleep for the remaining time
         if (elapsed.count() < FRAME_TIME) {
             std::this_thread::sleep_for(std::chrono::duration<double>(FRAME_TIME - elapsed.count()));
-        }
+        }*/
 
     }
 

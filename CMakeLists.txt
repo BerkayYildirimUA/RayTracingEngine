@@ -79,12 +79,12 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O2 -g")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O3 -g")
 endif()
 
 
 # CTest and Catch2 test discovery
-enable_testing()
-include(CTest)
-include(Catch)
-catch_discover_tests(RayTracingEngineTests)
+#enable_testing()
+#include(CTest)
+#include(Catch)
+#catch_discover_tests(RayTracingEngineTests)

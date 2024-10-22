@@ -34,13 +34,13 @@ int main() {
 
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
 
-    manager.pushScale(2, 1, 1);
+    //manager.pushScale(2, 1, 1);
     manager.pushTranslation(2, 2, -5);
 
     vector.emplace_back(ObjectFactory::createObject<UnitCircle>(manager));
 
-    manager.pushTranslation(0, 2, 0);
-    manager.pushScale(10, 2, 2);
+    manager.pushTranslation(0, 1.5, 0);
+    manager.pushScale(0.2, 1.3, 1);
 
 
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
