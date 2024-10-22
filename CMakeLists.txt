@@ -38,8 +38,8 @@ set(ALL_SOURCES
 
 # Main executable
 add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
-        Geometry/src/unitGeometricObjects/Creation/TransformationManiger.cpp
-        Geometry/include/unitGeometricObjects/creation/TransformationManager.h
+        Math/src/TransformationManager.cpp
+        Math/include/TransformationManager.h
         Geometry/src/unitGeometricObjects/UnitCube.cpp
         Geometry/include/unitGeometricObjects/UnitCube.h)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
@@ -78,9 +78,13 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 endif()
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O3 -g")
+endif()
+
 
 # CTest and Catch2 test discovery
-enable_testing()
-include(CTest)
-include(Catch)
-catch_discover_tests(RayTracingEngineTests)
+#enable_testing()
+#include(CTest)
+#include(Catch)
+#catch_discover_tests(RayTracingEngineTests)

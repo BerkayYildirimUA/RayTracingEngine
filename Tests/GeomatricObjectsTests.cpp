@@ -7,9 +7,9 @@
 #include "iostream"
 #include "Math/include/Transformations.h"
 #include "Math/include/InverseTransformations.h"
-#include "Geometry/include/unitGeometricObjects/creation/TransformationManager.h"
+#include "Math/include/TransformationManager.h"
 #include "Geometry/include/unitGeometricObjects/UnitCircle.h"
-#include "Geometry/include/unitGeometricObjects/creation/ObjectFactory.h"
+#include "Geometry/include/unitGeometricObjects/ObjectFactory.h"
 #include "memory"
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
 
@@ -136,4 +136,25 @@ TEST_CASE("test cube hit edge", "[Cube]") {
 
     REQUIRE(intersection.getHits(0)->hitPoint.point.isApprox(Point3(1, 1, 1).point, 0.001));
     REQUIRE(intersection.getHits(1)->hitPoint.point.isApprox(Point3(-1, 1, 1).point, 0.001));
+}
+
+TEST_CASE("test cube visual bug", "[Cube]") {
+
+    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>();
+
+    Intersection intersection;
+    Point3 point3(-1.2, -1.1, -5);
+    Vector3 dir(0.04, 0.02, 1);
+
+
+    Ray ray(std::move(point3), std::move(dir));
+
+    REQUIRE(cube->hit(ray, intersection));
+
+    REQUIRE(intersection.numHits == 2);
+    REQUIRE(intersection.getHits(0)->isEntering);
+    REQUIRE(!intersection.getHits(1)->isEntering);
+
+    REQUIRE(intersection.getHits(0)->hitPoint.point.isApprox(Point3(-1, -1, 1).point, 0.001));
+    REQUIRE(intersection.getHits(1)->hitPoint.point.isApprox(Point3(-1, -1, 0.99).point, 0.001));
 }

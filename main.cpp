@@ -3,8 +3,10 @@
 #include <GLFW/glfw3.h>
 #include "Math/include/Transformations.h"
 #include "Rendering/include/Camera.h"
-#include "Geometry/include/unitGeometricObjects/creation/ObjectFactory.h"
+#include "Geometry/include/unitGeometricObjects/ObjectFactory.h"
 #include "Geometry/include/unitGeometricObjects/UnitCircle.h"
+#include "Geometry/include/unitGeometricObjects/UnitCube.h"
+
 
 
 /*
@@ -19,14 +21,33 @@ int main() {
 
     Scene scene;
 
+    TransformationManager manager;
+    manager.pushTranslation(-3, 0, 0);
+
     std::vector<std::shared_ptr<HitObject>> vector;
-    vector.reserve(1);
+    vector.reserve(6);
     vector.emplace_back(ObjectFactory::createObject<UnitCircle>());
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
+
+    manager.pushTranslation(3, 0, 0);
+    manager.pushRotatePointZ(45);
+
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
+
+    //manager.pushScale(2, 1, 1);
+    manager.pushTranslation(2, 2, -5);
+
+    vector.emplace_back(ObjectFactory::createObject<UnitCircle>(manager));
+
+    manager.pushTranslation(0, 1.5, 0);
+    manager.pushScale(0.2, 1.3, 1);
+
+
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
+
+    Point3 point(0, 0, -15);
+    Camera camera(1000, 1000, 60);
     scene.setObjects(vector);
-
-    Point3 point(0, 0, -5);
-
-    Camera camera(1280, 720, 60);
 
     camera.initialize(scene, point);
 

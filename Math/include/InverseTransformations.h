@@ -36,7 +36,7 @@ public:
         return Transformations::createTranslationMatrix(-x, -y, -z);
     }
     static Eigen::Matrix4d createInverseScalingMatrix(double x, double y, double z){
-        return Transformations::createScalingMatrix(-x, -y, -z);
+        return Transformations::createScalingMatrix(1/x, 1/y, 1/z);
     }
     static Eigen::Matrix4d createInverseRotationMatrixX(double angle){
         return Transformations::createRotationMatrixX(-angle);

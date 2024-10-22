@@ -40,13 +40,17 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
 
     for (int row = 0; row < nRows; row++) {
+        bool loggedFirstRedCol = false;
+
         for (int col = 0; col < nColumns; col++) {
 
-            double rightVectorAmplitude = (screenWidth/2) * (2.0 * col / nColumns);
-            double upVectorAmplitude = (screenHight/2) * (2.0*row / nRows);
+            double rightVectorAmplitude = (screenWidth / 2.0) * ((2.0 * col / nColumns) - 1);
+            double upVectorAmplitude = (screenHight / 2.0) * ((2.0 * row / nRows) - 1);
 
-            Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector + upVectorAmplitude * normalUpVector.vector;
+            Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector +
+                                         upVectorAmplitude * normalUpVector.vector;
 
+            dir_vector.normalize();
             dir.vector = std::move(dir_vector);
 
             theRay.setDir(std::move(dir));
@@ -54,7 +58,13 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
             int flippedRow = nRows - row - 1;
 
+            /*
+            if (row % 50 == 0 || col % 50 == 0) {
+                glColor3f(0, 255, 0);
+            } */
+
             glColor3f(clr.R, clr.G, clr.B);
+
             glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
 
         }
@@ -83,12 +93,29 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
-    auto camera = static_cast<Camera*>(glfwGetWindowUserPointer(window));
+    auto camera = static_cast<Camera *>(glfwGetWindowUserPointer(window));
 
-    if (camera){
+    if (camera) {
         camera->updateResolution(width, height);
     }
 
+}
+
+void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+
+    auto camera = static_cast<Camera *>(glfwGetWindowUserPointer(window));
+
+    if (action == GLFW_PRESS) {
+        if (key == GLFW_KEY_UP) {
+            camera->slide(0, 0, -0.1);
+        } else if (key == GLFW_KEY_DOWN) {
+            camera->slide(0, 0, 0.1);
+        } else if (key == GLFW_KEY_LEFT) {
+            camera->slide(0, -0.1, 0);
+        } else if (key == GLFW_KEY_RIGHT) {
+            camera->slide(0, 0.1, 0);
+        }
+    }
 }
 
 void Camera::initializeOpenGL() {
@@ -129,30 +156,12 @@ void Camera::initializeOpenGL() {
     glfwGetFramebufferSize(window.get(), &screenWidth, &screenHight);
     glViewport(0, 0, screenWidth, screenHight);
     glfwSetFramebufferSizeCallback(window.get(), framebuffer_size_callback);
+    glfwSetKeyCallback(window.get(), keyCallback);
 
 
 }
 
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    if (action == GLFW_PRESS) {
-        if (key == GLFW_KEY_UP) {
-            std::cout << "Escape key pressed." << std::endl;
-            glfwSetWindowShouldClose(window, GLFW_TRUE); // Close window on ESC key
-        } else if (key == GLFW_KEY_DOWN) {
-            std::cout << "W key pressed." << std::endl;
-            // Add logic for W key press
-        } else if (key == GLFW_KEY_LEFT) {
-            std::cout << "A key pressed." << std::endl;
-            // Add logic for A key press
-        } else if (key == GLFW_KEY_RIGHT) {
-            std::cout << "A key pressed." << std::endl;
-            // Add logic for A key press
-        }
-    }
-}
-
-
-void Camera::initialize(Scene &scn, Point3& eye) {
+void Camera::initialize(Scene &scn, Point3 &eye) {
     this->initializeOpenGL();
 
     this->eye = eye;
@@ -161,13 +170,13 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         return;
     }
 
-    const int MAX_FPS = 60;
-    const double FRAME_TIME = 1.0 / MAX_FPS;
+   // const int MAX_FPS = 60;
+   //const double FRAME_TIME = 1.0 / MAX_FPS;
 
     // rendering loop
     while (!glfwWindowShouldClose(window.get())) {
 
-        auto frame_start = std::chrono::high_resolution_clock::now();
+        //auto frame_start = std::chrono::high_resolution_clock::now();
 
 
         //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -177,14 +186,13 @@ void Camera::initialize(Scene &scn, Point3& eye) {
         raytrace(scn, 1);
         glfwSwapBuffers(window.get());
         glfwPollEvents();
-
+/*
         auto frame_end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = frame_end - frame_start;
-
         // If the frame finished early, sleep for the remaining time
         if (elapsed.count() < FRAME_TIME) {
             std::this_thread::sleep_for(std::chrono::duration<double>(FRAME_TIME - elapsed.count()));
-        }
+        }*/
 
     }
 

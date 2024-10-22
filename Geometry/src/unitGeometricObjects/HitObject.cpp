@@ -27,4 +27,13 @@ void HitObject::transformRayToObjectSpace(const Ray& ray) {
     this->genRay.start.point = inverseTransform * ray.start.point;
 }
 
+const Eigen::Matrix4d &HitObject::getInverseTransform() const {
+    return inverseTransform;
+}
+
+const Eigen::Matrix4d &HitObject::getTransform() const {
+    return transform;
+}
+
+
 
