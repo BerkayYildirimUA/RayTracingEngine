@@ -18,7 +18,8 @@ class Material {
 public:
     Material(double normalReflectanceRed, double normalReflectanceGreen, double normalReflectanceBlue, double defusedLightFactor);
 
-    Eigen::Vector3d calcFresnalCoefficient(double angleInDegrees);
+    Eigen::Vector3d calcFresnelCoefficient(double angleInDegrees);
+    double calcFresnelCoefficientForColor(double angleInDegrees, double indexOfRefraction);
 };
 
 

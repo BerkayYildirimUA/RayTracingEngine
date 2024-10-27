@@ -4,6 +4,7 @@
 
 #include "Geometry/include/Matrial/Material.h"
 #include "math.h"
+#include "thread"
 
 Material::Material(double normalReflectanceRed, double normalReflectanceGreen, double normalReflectanceBlue,
                    double defusedLightFactor) {
@@ -13,7 +14,7 @@ Material::Material(double normalReflectanceRed, double normalReflectanceGreen, d
     this->defusedLightFactor = defusedLightFactor;
     this->specularLightFactor = 1 - defusedLightFactor;
 }
-
+/*
 Eigen::Vector3d Material::calcFresnalCoefficient(double angleInDegrees) {
 
     if (angleInDegrees == 0) {
@@ -38,4 +39,39 @@ Eigen::Vector3d Material::calcFresnalCoefficient(double angleInDegrees) {
     secondTerm = vectorOfOnes + secondTerm.cwiseProduct(secondTerm);
 
     return firstTerm.cwiseProduct(secondTerm);
+}*/
+
+Eigen::Vector3d Material::calcFresnelCoefficient(double angleInDegrees) {
+    Eigen::Vector3d fresnelCoefficient;
+
+    std::thread redThread([&]() { fresnelCoefficient[0] = calcFresnelCoefficientForColor(angleInDegrees, indexOfRefraction[0]); });
+    std::thread greenThread([&]() { fresnelCoefficient[1] = calcFresnelCoefficientForColor(angleInDegrees, indexOfRefraction[1]); });
+    std::thread blueThread([&]() { fresnelCoefficient[2] = calcFresnelCoefficientForColor(angleInDegrees, indexOfRefraction[2]); });
+
+    redThread.join();
+    greenThread.join();
+    blueThread.join();
+
+    return fresnelCoefficient;
+}
+
+double Material::calcFresnelCoefficientForColor(double angleInDegrees, double indexOfRefraction) {
+    if (angleInDegrees == 0) {
+        double up = indexOfRefraction - 1.0;
+        double down = indexOfRefraction + 1.0;
+        return (up * up) / (down * down);
+    }
+
+    double radians = (angleInDegrees / 180) * EIGEN_PI;
+    double c = cos(radians);
+    double g = sqrt(indexOfRefraction * indexOfRefraction + c * c - 1);
+
+    double gMinusC = g - c;
+    double gPlusC = g + c;
+
+    double firstTerm = 0.5 * (gMinusC * gMinusC) / (gPlusC * gPlusC);
+    double secondTerm = (c * gPlusC - 1) / (c * gMinusC + 1);
+    secondTerm = 1 + secondTerm * secondTerm;
+
+    return firstTerm * secondTerm;
 }
