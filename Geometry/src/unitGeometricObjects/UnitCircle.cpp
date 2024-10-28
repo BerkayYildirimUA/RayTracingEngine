@@ -62,7 +62,7 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
 
 }
 
-UnitCircle::UnitCircle(const Material &material1) : HitObject(material1) {
+UnitCircle::UnitCircle(const std::shared_ptr<AbstractMaterial> &material1) : HitObject(material1) {
 
 }
 

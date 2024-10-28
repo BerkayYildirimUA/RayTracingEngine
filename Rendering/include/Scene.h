@@ -10,19 +10,31 @@
 
 #include "Geometry/include/Intersection.h"
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
+#include "Shaders/AbstractShader.h"
+#include "Shaders/LightSource.h"
+
 
 class Scene {
 
 private:
     std::vector<std::shared_ptr<HitObject>> listOfObjectPointers;
+    std::vector<std::shared_ptr<LightSource>> listOfLightsSourcePointers;
+    std::unique_ptr<AbstractShader> shader;
 
 public:
-    explicit Scene(const std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers);
     explicit Scene();
+
+    Scene(const std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers,
+          const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers,
+          std::unique_ptr<AbstractShader> shader);
 
     void setObjects(const std::vector<std::shared_ptr<HitObject>> &vector);
 
+    void setListOfLightsSourcePointers(const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers);
+
     Color3 shade(Ray &ray);
+
+    void setShader(std::unique_ptr<AbstractShader> &&shader);
 
     void getFirstHit(Ray& ray, Intersection& best);
 };

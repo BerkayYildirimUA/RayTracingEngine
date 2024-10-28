@@ -9,7 +9,7 @@
 
 class UnitCube : public HitObject {
 public:
-    explicit UnitCube(const Material &material1);
+    explicit UnitCube(const std::shared_ptr<AbstractMaterial> &material1);
 
     bool hit(const Ray &incomingRay, Intersection &intersection) override;
 

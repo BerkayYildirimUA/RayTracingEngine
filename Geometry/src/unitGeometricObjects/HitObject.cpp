@@ -35,7 +35,7 @@ const Eigen::Matrix4d &HitObject::getTransform() const {
     return transform;
 }
 
-HitObject::HitObject(const Material &material) : material(material) {}
+HitObject::HitObject(const std::shared_ptr<AbstractMaterial> &material) : material(material) {}
 
 
 

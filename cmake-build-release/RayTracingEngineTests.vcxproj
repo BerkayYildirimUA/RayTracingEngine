@@ -118,7 +118,7 @@
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/Debug/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/debug/bin -OutVariable out
+"C:\Program Files\PowerShell\7\pwsh.exe" -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/Debug/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/debug/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -174,7 +174,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/Release/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/bin -OutVariable out
+"C:\Program Files\PowerShell\7\pwsh.exe" -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/Release/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -230,7 +230,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/MinSizeRel/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/bin -OutVariable out
+"C:\Program Files\PowerShell\7\pwsh.exe" -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/MinSizeRel/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -285,7 +285,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/RelWithDebInfo/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/bin -OutVariable out
+"C:\Program Files\PowerShell\7\pwsh.exe" -noprofile -executionpolicy Bypass -file D:/Libs/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/RelWithDebInfo/RayTracingEngineTests.exe -installedDir D:/Libs/vcpkg/installed/x64-windows/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -370,7 +370,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\src\Ray.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\HitInfo.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\Intersection.cpp" />
-    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\Matrial\Material.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\ObjectFactory.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\HitObject.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCircle.cpp" />
@@ -382,6 +381,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\Vector3.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Camera.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Scene.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\AbstractShader.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\CookTorranceShading.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\LightSource.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\Material\AbstractMaterial.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\Material\FresnelMaterial.cpp" />
     <ClCompile Include="D:\Libs\Glad\src\glad.c" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Tests\GeomatricObjectsTests.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Tests\TransformationTests.cpp" />

@@ -10,12 +10,14 @@
 #include "Math/include/Transformations.h"
 #include "memory"
 #include "Math/include/TransformationManager.h"
-#include "Matrial/Material.h"
+#include "Rendering/include/Shaders/Material/AbstractMaterial.h"
+#include "Rendering/include/Shaders/Material/AbstractMaterial.h"
 
 class Intersection;
 
 class HitObject : public std::enable_shared_from_this<HitObject> {
 public:
+    std::shared_ptr<AbstractMaterial> material;
 
     virtual bool hit(const Ray &incomingRay, Intersection& intersection) = 0;
 
@@ -30,13 +32,14 @@ public:
         inverseTransform = pair.second;
     }
 
-    explicit HitObject(const Material &material);
+    explicit HitObject(const std::shared_ptr<AbstractMaterial> &material);
+
+
 
 protected:
     Eigen::Matrix4d inverseTransform = Eigen::Matrix4d::Identity();
     Eigen::Matrix4d transform = Eigen::Matrix4d::Identity();
     Ray genRay = Ray();
-    Material material;
 
 protected:
     void transformRayToObjectSpace (const Ray& incomingRay);

@@ -23,6 +23,8 @@ public:
     void setDir(const Vector3 &dir);
 
     Ray(Point3 &&startPoint, Vector3 &&direction){start = std::move(startPoint); dir = std::move(direction);}
+    Ray(Point3 &startPoint, Vector3 &direction){start = std::move(startPoint); dir = std::move(direction);}
+
     Ray(){start = Point3(); dir = Vector3();}
 };
 

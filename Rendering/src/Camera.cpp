@@ -63,7 +63,7 @@ void Camera::raytrace(Scene &scn, int blockSize) {
                 glColor3f(0, 255, 0);
             } */
 
-            glColor3f(clr.R, clr.G, clr.B);
+            glColor3f(clr.getRed(), clr.getGreen(), clr.getBlue());
 
             glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
 

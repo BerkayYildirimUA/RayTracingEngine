@@ -16,6 +16,8 @@ class HitInfo {
 public:
     double hitTime;
     std::shared_ptr<HitObject> hitObject;
+
+
     bool isEntering;
     int surface;
     Point3 hitPoint;

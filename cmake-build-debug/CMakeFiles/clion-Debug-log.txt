@@ -2,5 +2,5 @@
 -- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.19045.
 -- Using Win32 for window creation
 -- Configuring done (0.1s)
--- Generating done (0.3s)
+-- Generating done (0.4s)
 -- Build files have been written to: D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug

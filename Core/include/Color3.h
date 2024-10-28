@@ -14,7 +14,7 @@ public:
 
     Color3() { colors << 0, 0, 0; }
 
-    Color3(float r, float g, float b) {
+    Color3(double r, double g, double b) {
         colors << r, g, b;
     }
 
@@ -22,7 +22,11 @@ public:
         colors = color.colors;
     }
 
-    void set(float r, float g, float b) {
+    explicit Color3(const Eigen::Vector3d &color) {
+        colors = color;
+    }
+
+    void set(double r, double g, double b) {
         colors.x() = r;
         colors.y() = g;
         colors.z() = b;
@@ -33,13 +37,30 @@ public:
 
     }
 
-    void add(float r, float g, float b) {
+    void add(double r, double g, double b) {
         colors.x() += r;
         colors.y() += g;
         colors.z() += b;
     }
 
     void add(Color3 &src, Color3 &refl);
+
+    const double &getRed() const {
+        return colors[0];
+    }
+
+    const double &getGreen() const {
+        return colors[1];
+    }
+
+
+    const double &getBlue() const {
+        return colors[2];
+    }
+
+    Color3 operator+(const Color3 &other) const {
+        return Color3(this->colors + other.colors);
+    }
 };
 
 

@@ -42,9 +42,19 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Math/include/TransformationManager.h
         Geometry/src/unitGeometricObjects/UnitCube.cpp
         Geometry/include/unitGeometricObjects/UnitCube.h
-        Geometry/src/Matrial/Material.cpp
-        Geometry/include/Matrial/Material.h)
+        Rendering/src/Shaders/Material/FresnelMaterial.cpp
+        Rendering/include/Shaders/Material/FresnelMaterial.h
+        Rendering/src/Shaders/AbstractShader.cpp
+        Rendering/include/Shaders/AbstractShader.h
+        Rendering/src/Shaders/CookTorranceShading.cpp
+        Rendering/include/Shaders/CookTorranceShading.h
+        Rendering/src/Shaders/Material/AbstractMaterial.cpp
+        Rendering/include/Shaders/Material/AbstractMaterial.h
+        Rendering/src/Shaders/LightSource.cpp
+        Rendering/include/Shaders/LightSource.h)
+
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/Core/include

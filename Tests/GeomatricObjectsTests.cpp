@@ -15,7 +15,7 @@
 
 TEST_CASE("test circle hit book page 620", "[Circle]") {
 
-    Material material(0.5, 0.5, 0.5, 0.5);
+    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
@@ -45,7 +45,7 @@ TEST_CASE("test circle hit book page 620", "[Circle]") {
 }
 
 TEST_CASE("test circle hit", "[Circle]") {
-    Material material(0.5, 0.5, 0.5, 0.5);
+    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
@@ -75,7 +75,7 @@ TEST_CASE("test circle hit", "[Circle]") {
 }
 
 TEST_CASE("test circle hit sides", "[Circle]") {
-    Material material(0.5, 0.5, 0.5, 0.5);
+    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
@@ -101,7 +101,7 @@ TEST_CASE("test circle hit sides", "[Circle]") {
 }
 
 TEST_CASE("test cube hit side", "[Cube]") {
-    Material material(0.5, 0.5, 0.5, 0.5);
+    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
 
     std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
@@ -123,7 +123,7 @@ TEST_CASE("test cube hit side", "[Cube]") {
 }
 
 TEST_CASE("test cube hit edge", "[Cube]") {
-    Material material(0.5, 0.5, 0.5, 0.5);
+    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
 
     std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
@@ -145,7 +145,7 @@ TEST_CASE("test cube hit edge", "[Cube]") {
 }
 
 TEST_CASE("test cube visual bug", "[Cube]") {
-    Material material(0.5, 0.5, 0.5, 0.5);
+    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
 
     std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
