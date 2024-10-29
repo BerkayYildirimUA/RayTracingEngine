@@ -69,7 +69,7 @@ void TransformationManager::pushInverseRotatePointZ(double angle) {
 std::pair<Eigen::Matrix4d, Eigen::Matrix4d> TransformationManager::getTotalTransformation() {
 
     if (transformStack.empty()) {
-        throw std::runtime_error("transformStack is Empty");
+        return {};
     }
 
     Eigen::Matrix4d totalTransform = transformStack.top();

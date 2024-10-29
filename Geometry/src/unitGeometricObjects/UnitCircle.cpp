@@ -36,9 +36,11 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
         info->hitObject = const_cast<UnitCircle*>(this)->shared_from_this();
         info->isEntering = true;
         info->surface = 0;
-        Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(t1);
+        Eigen::Matrix<double, 3, 1> point = incomingRay.calcPoint(t1);
         info->hitPoint.set(point.x(), point.y(), point.z());
-        info->hitNormal.set(point.x(), point.y(), point.z());
+        Vector3 norm(point);
+        norm.vector = inverseTransform * norm.vector;
+        info->hitNormal.set(norm);
         numberOfHits = 1;
     }
 
@@ -50,9 +52,11 @@ bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
         info->hitObject = const_cast<UnitCircle*>(this)->shared_from_this();
         info->isEntering = false;
         info->surface = 0;
-        Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(t2);
+        Eigen::Matrix<double, 3, 1> point = incomingRay.calcPoint(t2);
         info->hitPoint.set(point.x(), point.y(), point.z());
-        info->hitNormal.set(point.x(), point.y(), point.z());
+        Vector3 norm(point);
+        norm.vector = inverseTransform * norm.vector;
+        info->hitNormal.set(norm);
         numberOfHits++;
     }
 

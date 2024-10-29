@@ -12,7 +12,7 @@ void Ray::setDir(Vector3 &&newDir) {
     this->dir = std::move(newDir);
 }
 
-Eigen::Matrix<double, 3, 1> Ray::calcPoint(double t) {
+Eigen::Matrix<double, 3, 1> Ray::calcPoint(double t) const {
     return start.point.head<3>() + dir.vector.head<3>()*t ;
 }
 

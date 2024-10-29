@@ -5,10 +5,16 @@
 #include "Rendering/include/Shaders/Material/FresnelMaterial.h"
 
 
-FresnelMaterial::FresnelMaterial(double normalReflectanceRed, double normalReflectanceGreen, double ambientLightFactor, double normalReflectanceBlue, double defusedLightFactor, double roughness) {
+FresnelMaterial::FresnelMaterial(double normalReflectanceRed, double normalReflectanceGreen, double normalReflectanceBlue, double ambientLightFactor, double defusedLightFactor, double roughness) {
+
+
+
     indexOfRefraction.x() = (1 + sqrt(normalReflectanceRed)) / (1 - sqrt(normalReflectanceRed));
     indexOfRefraction.y() = (1 + sqrt(normalReflectanceGreen)) / (1 - sqrt(normalReflectanceGreen));
     indexOfRefraction.z() = (1 + sqrt(normalReflectanceBlue)) / (1 - sqrt(normalReflectanceBlue));
+
+    indexOfRefraction = indexOfRefraction.cwiseMin(100000.0);
+
     this->defusedLightFactor = defusedLightFactor;
     this->specularLightFactor = 1 - defusedLightFactor;
     this->roughness = roughness;

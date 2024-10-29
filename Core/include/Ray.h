@@ -16,7 +16,7 @@ public:
     Vector3 dir;
     void setStart(Point3 &&newStart);
     void setDir(Vector3 &&newDir);
-    Eigen::Matrix<double, 3, 1> calcPoint(double t);
+    Eigen::Matrix<double, 3, 1> calcPoint(double t) const;
 
     void setStart(const Point3 &start);
 

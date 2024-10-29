@@ -11,6 +11,7 @@
 #include <filesystem>
 #include <iostream>
 #include <fstream>
+#include <iomanip> // for std::setw and std::setprecision
 
 
 void Camera::raytrace(Scene &scn, int blockSize) {
@@ -33,6 +34,9 @@ void Camera::raytrace(Scene &scn, int blockSize) {
     Vector3 dir;
 
     // Screen size (W and H)
+
+    int totalPixels = nRows * nColumns;
+    int pixelsProcessed = 0;
 
     Vector3 distanceVector(normalDistanceVector.vector * distance);
 
@@ -67,9 +71,18 @@ void Camera::raytrace(Scene &scn, int blockSize) {
 
             glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
 
+            pixelsProcessed++;
+
+            if (col == nColumns - 5 && row % 10 == 0) {
+                double progress = (static_cast<double>(pixelsProcessed) / totalPixels) * 100.0;
+
+                // Display the progress on the same line
+                std::cout << "\rRendering: " << std::fixed << std::setprecision(2) << progress << "% "
+                          << "(" << pixelsProcessed << " / " << totalPixels << " pixels processed)" << std::flush;
+            }
         }
     }
-
+    std::cout << std::endl;
     /*std::ofstream file("color_matrix.txt");
 
     if (file.is_open()) {
@@ -170,8 +183,8 @@ void Camera::initialize(Scene &scn, Point3 &eye) {
         return;
     }
 
-   // const int MAX_FPS = 60;
-   //const double FRAME_TIME = 1.0 / MAX_FPS;
+    // const int MAX_FPS = 60;
+    //const double FRAME_TIME = 1.0 / MAX_FPS;
 
     // rendering loop
     while (!glfwWindowShouldClose(window.get())) {
@@ -186,6 +199,8 @@ void Camera::initialize(Scene &scn, Point3 &eye) {
         raytrace(scn, 1);
         glfwSwapBuffers(window.get());
         glfwPollEvents();
+
+        std::cout << "loop done";
 /*
         auto frame_end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = frame_end - frame_start;

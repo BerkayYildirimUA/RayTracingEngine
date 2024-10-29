@@ -12,10 +12,12 @@
 #include "Geometry/include/ObjectFactory.h"
 #include "memory"
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
+#include "Shaders/Material/FresnelMaterial.h"
+
 
 TEST_CASE("test circle hit book page 620", "[Circle]") {
 
-    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
+    AbstractMaterial material;
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 

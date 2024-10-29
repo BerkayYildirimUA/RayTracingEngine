@@ -77,9 +77,12 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) {
         info->surface = inSurf;
         info->isEntering = true;
         info->hitObject = const_cast<UnitCube*>(this)->shared_from_this();
-        Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tIn);
+        Eigen::Matrix<double, 3, 1> point = incomingRay.calcPoint(tIn);
         info->hitPoint.set(point.x(), point.y(), point.z());
-        info->hitNormal.set(cubeNormal(inSurf));
+
+        Vector3 cubeNorm = cubeNormal(inSurf);
+        cubeNorm.vector = inverseTransform * cubeNorm.vector;
+        info->hitNormal.set(cubeNorm);
         num++;
     }
 
@@ -91,9 +94,12 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) {
         info->isEntering = false;
         info->hitObject = const_cast<UnitCube*>(this)->shared_from_this();
 
-        Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tOut);
+        Eigen::Matrix<double, 3, 1> point = incomingRay.calcPoint(tOut);
         info->hitPoint.set(point.x(), point.y(), point.z());
-        info->hitNormal.set(cubeNormal(outSurf));
+
+        Vector3 cubeNorm = cubeNormal(inSurf);
+        cubeNorm.vector = inverseTransform * cubeNorm.vector;
+        info->hitNormal.set(cubeNorm);
         num++;
     }
 
