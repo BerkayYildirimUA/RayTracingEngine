@@ -11,7 +11,7 @@
 #include "iostream"
 
 Color3
-CookTorranceShading::shade(Ray &ray, Intersection &best, const std::vector<std::shared_ptr<LightSource>> &lightSources,
+CookTorranceShading::shade(const Ray &ray, Intersection &best, const std::vector<std::shared_ptr<LightSource>> &lightSources,
                            std::shared_ptr<AbstractMaterial> &material) {
 
 
@@ -130,7 +130,7 @@ CookTorranceShading::getD(const Vector3 &h, const Vector3 &m, const std::shared_
     power = -(power * power);
 
     double firstHalf =
-            1 / (4 * pow(material->roughness, 2) * pow(cos(theta), 4));
+            1 / (4 * material->roughness * material->roughness * cos(theta) * cos(theta) * cos(theta) * cos(theta));
 
     double D = firstHalf * exp(power);
     return D;
@@ -145,14 +145,14 @@ CookTorranceShading::calcFresnelCoefficientForColor(double angleBetweenInRadians
     }
 
     double c = cos(angleBetweenInRadians);
-    double g = sqrt(pow(indexOfRefraction, 2) + pow(c, 2) - 1);
+    double g = sqrt(indexOfRefraction*indexOfRefraction + c*c - 1);
 
     double gMinusC = g - c;
     double gPlusC = g + c;
 
-    double firstTerm = (0.5 * (pow(gMinusC, 2))) / (pow(gPlusC, 2));
+    double firstTerm = (0.5 * (gMinusC * gMinusC)) / (gPlusC * gPlusC);
     double secondTerm = (c * gPlusC - 1) / (c * gMinusC + 1);
-    secondTerm = 1 + pow(secondTerm, 2);
+    secondTerm = 1 + secondTerm * secondTerm;
 
     return firstTerm * secondTerm;
 }

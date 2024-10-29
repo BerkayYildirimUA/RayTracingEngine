@@ -11,7 +11,7 @@
 class CookTorranceShading : public AbstractShader {
 
 public:
-    Color3 shade(Ray &ray, Intersection &best, const std::vector<std::shared_ptr<LightSource>> &lightSources,
+    Color3 shade(const Ray &ray, Intersection &best, const std::vector<std::shared_ptr<LightSource>> &lightSources,
                  std::shared_ptr<AbstractMaterial> &material) override;
 
 private:

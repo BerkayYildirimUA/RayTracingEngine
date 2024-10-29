@@ -5,8 +5,8 @@
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
 
 bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) {
-
-    transformRayToObjectSpace(incomingRay);
+    Ray genRay;
+    transformRayToObjectSpace(incomingRay, genRay);
     double tHit, numer, denom;
     double tIn = -1000000.0, tOut = 1000000.0;
     int inSurf, outSurf;

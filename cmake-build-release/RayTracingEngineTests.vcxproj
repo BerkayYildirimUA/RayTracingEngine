@@ -146,6 +146,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalIncludeDirectories>D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\include;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\include;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Tests;D:\Libs\glfw-3.3.8\include;D:\Libs\Glad\include;D:\Libs\eigen-3.4.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Libs/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -156,8 +157,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <UseFullPaths>false</UseFullPaths>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
@@ -187,7 +186,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalDependencies>glfw_build\src\Release\glfw3.lib;D:\Libs\vcpkg\installed\x64-windows\lib\manual-link\Catch2Main.lib;D:\Libs\vcpkg\installed\x64-windows\lib\Catch2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/Release/RayTracingEngineTests.lib</ImportLibrary>
       <ProgramDataBaseFile>D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-release/Release/RayTracingEngineTests.pdb</ProgramDataBaseFile>

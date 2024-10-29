@@ -7,7 +7,8 @@
 #include "memory"
 
 bool UnitCircle::hit(const Ray &incomingRay, Intersection &intersection){
-    this->transformRayToObjectSpace(incomingRay);
+    Ray genRay;
+    this->transformRayToObjectSpace(incomingRay, genRay);
     double A, B, C;
 
     Eigen::Vector3d direction(genRay.dir.vector.x(), genRay.dir.vector.y(), genRay.dir.vector.z());

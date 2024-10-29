@@ -12,15 +12,69 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip> // for std::setw and std::setprecision
-
+#include <future>
 
 void Camera::raytrace(Scene &scn, int blockSize) {
-    Ray theRay;
-    theRay.setStart(std::move(this->eye));
+   /*Ray theRay;
+    theRay.setStart(this->eye);*/
 
     int nColumns = screenWidth / blockSize;
     int nRows = screenHight / blockSize;
+    int numThreads = std::min(nRows, static_cast<int>(std::thread::hardware_concurrency()));
 
+    if (numThreads == 0) numThreads = 1;
+
+    std::vector<std::vector<Color3>> pixelColors(nRows, std::vector<Color3>(nColumns));
+    std::mutex colorMutex;
+
+    auto processRows = [&](int startRow, int endRow) {
+        Ray threadRay;
+        threadRay.setStart(eye);
+
+        Vector3 dir;
+        Vector3 distanceVector(normalDistanceVector.vector * distance);
+
+        for (int row = startRow; row < endRow; row++) {
+            for (int col = 0; col < nColumns; col++) {
+
+                double rightVectorAmplitude = (screenWidth / 2.0) * ((2.0 * col / nColumns) - 1);
+                double upVectorAmplitude = (screenHight / 2.0) * ((2.0 * row / nRows) - 1);
+
+                Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector +
+                                             upVectorAmplitude * normalUpVector.vector;
+
+                dir_vector.normalize();
+                dir.vector = std::move(dir_vector);
+
+                threadRay.setDir(std::move(dir));
+
+                Color3 clr = scn.shade(threadRay);
+
+
+
+                pixelColors[row][col] = clr;
+
+
+            }
+        }
+    };
+
+    // Launch threads, each handling a portion of rows
+    std::vector<std::thread> threads;
+    threads.reserve(numThreads);
+    int rowsPerThread = nRows / numThreads;
+    for (int i = 0; i < numThreads; ++i) {
+        int startRow = i * rowsPerThread;
+        int endRow = (i == numThreads - 1) ? nRows : (i + 1) * rowsPerThread;  // Last thread may handle extra rows
+        threads.emplace_back(processRows, startRow, endRow);
+    }
+
+    // Wait for all threads to finish
+    for (auto &thread : threads) {
+        if (thread.joinable()) {
+            thread.join();
+        }
+    }
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -30,76 +84,14 @@ void Camera::raytrace(Scene &scn, int blockSize) {
     glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-
-    Vector3 dir;
-
-    // Screen size (W and H)
-
-    int totalPixels = nRows * nColumns;
-    int pixelsProcessed = 0;
-
-    Vector3 distanceVector(normalDistanceVector.vector * distance);
-
-    //Eigen::MatrixXd redChannel(nColumns, nRows);
-
-
     for (int row = 0; row < nRows; row++) {
-        bool loggedFirstRedCol = false;
-
+        int flippedRow = nRows - row - 1;
         for (int col = 0; col < nColumns; col++) {
-
-            double rightVectorAmplitude = (screenWidth / 2.0) * ((2.0 * col / nColumns) - 1);
-            double upVectorAmplitude = (screenHight / 2.0) * ((2.0 * row / nRows) - 1);
-
-            Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector +
-                                         upVectorAmplitude * normalUpVector.vector;
-
-            dir_vector.normalize();
-            dir.vector = std::move(dir_vector);
-
-            theRay.setDir(std::move(dir));
-            Color3 clr = scn.shade(theRay);
-
-            int flippedRow = nRows - row - 1;
-
-            /*
-            if (row % 50 == 0 || col % 50 == 0) {
-                glColor3f(0, 255, 0);
-            } */
-
+            Color3 &clr = pixelColors[row][col];
             glColor3f(clr.getRed(), clr.getGreen(), clr.getBlue());
-
             glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
-
-            pixelsProcessed++;
-
-            if (col == nColumns - 5 && row % 10 == 0) {
-                double progress = (static_cast<double>(pixelsProcessed) / totalPixels) * 100.0;
-
-                // Display the progress on the same line
-                std::cout << "\rRendering: " << std::fixed << std::setprecision(2) << progress << "% "
-                          << "(" << pixelsProcessed << " / " << totalPixels << " pixels processed)" << std::flush;
-            }
         }
     }
-    std::cout << std::endl;
-    /*std::ofstream file("color_matrix.txt");
-
-    if (file.is_open()) {
-        // Write the red channel matrix
-        file << "Red Channel:\n" << redChannel << "\n";
-        file.close();
-
-        // Verify if the file was written successfully
-        std::string filePath = std::filesystem::absolute("color_matrix.txt").string();
-        if (std::filesystem::exists(filePath)) {
-            std::cout << "File successfully written to: " << filePath << std::endl;
-        } else {
-            std::cerr << "Error: File was not created in the expected location." << std::endl;
-        }
-    } else {
-        std::cerr << "Error: Unable to create or write to 'color_matrix.txt'.\n";
-    }*/
 
 }
 
@@ -199,9 +191,7 @@ void Camera::initialize(Scene &scn, Point3 &eye) {
         raytrace(scn, 1);
         glfwSwapBuffers(window.get());
         glfwPollEvents();
-
-        std::cout << "loop done";
-/*
+        /*
         auto frame_end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = frame_end - frame_start;
         // If the frame finished early, sleep for the remaining time

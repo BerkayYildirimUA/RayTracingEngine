@@ -21,10 +21,10 @@ double HitObject::calcNorm(const Eigen::Vector3d &vector1, const Eigen::Vector3d
 }
 
 
-void HitObject::transformRayToObjectSpace(const Ray& ray) {
+void HitObject::transformRayToObjectSpace(const Ray& incomingRay, Ray &genRay) {
 
-    this->genRay.dir.vector = inverseTransform * ray.dir.vector;
-    this->genRay.start.point = inverseTransform * ray.start.point;
+    genRay.dir.vector = inverseTransform * incomingRay.dir.vector;
+    genRay.start.point = inverseTransform * incomingRay.start.point;
 }
 
 const Eigen::Matrix4d &HitObject::getInverseTransform() const {

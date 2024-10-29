@@ -39,10 +39,9 @@ public:
 protected:
     Eigen::Matrix4d inverseTransform = Eigen::Matrix4d::Identity();
     Eigen::Matrix4d transform = Eigen::Matrix4d::Identity();
-    Ray genRay = Ray();
 
 protected:
-    void transformRayToObjectSpace (const Ray& incomingRay);
+    void transformRayToObjectSpace (const Ray& incomingRay, Ray &genRay);
 
     double calcNorm(const Point3 &point, const Vector3 &vector) const;
     double calcNorm(const Vector3 &vector1, const Vector3 &vector2) const;

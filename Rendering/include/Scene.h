@@ -32,11 +32,11 @@ public:
 
     void setListOfLightsSourcePointers(const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers);
 
-    Color3 shade(Ray &ray);
+    Color3 shade(const Ray &ray);
 
     void setShader(std::unique_ptr<AbstractShader> &&shader);
 
-    void getFirstHit(Ray& ray, Intersection& best);
+    void getFirstHit(const Ray& ray, Intersection& best);
 };
 
 

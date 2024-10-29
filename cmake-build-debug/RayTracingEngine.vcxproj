@@ -143,6 +143,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile>
       <AdditionalIncludeDirectories>D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\include;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\include;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include;D:\Libs\glfw-3.3.8\include;D:\Libs\Glad\include;D:\Libs\eigen-3.4.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -152,8 +153,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <UseFullPaths>false</UseFullPaths>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
@@ -183,7 +182,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalDependencies>glfw_build\src\Release\glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/Release/RayTracingEngine.lib</ImportLibrary>
       <ProgramDataBaseFile>D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/Release/RayTracingEngine.pdb</ProgramDataBaseFile>

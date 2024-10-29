@@ -8,7 +8,7 @@
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
 #include "iostream"
 
-Color3 Scene::shade(Ray &ray) {
+Color3 Scene::shade(const Ray &ray) {
     Intersection best;
     getFirstHit(ray, best);
 
@@ -46,7 +46,7 @@ Color3 Scene::shade(Ray &ray) {
     return shader->shade(ray, best, lightsThatHitsObject,  best.getHits(0)->hitObject->material);
 }
 
-void Scene::getFirstHit(Ray &ray, Intersection &best) {
+void Scene::getFirstHit(const Ray &ray, Intersection &best) {
     Intersection inter;
     best.numHits = 0;
 
@@ -66,9 +66,7 @@ void Scene::getFirstHit(Ray &ray, Intersection &best) {
 
 
 
-Scene::Scene() {
-
-}
+Scene::Scene() = default;
 
 void Scene::setObjects(const std::vector<std::shared_ptr<HitObject>> &vector) {
     this->listOfObjectPointers = vector;
