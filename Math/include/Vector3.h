@@ -55,6 +55,9 @@ public:
         return this->vector.head(3).dot(other.vector.head(3));
     }
 
+    Vector3 operator-() const {
+        return {-vector.x(), -vector.y(), -vector.z()};
+    }
 
 };
 

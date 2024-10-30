@@ -37,6 +37,8 @@ public:
     void setShader(std::unique_ptr<AbstractShader> &&shader);
 
     void getFirstHit(const Ray& ray, Intersection& best);
+
+    std::vector<std::shared_ptr<LightSource>> makeShadowVector(Intersection &best);
 };
 
 

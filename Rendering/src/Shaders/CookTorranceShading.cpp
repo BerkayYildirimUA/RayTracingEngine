@@ -11,7 +11,8 @@
 #include "iostream"
 
 Color3
-CookTorranceShading::shade(const Ray &ray, Intersection &best, const std::vector<std::shared_ptr<LightSource>> &lightSources,
+CookTorranceShading::shade(const Ray &ray, Intersection &best,
+                           const std::vector<std::shared_ptr<LightSource>> &lightSources,
                            std::shared_ptr<AbstractMaterial> &material) {
 
 
@@ -20,47 +21,33 @@ CookTorranceShading::shade(const Ray &ray, Intersection &best, const std::vector
         throw std::runtime_error("Failed to cast AbstractMaterial to FresnelMaterial");
     }
 
-    Eigen::Vector3d vCords = -ray.dir.vector.head(3);
-    Vector3 v(vCords);
+    Ray genRay;
+    best.getHits(0)->hitObject->transformRayToObjectSpace(ray, genRay);
+
+
+    Eigen::Vector3d vCords = -genRay.dir.vector.head(3);
+
+    Vector3 v(vCords); //manual v calc trying idk
     Vector3 m(std::move(best.getHits(0)->hitNormal.vector));
 
     Point3 hitLocation = best.getHits(0)->hitPoint;
 
-    v.vector.normalize();
-    m.vector.normalize();
+
+    v.vector.head(3).normalize();
+    m.vector.head(3).normalize();
 
     double red = 0, green = 0, blue = 0;
     for (const auto &lightSource: lightSources) {
-        Eigen::Vector3d sCords = lightSource->location.point.head(3) - hitLocation.point.head(3);
+        Eigen::Vector3d sCords = (best.getHits(0)->hitObject->getInverseTransform() * lightSource->location.point).head(3) - hitLocation.point.head(3);
         Vector3 s(sCords);
-        s.vector.normalize();
+        s.vector.head(3).normalize();
 
         Vector3 h = s + v;
-        h.vector.normalize();
+        h.vector.head(3).normalize();
 
-
-        double redLocal = 0, greenLocal = 0, blueLocal = 0;
-
-        //blueLocal += calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 2);
-
-        blueLocal = calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 0);
-        greenLocal = calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 1);
-        blueLocal = calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 2);
-        /*
-        std::thread redThread(
-                [&]() { redLocal = calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 0); });
-        std::thread greenThread(
-                [&]() { greenLocal = calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 1); });
-        std::thread blueThread(
-                [&]() { blueLocal = calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 2); });
-
-        redThread.join();
-        greenThread.join();
-        blueThread.join();*/
-
-        red += redLocal;
-        green += greenLocal;
-        blue += blueLocal;
+        red += calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 0);;
+        green += calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 1);
+        blue += calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 2);
 
     }
 
@@ -81,7 +68,6 @@ CookTorranceShading::calcIntensity(const Vector3 &h, const Vector3 &s, const Vec
 
     double specularPart = getSpecularPart(h, s, m, v, lightSource, material, index);
 
-    //ambientPart + defusePart
     return specularPart + ambientPart + defusePart;
 }
 
@@ -105,8 +91,6 @@ double CookTorranceShading::getSpecularPart(const Vector3 &h, const Vector3 &s, 
     double G = getG(s, v, h, m);
 
     double D = getD(h, m, material);
-
-    double test = s.angleBetweenInRadians(m);
 
     double spec =
             calcFresnelCoefficientForColor(s.angleBetweenInRadians(m), material->getIndexOfRefractionByIndex(index)) *
@@ -145,7 +129,7 @@ CookTorranceShading::calcFresnelCoefficientForColor(double angleBetweenInRadians
     }
 
     double c = cos(angleBetweenInRadians);
-    double g = sqrt(indexOfRefraction*indexOfRefraction + c*c - 1);
+    double g = sqrt(indexOfRefraction * indexOfRefraction + c * c - 1);
 
     double gMinusC = g - c;
     double gPlusC = g + c;
@@ -153,6 +137,14 @@ CookTorranceShading::calcFresnelCoefficientForColor(double angleBetweenInRadians
     double firstTerm = (0.5 * (gMinusC * gMinusC)) / (gPlusC * gPlusC);
     double secondTerm = (c * gPlusC - 1) / (c * gMinusC + 1);
     secondTerm = 1 + secondTerm * secondTerm;
+
+    if (std::isinf(secondTerm)){
+        secondTerm = 1000000;
+    }
+
+    if (std::isinf(firstTerm)){
+        firstTerm = 1000000;
+    }
 
     return firstTerm * secondTerm;
 }

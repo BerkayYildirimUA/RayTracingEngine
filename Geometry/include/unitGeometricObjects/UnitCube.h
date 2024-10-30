@@ -15,7 +15,7 @@ public:
 
 private:
 
-    Vector3 cubeNormal(int side);
+    Eigen::Vector3d cubeNormal(int side);
 
 };
 

@@ -17,7 +17,7 @@
 
 TEST_CASE("test circle hit book page 620", "[Circle]") {
 
-    AbstractMaterial material;
+    std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
@@ -47,7 +47,7 @@ TEST_CASE("test circle hit book page 620", "[Circle]") {
 }
 
 TEST_CASE("test circle hit", "[Circle]") {
-    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
+    std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
@@ -77,7 +77,7 @@ TEST_CASE("test circle hit", "[Circle]") {
 }
 
 TEST_CASE("test circle hit sides", "[Circle]") {
-    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
+    std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
     std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
 
@@ -103,7 +103,7 @@ TEST_CASE("test circle hit sides", "[Circle]") {
 }
 
 TEST_CASE("test cube hit side", "[Cube]") {
-    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
+    std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
     std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
@@ -125,7 +125,7 @@ TEST_CASE("test cube hit side", "[Cube]") {
 }
 
 TEST_CASE("test cube hit edge", "[Cube]") {
-    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
+    std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
     std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
@@ -147,7 +147,7 @@ TEST_CASE("test cube hit edge", "[Cube]") {
 }
 
 TEST_CASE("test cube visual bug", "[Cube]") {
-    FresnelMaterial material(0.5, 0.5, 0.5, 0.5);
+    std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
     std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
 
@@ -164,6 +164,6 @@ TEST_CASE("test cube visual bug", "[Cube]") {
     REQUIRE(intersection.getHits(0)->isEntering);
     REQUIRE(!intersection.getHits(1)->isEntering);
 
-    REQUIRE(intersection.getHits(0)->hitPoint.point.isApprox(Point3(-1, -1, 1).point, 0.001));
-    REQUIRE(intersection.getHits(1)->hitPoint.point.isApprox(Point3(-1, -1, 0.99).point, 0.001));
+    REQUIRE((cube->getTransform() * intersection.getHits(0)->hitPoint.point).isApprox(Point3(-1, -1, 0).point, 0.001));
+    REQUIRE((cube->getTransform() * intersection.getHits(1)->hitPoint.point).isApprox(Point3(-0.96, -0.98, 1).point, 0.001));
 }

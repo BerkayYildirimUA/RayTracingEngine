@@ -16,15 +16,26 @@ Color3 Scene::shade(const Ray &ray) {
         return {0, 0, 0};
     }
 
+    /*
+    std::vector<std::shared_ptr<LightSource>> lightsThatHitsObject = makeShadowVector(best);
+
+    if (lightsThatHitsObject.empty()){
+        return {0, 0, 0 };
+    }*/
+
+    return shader->shade(ray, best, listOfLightsSourcePointers,  best.getHits(0)->hitObject->material);
+}
+
+std::vector<std::shared_ptr<LightSource>> Scene::makeShadowVector(Intersection &best) {
     std::vector<std::shared_ptr<LightSource>> lightsThatHitsObject;
     lightsThatHitsObject.reserve(listOfLightsSourcePointers.size());
 
 
     for(const auto& listOfLightsSourcePointer : listOfLightsSourcePointers){
 
-        Eigen::Vector3d vector3 = listOfLightsSourcePointer->location.point.head(3) - best.getHits(0)->hitPoint.point.head(3);
+        Eigen::Vector3d vectorToLight  = listOfLightsSourcePointer->location.point.head(3) - best.getHits(0)->hitPoint.point.head(3);
 
-        Vector3 s(vector3);
+        Vector3 s(vectorToLight);
 
         Ray ObjectToLightRay(best.getHits(0)->hitPoint, s);
 
@@ -32,25 +43,20 @@ Color3 Scene::shade(const Ray &ray) {
 
         getFirstHit(ObjectToLightRay, checkShadow);
 
-        if (checkShadow.numHits != 0){
+        double distanceToLight = vectorToLight.norm();
+
+        if (checkShadow.numHits != 0 && checkShadow.getHits(0)->hitTime < distanceToLight){
             lightsThatHitsObject.emplace_back(listOfLightsSourcePointer);
         }
 
         //lightsThatHitsObject.emplace_back(listOfLightsSourcePointer);
     }
-
-    if (lightsThatHitsObject.empty()){
-        return {0, 0, 0};
-    }
-
-    return shader->shade(ray, best, lightsThatHitsObject,  best.getHits(0)->hitObject->material);
+    return lightsThatHitsObject;
 }
 
 void Scene::getFirstHit(const Ray &ray, Intersection &best) {
     Intersection inter;
     best.numHits = 0;
-
-    //for each objet in turn, ^pionted to by pObj
 
     for (auto &listOfObjectPointer: listOfObjectPointers) {
 

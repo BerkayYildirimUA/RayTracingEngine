@@ -82,7 +82,7 @@ TEST_CASE("example book page 220", "[Transformations]") {
     manger.pushRotatePointY(30);
     manger.pushRotatePointZ(60);
 
-    Eigen::Matrix4d result = manger.getTotalTransformation();
+    std::pair<Eigen::Matrix4d, Eigen::Matrix4d> result = manger.getTotalTransformation();
 
 
 
@@ -92,5 +92,5 @@ TEST_CASE("example book page 220", "[Transformations]") {
     -0.5, 0.612, 0.612, 0,
     0, 0, 0, 1;
 
-    REQUIRE(result.isApprox(expected, 1e-3));
+    REQUIRE(result.first.isApprox(expected, 1e-3));
 }

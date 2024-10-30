@@ -11,12 +11,12 @@ class Color3 {
 
 public:
     Eigen::Vector3d colors;
-
     Color3() { colors << 0, 0, 0; }
 
     Color3(double r, double g, double b) {
         colors << r, g, b;
     }
+
 
     Color3(const Color3 &color) {
         colors = color.colors;

@@ -21,56 +21,57 @@
 int main() {
 
     Scene scene;
-    std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(1, 0, 0, 0.9, 0.5, 0.8);
-    std::shared_ptr<AbstractMaterial> material2 = std::make_shared<FresnelMaterial>(0, 1, 0, 0.9, 0.5, 0.8);
-    std::shared_ptr<AbstractMaterial> material3 = std::make_shared<FresnelMaterial>(0, 0, 1, 0.3, 0.2, 0.8);
-    std::shared_ptr<AbstractMaterial> material4 = std::make_shared<FresnelMaterial>(1, 1, 1, 0.9, 0.2, 0.8);
-
-    //std::shared_ptr<AbstractMaterial> material4 = std::make_shared<FresnelMaterial>(, 0.505, 0.480, 0.2, 0.9, 0.8);
-    //std::shared_ptr<AbstractMaterial> material5 = std::make_shared<FresnelMaterial>(0.989, 0.876, 0.399, 0.2, 0.001, 0.8);
+    std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(1, 0, 0, 0.4, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material2 = std::make_shared<FresnelMaterial>(0, 1, 0, 0.4, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material3 = std::make_shared<FresnelMaterial>(0, 0, 1, 0.4, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material4 = std::make_shared<FresnelMaterial>(1, 1, 1, 0.4, 0.4, 0.2);
 
 
     TransformationManager manager;
-    manager.pushTranslation(-3, 0, 0);
-
     std::vector<std::shared_ptr<HitObject>> vector;
-    vector.reserve(6);
-    vector.emplace_back(ObjectFactory::createObject<UnitCircle>(material1));
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material2));
-
-    manager.pushTranslation(3, 0, 0);
-    manager.pushRotatePointZ(45);
-
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material3));
-
-    //manager.pushScale(1, 3, 1);
-    //manager.pushTranslation(-3, -3, 10);
-
-    //vector.emplace_back(ObjectFactory::createObject<UnitCircle>(manager, material5));
-
-    //manager.pushTranslation(0, 1.5, 0);
-    //manager.pushScale(0.2, 1.3, 1);
+    vector.reserve(17);
 
 
-    //vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material3));
+    for (int x = 0; x < 4; ++x) {
+        for (int y = 0; y < 4; ++y) {
 
-    manager.getTotalTransformation();
+            // Translate each circle to its grid position
+            manager.pushTranslation(x * 2, y * 2, 0);
 
-    manager.pushScale(40, 40, 40);
+            // Select material based on column (x value)
+            std::shared_ptr<AbstractMaterial> material;
+            if (x == 0) material = material1;
+            else if (x == 1) material = material2;
+            else if (x == 2) material = material3;
+            else if (x == 3) material = material4;
+
+            // Create the circle with the corresponding transformation and material
+            vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material));
+        }
+    }
+
+
+    manager.pushScale(30, 30, 30);
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material4));
 
 
-    Point3 point(0, 0, -30);
+    Point3 point(3, 3, -20);
     Camera camera(1000, 1000, 60);
 
-    Point3 lightPoint(0, 5, -10);
+    Point3 lightPoint(3, 3, -6);
     Color3 Iar(0.2, 0.2, 0.2);
     Color3 Isr(10000, 10000, 10000);
 
 
     std::vector<std::shared_ptr<LightSource>> lightVector;
-    lightVector.reserve(1);
+    lightVector.reserve(4);
     lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));
+    //Point3 lightPoint2(-6, 6, -10);
+    //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));
+    //Point3 lightPoint3(6, -6, -10);
+    //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));
+    //Point3 lightPoint4(-6, -6, -10);
+    //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));
 
 
     scene.setObjects(vector);

@@ -23,6 +23,10 @@ public:
 
     explicit Point3(Eigen::Vector4d&& cords) {    point = std::move(cords);}
 
+    double operator*(const Point3 &other) const {
+        return this->point.head(3).dot(other.point.head(3));
+    }
+
 };
 
 

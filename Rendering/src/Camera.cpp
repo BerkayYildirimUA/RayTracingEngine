@@ -15,8 +15,6 @@
 #include <future>
 
 void Camera::raytrace(Scene &scn, int blockSize) {
-   /*Ray theRay;
-    theRay.setStart(this->eye);*/
 
     int nColumns = screenWidth / blockSize;
     int nRows = screenHight / blockSize;
@@ -43,18 +41,12 @@ void Camera::raytrace(Scene &scn, int blockSize) {
                 Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector +
                                              upVectorAmplitude * normalUpVector.vector;
 
-                dir_vector.normalize();
+                dir_vector.head(3).normalize();
                 dir.vector = std::move(dir_vector);
-
                 threadRay.setDir(std::move(dir));
-
                 Color3 clr = scn.shade(threadRay);
 
-
-
                 pixelColors[row][col] = clr;
-
-
             }
         }
     };
@@ -70,7 +62,7 @@ void Camera::raytrace(Scene &scn, int blockSize) {
     }
 
     // Wait for all threads to finish
-    for (auto &thread : threads) {
+    for (auto &thread: threads) {
         if (thread.joinable()) {
             thread.join();
         }
@@ -168,39 +160,18 @@ void Camera::initializeOpenGL() {
 
 void Camera::initialize(Scene &scn, Point3 &eye) {
     this->initializeOpenGL();
-
     this->eye = eye;
 
     if (window == nullptr) {
         return;
     }
 
-    // const int MAX_FPS = 60;
-    //const double FRAME_TIME = 1.0 / MAX_FPS;
-
-    // rendering loop
     while (!glfwWindowShouldClose(window.get())) {
-
-        //auto frame_start = std::chrono::high_resolution_clock::now();
-
-
-        //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-
-        // check and call events and swap the buffers
         raytrace(scn, 1);
         glfwSwapBuffers(window.get());
         glfwPollEvents();
-        /*
-        auto frame_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = frame_end - frame_start;
-        // If the frame finished early, sleep for the remaining time
-        if (elapsed.count() < FRAME_TIME) {
-            std::this_thread::sleep_for(std::chrono::duration<double>(FRAME_TIME - elapsed.count()));
-        }*/
-
     }
-
     glfwTerminate();
 }
 

@@ -77,12 +77,11 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) {
         info->surface = inSurf;
         info->isEntering = true;
         info->hitObject = const_cast<UnitCube*>(this)->shared_from_this();
-        Eigen::Matrix<double, 3, 1> point = incomingRay.calcPoint(tIn);
+        Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tIn);
         info->hitPoint.set(point.x(), point.y(), point.z());
 
-        Vector3 cubeNorm = cubeNormal(inSurf);
-        cubeNorm.vector = inverseTransform * cubeNorm.vector;
-        info->hitNormal.set(cubeNorm);
+        Eigen::Vector3d cubeNorm = cubeNormal(inSurf);
+        info->hitNormal.set(cubeNorm.x(), cubeNorm.y(), cubeNorm.z());
         num++;
     }
 
@@ -94,12 +93,13 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) {
         info->isEntering = false;
         info->hitObject = const_cast<UnitCube*>(this)->shared_from_this();
 
-        Eigen::Matrix<double, 3, 1> point = incomingRay.calcPoint(tOut);
+        Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tOut);
         info->hitPoint.set(point.x(), point.y(), point.z());
 
-        Vector3 cubeNorm = cubeNormal(inSurf);
-        cubeNorm.vector = inverseTransform * cubeNorm.vector;
-        info->hitNormal.set(cubeNorm);
+        Eigen::Vector3d cubeNorm = cubeNormal(outSurf);
+
+        info->hitNormal.set(cubeNorm.x(), cubeNorm.y(), cubeNorm.z());
+
         num++;
     }
 
@@ -107,7 +107,7 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) {
     return (num > 0);
 }
 
-Vector3 UnitCube::cubeNormal(int side) {
+Eigen::Vector3d UnitCube::cubeNormal(int side) {
 
     switch (side) {
         case 0:
