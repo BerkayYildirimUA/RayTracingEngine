@@ -41,7 +41,7 @@ void Camera::raytrace(Scene &scn, int blockSize) {
                 Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector +
                                              upVectorAmplitude * normalUpVector.vector;
 
-                dir_vector.head(3).normalize();
+                //dir_vector.head(3).normalize();
                 dir.vector = std::move(dir_vector);
                 threadRay.setDir(std::move(dir));
                 Color3 clr = scn.shade(threadRay);
@@ -104,13 +104,29 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
 
     if (action == GLFW_PRESS) {
         if (key == GLFW_KEY_UP) {
-            camera->slide(0, 0, -0.1);
+            camera->slide(0, 0, -1);
         } else if (key == GLFW_KEY_DOWN) {
-            camera->slide(0, 0, 0.1);
+            camera->slide(0, 0, 1);
         } else if (key == GLFW_KEY_LEFT) {
-            camera->slide(0, -0.1, 0);
+            camera->slide(0, -1, 0);
         } else if (key == GLFW_KEY_RIGHT) {
-            camera->slide(0, 0.1, 0);
+            camera->slide(0, 1, 0);
+        } else if (key == GLFW_KEY_W) {
+            camera->pitch(-10);
+        } else if (key == GLFW_KEY_S) {
+            camera->pitch(10);
+        } else if (key == GLFW_KEY_A) {
+            camera->yaw(10);
+        } else if (key == GLFW_KEY_D) {
+            camera->yaw(-10);
+        } else if (key == GLFW_KEY_Q) {
+            camera->roll(-10);
+        } else if (key == GLFW_KEY_E) {
+            camera->roll(10);
+        } else if (key == GLFW_KEY_KP_SUBTRACT) {
+            camera->slide(1, 0, 0);
+        } else if (key == GLFW_KEY_KP_ADD) {
+            camera->slide(-1, 0, 0);
         }
     }
 }

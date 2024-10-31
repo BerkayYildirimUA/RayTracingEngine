@@ -12,46 +12,34 @@ Color3 Scene::shade(const Ray &ray) {
     Intersection best;
     getFirstHit(ray, best);
 
-    if (best.numHits == 0){
+    if (best.numHits == 0) {
         return {0, 0, 0};
     }
 
-    /*
-    std::vector<std::shared_ptr<LightSource>> lightsThatHitsObject = makeShadowVector(best);
 
-    if (lightsThatHitsObject.empty()){
-        return {0, 0, 0 };
-    }*/
+    Eigen::Vector4d hitPoint = best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point;
 
-    return shader->shade(ray, best, listOfLightsSourcePointers,  best.getHits(0)->hitObject->material);
-}
-
-std::vector<std::shared_ptr<LightSource>> Scene::makeShadowVector(Intersection &best) {
-    std::vector<std::shared_ptr<LightSource>> lightsThatHitsObject;
-    lightsThatHitsObject.reserve(listOfLightsSourcePointers.size());
+    Ray feeler;
+    feeler.setStart(Point3(hitPoint - 0.001 * ray.dir.vector.normalized()));
 
 
-    for(const auto& listOfLightsSourcePointer : listOfLightsSourcePointers){
+    Color3 color = shader->getAmbientPart(listOfLightsSourcePointers[0], best.getHits(0)->hitObject->material);
 
-        Eigen::Vector3d vectorToLight  = listOfLightsSourcePointer->location.point.head(3) - best.getHits(0)->hitPoint.point.head(3);
+    for (const auto &lightSource: listOfLightsSourcePointers) {
 
-        Vector3 s(vectorToLight);
+        Eigen::Vector4d lightPos = lightSource->location.point;
 
-        Ray ObjectToLightRay(best.getHits(0)->hitPoint, s);
+        feeler.setDir(Vector3( lightPos - hitPoint));
 
-        Intersection checkShadow;
 
-        getFirstHit(ObjectToLightRay, checkShadow);
-
-        double distanceToLight = vectorToLight.norm();
-
-        if (checkShadow.numHits != 0 && checkShadow.getHits(0)->hitTime < distanceToLight){
-            lightsThatHitsObject.emplace_back(listOfLightsSourcePointer);
+        if (this->isInShadow(feeler)){
+            continue;
         }
 
-        //lightsThatHitsObject.emplace_back(listOfLightsSourcePointer);
+        color = color + shader->shade(ray, best, lightSource, best.getHits(0)->hitObject->material);
     }
-    return lightsThatHitsObject;
+
+    return color;
 }
 
 void Scene::getFirstHit(const Ray &ray, Intersection &best) {
@@ -68,8 +56,6 @@ void Scene::getFirstHit(const Ray &ray, Intersection &best) {
         }
     }
 }
-
-
 
 
 Scene::Scene() = default;
@@ -89,5 +75,10 @@ void Scene::setShader(std::unique_ptr<AbstractShader> &&shader) {
 Scene::Scene(const std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers,
              const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers,
              std::unique_ptr<AbstractShader> shader) : listOfObjectPointers(listOfObjectPointers),
-                                                              listOfLightsSourcePointers(listOfLightsSourcePointers),
-                                                              shader(std::move(shader)) {}
+                                                       listOfLightsSourcePointers(listOfLightsSourcePointers),
+                                                       shader(std::move(shader)) {}
+
+bool Scene::isInShadow(const Ray &ray) {
+    return std::any_of(listOfObjectPointers.cbegin(), listOfObjectPointers.cend(),
+                       [&ray](const auto &pointer) { return pointer->hit(ray); });
+}

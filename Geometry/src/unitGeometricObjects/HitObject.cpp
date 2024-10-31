@@ -21,7 +21,7 @@ double HitObject::calcNorm(const Eigen::Vector3d &vector1, const Eigen::Vector3d
 }
 
 
-void HitObject::transformRayToObjectSpace(const Ray& incomingRay, Ray &genRay) {
+void HitObject::transformRayToObjectSpace(const Ray& incomingRay, Ray &genRay) const {
 
     genRay.dir.vector = inverseTransform * incomingRay.dir.vector;
     genRay.start.point = inverseTransform * incomingRay.start.point;

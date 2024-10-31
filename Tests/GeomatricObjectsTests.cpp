@@ -19,7 +19,7 @@ TEST_CASE("test circle hit book page 620", "[Circle]") {
 
     std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
-    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
+    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitSphere>(material);
 
     Intersection intersection;
     Point3 point3(3, 2, 3);
@@ -49,7 +49,7 @@ TEST_CASE("test circle hit book page 620", "[Circle]") {
 TEST_CASE("test circle hit", "[Circle]") {
     std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
-    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
+    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitSphere>(material);
 
     Intersection intersection;
     Point3 point3(4, 4, 5);
@@ -79,7 +79,7 @@ TEST_CASE("test circle hit", "[Circle]") {
 TEST_CASE("test circle hit sides", "[Circle]") {
     std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
-    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitCircle>(material);
+    std::shared_ptr<HitObject> circle = ObjectFactory::createObject<UnitSphere>(material);
 
     Intersection intersection;
     Point3 point3(1, 1, 0);

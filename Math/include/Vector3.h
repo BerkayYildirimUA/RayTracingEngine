@@ -59,6 +59,19 @@ public:
         return {-vector.x(), -vector.y(), -vector.z()};
     }
 
+    double getX() const{
+        return vector.x();
+    }
+
+
+    double getY() const{
+        return vector.y();
+    }
+
+
+    double getZ() const{
+        return vector.z();
+    }
 };
 
 

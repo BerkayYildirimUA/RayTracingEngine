@@ -19,7 +19,9 @@ class HitObject : public std::enable_shared_from_this<HitObject> {
 public:
     std::shared_ptr<AbstractMaterial> material;
 
-    virtual bool hit(const Ray &incomingRay, Intersection& intersection) = 0;
+    virtual bool hit(const Ray &incomingRay, Intersection& intersection) const = 0;
+    virtual bool hit(const Ray &incomingRay) const = 0;
+
 
     const Eigen::Matrix4d &getInverseTransform() const;
 
@@ -34,7 +36,7 @@ public:
 
     explicit HitObject(const std::shared_ptr<AbstractMaterial> &material);
 
-    void transformRayToObjectSpace (const Ray& incomingRay, Ray &genRay);
+    void transformRayToObjectSpace (const Ray& incomingRay, Ray &genRay) const;
 
 protected:
     Eigen::Matrix4d inverseTransform = Eigen::Matrix4d::Identity();

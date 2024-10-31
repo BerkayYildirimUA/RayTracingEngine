@@ -19,10 +19,10 @@
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\HitObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCircle.cpp">
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCube.cpp">
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitSphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\InverseTransformations.cpp">

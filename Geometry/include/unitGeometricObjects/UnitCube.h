@@ -9,13 +9,22 @@
 
 class UnitCube : public HitObject {
 public:
-    explicit UnitCube(const std::shared_ptr<AbstractMaterial> &material1);
+    explicit UnitCube(const std::shared_ptr<AbstractMaterial> &material1) ;
 
-    bool hit(const Ray &incomingRay, Intersection &intersection) override;
+    bool hit(const Ray &incomingRay, Intersection &intersection) const override;
+
+    bool hit(const Ray &incomingRay) const override;
 
 private:
 
-    Eigen::Vector3d cubeNormal(int side);
+    Eigen::Vector3d cubeNormal(int side) const;
+
+    bool isInsideCube(const Point3& point) const {
+        return (point.getX() >= -1.0 && point.getX() <= 1.0) &&
+               (point.getY() >= -1.0 && point.getY() <= 1.0) &&
+               (point.getZ() >= -1.0 && point.getZ() <= 1.0);
+    }
+
 
 };
 

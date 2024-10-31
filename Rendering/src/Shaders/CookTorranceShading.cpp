@@ -12,7 +12,7 @@
 
 Color3
 CookTorranceShading::shade(const Ray &ray, Intersection &best,
-                           const std::vector<std::shared_ptr<LightSource>> &lightSources,
+                           const std::shared_ptr<LightSource> &lightSource,
                            std::shared_ptr<AbstractMaterial> &material) {
 
 
@@ -37,43 +37,46 @@ CookTorranceShading::shade(const Ray &ray, Intersection &best,
     m.vector.head(3).normalize();
 
     double red = 0, green = 0, blue = 0;
-    for (const auto &lightSource: lightSources) {
-        Eigen::Vector3d sCords = (best.getHits(0)->hitObject->getInverseTransform() * lightSource->location.point).head(3) - hitLocation.point.head(3);
-        Vector3 s(sCords);
-        s.vector.head(3).normalize();
+    Eigen::Vector3d sCords = (best.getHits(0)->hitObject->getInverseTransform() * lightSource->location.point).head(3) -
+                             hitLocation.point.head(3);
+    Vector3 s(sCords);
+    s.vector.head(3).normalize();
 
-        Vector3 h = s + v;
-        h.vector.head(3).normalize();
+    Vector3 h = s + v;
+    h.vector.head(3).normalize();
 
-        red += calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 0);;
-        green += calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 1);
-        blue += calcIntensity(h, s, m, v, lightSource, fresnelMaterial, 2);
-
-    }
+    red += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 0);;
+    green += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 1);
+    blue += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 2);
 
 
     return {red, green, blue};
 }
 
 double
-CookTorranceShading::calcIntensity(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
-                                   const std::shared_ptr<LightSource> &lightSource,
-                                   const std::shared_ptr<FresnelMaterial> &material, int index) const {
+CookTorranceShading::calcDefuseAndSpecular(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
+                                           const std::shared_ptr<LightSource> &lightSource,
+                                           const std::shared_ptr<FresnelMaterial> &material, int index) const {
 
 
+    double defusePart = getDefusePartOneColor(s, m, lightSource, material, index);
+
+    double specularPart = getSpecularPartOneColor(h, s, m, v, lightSource, material, index);
+
+    return specularPart + defusePart;
+}
+
+double CookTorranceShading::getAmbientPartOneColor(const std::shared_ptr<LightSource> &lightSource,
+                                                   const std::shared_ptr<FresnelMaterial> &material, int index) const {
     double ambientPart = lightSource->Iar.colors[index] * material->ambientLightFactor *
                          calcFresnelCoefficientForColor(0, material->getIndexOfRefractionByIndex(index));
-
-    double defusePart = getDefusePart(s, m, lightSource, material, index);
-
-    double specularPart = getSpecularPart(h, s, m, v, lightSource, material, index);
-
-    return specularPart + ambientPart + defusePart;
+    return ambientPart;
 }
 
 double
-CookTorranceShading::getDefusePart(const Vector3 &s, const Vector3 &m, const std::shared_ptr<LightSource> &lightSource,
-                                   const std::shared_ptr<FresnelMaterial> &material, int index) const {
+CookTorranceShading::getDefusePartOneColor(const Vector3 &s, const Vector3 &m,
+                                           const std::shared_ptr<LightSource> &lightSource,
+                                           const std::shared_ptr<FresnelMaterial> &material, int index) const {
 
 
     double lambert = std::max(0.0, s.vector.head(3).dot(m.vector.head(3)));
@@ -84,9 +87,10 @@ CookTorranceShading::getDefusePart(const Vector3 &s, const Vector3 &m, const std
     return secondPart;
 }
 
-double CookTorranceShading::getSpecularPart(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
-                                            const std::shared_ptr<LightSource> &lightSource,
-                                            const std::shared_ptr<FresnelMaterial> &material, int index) const {
+double
+CookTorranceShading::getSpecularPartOneColor(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
+                                             const std::shared_ptr<LightSource> &lightSource,
+                                             const std::shared_ptr<FresnelMaterial> &material, int index) const {
 
     double G = getG(s, v, h, m);
 
@@ -110,11 +114,13 @@ double
 CookTorranceShading::getD(const Vector3 &h, const Vector3 &m, const std::shared_ptr<FresnelMaterial> &material) const {
     double theta = m.angleBetweenInRadians(h);
 
-    double power = tan(theta) / material->roughness;
+    double roughness = std::max(material->roughness, 0.000001);
+
+    double power = tan(theta) / roughness;
     power = -(power * power);
 
     double firstHalf =
-            1 / (4 * material->roughness * material->roughness * cos(theta) * cos(theta) * cos(theta) * cos(theta));
+            1 / (4 * roughness * roughness * cos(theta) * cos(theta) * cos(theta) * cos(theta));
 
     double D = firstHalf * exp(power);
     return D;
@@ -138,13 +144,51 @@ CookTorranceShading::calcFresnelCoefficientForColor(double angleBetweenInRadians
     double secondTerm = (c * gPlusC - 1) / (c * gMinusC + 1);
     secondTerm = 1 + secondTerm * secondTerm;
 
-    if (std::isinf(secondTerm)){
+    if (std::isinf(secondTerm)) {
         secondTerm = 1000000;
     }
 
-    if (std::isinf(firstTerm)){
+    if (std::isinf(firstTerm)) {
         firstTerm = 1000000;
     }
 
     return firstTerm * secondTerm;
+}
+
+Color3 CookTorranceShading::getAmbientPart(const std::shared_ptr<LightSource> &lightSource,
+                                           const std::shared_ptr<AbstractMaterial> &material) {
+    auto fresnelMaterial = std::dynamic_pointer_cast<FresnelMaterial>(material);
+    if (!fresnelMaterial) {
+        throw std::runtime_error("Failed to cast AbstractMaterial to FresnelMaterial");
+    }
+    return {getAmbientPartOneColor(lightSource, fresnelMaterial, 0),
+            getAmbientPartOneColor(lightSource, fresnelMaterial, 1),
+            getAmbientPartOneColor(lightSource, fresnelMaterial, 2)};
+}
+
+Color3
+CookTorranceShading::getDefusePart(const Vector3 &s, const Vector3 &m, const std::shared_ptr<LightSource> &lightSource,
+                                   const std::shared_ptr<AbstractMaterial> &material) {
+    auto fresnelMaterial = std::dynamic_pointer_cast<FresnelMaterial>(material);
+    if (!fresnelMaterial) {
+        throw std::runtime_error("Failed to cast AbstractMaterial to FresnelMaterial");
+    }
+
+    return {getDefusePartOneColor(s, m, lightSource, fresnelMaterial, 0),
+            getDefusePartOneColor(s, m, lightSource, fresnelMaterial, 1),
+            getDefusePartOneColor(s, m, lightSource, fresnelMaterial, 2)};
+}
+
+Color3 CookTorranceShading::getSpecularPart(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
+                                            const std::shared_ptr<LightSource> &lightSource,
+                                            const std::shared_ptr<AbstractMaterial> &material) {
+
+    auto fresnelMaterial = std::dynamic_pointer_cast<FresnelMaterial>(material);
+    if (!fresnelMaterial) {
+        throw std::runtime_error("Failed to cast AbstractMaterial to FresnelMaterial");
+    }
+
+    return {getSpecularPartOneColor(h, s, m, v, lightSource, fresnelMaterial, 0),
+            getSpecularPartOneColor(h, s, m, v, lightSource, fresnelMaterial, 1),
+            getSpecularPartOneColor(h, s, m, v, lightSource, fresnelMaterial, 2)};
 }
