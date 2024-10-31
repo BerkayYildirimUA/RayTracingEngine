@@ -51,6 +51,8 @@ void Camera::raytrace(Scene &scn, int blockSize) {
         }
     };
 
+
+
     // Launch threads, each handling a portion of rows
     std::vector<std::thread> threads;
     threads.reserve(numThreads);
@@ -80,7 +82,7 @@ void Camera::raytrace(Scene &scn, int blockSize) {
         int flippedRow = nRows - row - 1;
         for (int col = 0; col < nColumns; col++) {
             Color3 &clr = pixelColors[row][col];
-            glColor3f(clr.getRed(), clr.getGreen(), clr.getBlue());
+            glColor3f(clr.getRed()/(1+clr.getRed()), clr.getGreen()/(1+clr.getGreen()), clr.getBlue()/(1+clr.getBlue())); // rainhard tone mapping: https://64.github.io/tonemapping/
             glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
         }
     }
