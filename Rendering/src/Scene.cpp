@@ -7,7 +7,7 @@
 #include "Geometry/include/HitInfo.h"
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
 #include "iostream"
-
+/*
 Color3 Scene::shade(const Ray &ray) {
     Intersection best;
     getFirstHit(ray, best);
@@ -40,8 +40,8 @@ Color3 Scene::shade(const Ray &ray) {
     }
 
     return color;
-}
-
+}*/
+/*
 void Scene::getFirstHit(const Ray &ray, Intersection &best) {
     Intersection inter;
     best.numHits = 0;
@@ -55,7 +55,7 @@ void Scene::getFirstHit(const Ray &ray, Intersection &best) {
             best.set(inter);
         }
     }
-}
+}*/
 
 
 Scene::Scene() = default;
@@ -68,17 +68,20 @@ void Scene::setListOfLightsSourcePointers(const std::vector<std::shared_ptr<Ligh
     Scene::listOfLightsSourcePointers = listOfLightsSourcePointers;
 }
 
-void Scene::setShader(std::unique_ptr<AbstractShader> &&shader) {
-    Scene::shader = std::move(shader);
-}
 
 Scene::Scene(const std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers,
-             const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers,
-             std::unique_ptr<AbstractShader> shader) : listOfObjectPointers(listOfObjectPointers),
-                                                       listOfLightsSourcePointers(listOfLightsSourcePointers),
-                                                       shader(std::move(shader)) {}
-
+             const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers) : listOfObjectPointers(listOfObjectPointers),
+                                                       listOfLightsSourcePointers(listOfLightsSourcePointers) {}
+/*
 bool Scene::isInShadow(const Ray &ray) {
     return std::any_of(listOfObjectPointers.cbegin(), listOfObjectPointers.cend(),
                        [&ray](const auto &pointer) { return pointer->hit(ray); });
+}*/
+
+const std::vector<std::shared_ptr<HitObject>> &Scene::getListOfObjectPointers() const {
+    return listOfObjectPointers;
+}
+
+const std::vector<std::shared_ptr<LightSource>> &Scene::getListOfLightsSourcePointers() const {
+    return listOfLightsSourcePointers;
 }

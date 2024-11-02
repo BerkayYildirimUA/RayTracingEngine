@@ -12,6 +12,7 @@ D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\Transformatio
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\Transformations.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Transformations.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\Vector3.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Vector3.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Camera.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Camera.obj
+D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\RayTracer.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\RayTracer.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Scene.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Scene.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\AbstractShader.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\AbstractShader.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\CookTorranceShading.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\CookTorranceShading.obj

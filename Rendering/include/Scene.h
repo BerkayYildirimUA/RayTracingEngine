@@ -19,26 +19,28 @@ class Scene {
 private:
     std::vector<std::shared_ptr<HitObject>> listOfObjectPointers;
     std::vector<std::shared_ptr<LightSource>> listOfLightsSourcePointers;
-    std::unique_ptr<AbstractShader> shader;
 
 public:
     explicit Scene();
 
     Scene(const std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers,
-          const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers,
-          std::unique_ptr<AbstractShader> shader);
+          const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers);
 
     void setObjects(const std::vector<std::shared_ptr<HitObject>> &vector);
 
     void setListOfLightsSourcePointers(const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers);
 
-    Color3 shade(const Ray &ray);
+    //Color3 shade(const Ray &ray);
 
     void setShader(std::unique_ptr<AbstractShader> &&shader);
 
-    void getFirstHit(const Ray& ray, Intersection& best);
+    //void getFirstHit(const Ray& ray, Intersection& best);
 
-    bool isInShadow(const Ray& ray);
+    //bool isInShadow(const Ray& ray);
+
+    [[nodiscard]] const std::vector<std::shared_ptr<HitObject>> &getListOfObjectPointers() const;
+
+    [[nodiscard]] const std::vector<std::shared_ptr<LightSource>> &getListOfLightsSourcePointers() const;
 };
 
 

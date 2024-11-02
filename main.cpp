@@ -148,8 +148,6 @@ int main() {
 
 
     scene.setObjects(vector);
-    std::unique_ptr<CookTorranceShading> shader = std::make_unique<CookTorranceShading>();
-    scene.setShader(std::move(shader));
     scene.setListOfLightsSourcePointers(lightVector);
 
     camera.initialize(scene, point);

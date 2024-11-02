@@ -371,6 +371,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\Transformations.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\Vector3.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Camera.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\RayTracer.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Scene.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\AbstractShader.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\CookTorranceShading.cpp" />
@@ -386,6 +387,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\Shaders\CookTorranceShading.h" />
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\Shaders\Material\AbstractMaterial.h" />
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\Shaders\LightSource.h" />
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\RayTracer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\ZERO_CHECK.vcxproj">

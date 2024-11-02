@@ -30,7 +30,7 @@ private:
 
 
 public:
-    void raytrace(Scene &scn, int blockSize);
+    //void raytrace(Scene &scn, int blockSize);
 
     void initialize(Scene &scn, Point3 &eye);
 
@@ -127,6 +127,24 @@ public:
                            sn * t.getZ() + cs * normalUpVector.getZ());
 
     }
+
+    int getScreenHight() const;
+
+    int getScreenWidth() const;
+
+    double getAspectRatio() const;
+
+    double getViewAngle() const;
+
+    double getDistance() const;
+
+    const std::unique_ptr<GLFWwindow, decltype(&glfwDestroyWindow)> &getWindow() const;
+
+    const Vector3 &getNormalDistanceVector() const;
+
+    const Vector3 &getNormalUpVector() const;
+
+    const Vector3 &getNormalRightVector() const;
 
 };
 

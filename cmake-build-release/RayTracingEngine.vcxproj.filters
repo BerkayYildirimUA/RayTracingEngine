@@ -43,6 +43,9 @@
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\RayTracer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -88,6 +91,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\Shaders\LightSource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\RayTracer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

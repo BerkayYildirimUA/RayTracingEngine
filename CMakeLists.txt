@@ -51,7 +51,9 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Rendering/src/Shaders/Material/AbstractMaterial.cpp
         Rendering/include/Shaders/Material/AbstractMaterial.h
         Rendering/src/Shaders/LightSource.cpp
-        Rendering/include/Shaders/LightSource.h)
+        Rendering/include/Shaders/LightSource.h
+        Rendering/src/RayTracer.cpp
+        Rendering/include/RayTracer.h)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 

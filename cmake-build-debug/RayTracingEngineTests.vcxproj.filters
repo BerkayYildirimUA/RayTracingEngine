@@ -43,6 +43,9 @@
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\RayTracer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
