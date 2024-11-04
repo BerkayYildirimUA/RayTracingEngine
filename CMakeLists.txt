@@ -53,7 +53,9 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Rendering/src/Shaders/LightSource.cpp
         Rendering/include/Shaders/LightSource.h
         Rendering/src/RayTracer.cpp
-        Rendering/include/RayTracer.h)
+        Rendering/include/RayTracer.h
+        Math/src/GeometricFunctionsLookup.cpp
+        Math/include/GeometricFunctionsLookup.h)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
@@ -70,7 +72,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 # Test executable
 add_executable(RayTracingEngineTests ${ALL_SOURCES} ${TEST_SOURCES}
-        Tests/GeomatricObjectsTests.cpp)
+        Tests/GeomatricObjectsTests.cpp
+        Tests/LookUpTableTest.cpp)
 target_link_libraries(RayTracingEngineTests PRIVATE
         glfw
         Catch2::Catch2WithMain

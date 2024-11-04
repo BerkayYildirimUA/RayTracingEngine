@@ -8,6 +8,7 @@
 
 #include "Point3.h"
 #include "Eigen/Core"
+#include "GeometricFunctionsLookup.h"
 
 class Vector3 {
 
@@ -34,16 +35,23 @@ public:
     }
 
     double angleBetweenInRadians(const Vector3& other) const {
-        double dotProduct = vector.head(3).dot(other.vector.head(3));
-        double magnitudes = vector.head(3).norm() * other.vector.head(3).norm();
+        Eigen::Vector3d myVec = vector.head(3);
+        Eigen::Vector3d otherVec = other.vector.head(3);
 
-        if (magnitudes == 0) return 0;
+        double dotProduct = myVec.dot(otherVec);
+        double magnitudes = myVec.norm() * otherVec.norm();
+
+        if (magnitudes == 0) {
+            return 0;
+        }
 
         double cosTheta = dotProduct / magnitudes;
 
         cosTheta = std::max(-1.0, std::min(1.0, cosTheta));
 
-        return std::acos(cosTheta);
+
+
+        return GeometricFunctionsLookup::getAcos(cosTheta);
     }
 
     Vector3 operator+(const Vector3 &other) const {

@@ -116,9 +116,9 @@ int main() {
     manager.pushScale(100, 0.1, 100);
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));
 
-    Point3 point(0, 0, -70);
+    Point3 point(0, -20, -70);
     Camera camera(1920, 1080, 60);
-    //camera.pitch(20);
+    camera.pitch(10);
     //camera.yaw(20);
 
 

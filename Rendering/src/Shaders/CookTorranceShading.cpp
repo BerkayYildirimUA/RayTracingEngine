@@ -119,8 +119,10 @@ CookTorranceShading::getD(const Vector3 &h, const Vector3 &m, const std::shared_
     double power = tan(theta) / roughness;
     power = -(power * power);
 
+    double cosTheta = GeometricFunctionsLookup::getCos(theta);
+
     double firstHalf =
-            1 / (4 * roughness * roughness * cos(theta) * cos(theta) * cos(theta) * cos(theta));
+            1 / (4 * roughness * roughness * cosTheta * cosTheta * cosTheta * cosTheta);
 
     double D = firstHalf * exp(power);
     return D;
@@ -134,7 +136,7 @@ CookTorranceShading::calcFresnelCoefficientForColor(double angleBetweenInRadians
         return (up * up) / (down * down);
     }
 
-    double c = cos(angleBetweenInRadians);
+    double c = GeometricFunctionsLookup::getCos(angleBetweenInRadians);
     double g = sqrt(indexOfRefraction * indexOfRefraction + c * c - 1);
 
     double gMinusC = g - c;

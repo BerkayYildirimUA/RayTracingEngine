@@ -45,6 +45,26 @@ public:
 
     void add(Color3 &src, Color3 &refl);
 
+    void add(Color3 &other){
+        this->add(other.getRed(), other.getGreen(), other.getBlue());
+    }
+
+    void add(const Color3 &other){
+        this->add(other.getRed(), other.getGreen(), other.getBlue());
+    }
+
+    double difference(const Color3 &other) const {
+
+        double redDiff = this->getRed() - other.getRed();
+        double greenDiff = this->getGreen() - other.getGreen();
+        double blueDiff = this->getBlue() - other.getBlue();
+
+
+
+        return std::sqrt(redDiff * redDiff + greenDiff * greenDiff + blueDiff * blueDiff);
+    }
+
+
     const double &getRed() const {
         return colors[0];
     }
@@ -60,6 +80,14 @@ public:
 
     Color3 operator+(const Color3 &other) const {
         return Color3(this->colors + other.colors);
+    }
+
+    Color3 operator/(double number) const {
+        return {this->getRed()/number, this->getGreen()/number, this->getBlue()/number};
+    }
+
+    Color3 operator*(double number) const {
+        return {this->getRed()*number, this->getGreen()*number, this->getBlue()*number};
     }
 };
 

@@ -14,6 +14,7 @@
 #include <iomanip> // for std::setw and std::setprecision
 #include <future>
 #include "RayTracer.h"
+#include <numeric>
 
 const int MIN_SAMPLES = 4;
 const int MAX_SAMPLES = 16;
@@ -116,14 +117,47 @@ void Camera::initialize(Scene &scn, Point3 &eye) {
 
     RayTracer rayTracer;
 
+    int totalFrames = 0;
+
+    std::vector<double> frameTimes;
+    auto startTime = std::chrono::high_resolution_clock::now();
+
+
     while (!glfwWindowShouldClose(window.get())) {
+        auto frameStart = std::chrono::high_resolution_clock::now();
+
         glClear(GL_COLOR_BUFFER_BIT);
 
         rayTracer.render(scn, this, 1);
 
         glfwSwapBuffers(window.get());
         glfwPollEvents();
+
+        auto frameEnd = std::chrono::high_resolution_clock::now();
+        double frameTime = std::chrono::duration<double, std::milli>(frameEnd - frameStart).count();
+        frameTimes.push_back(frameTime);
+        totalFrames++;
+
     }
+
+    auto endTime = std::chrono::high_resolution_clock::now();
+    double totalTime = std::chrono::duration<double>(endTime - startTime).count();
+
+    // Calculate performance metrics
+    std::sort(frameTimes.begin(), frameTimes.end());
+    double avgFrameTime = std::accumulate(frameTimes.begin(), frameTimes.end(), 0.0) / frameTimes.size();
+    double fps = 1000.0 / avgFrameTime;
+    double low1PercentTime = frameTimes[frameTimes.size() * 0.01];
+    double high99PercentTime = frameTimes[frameTimes.size() * 0.99];
+
+    std::cout << "Performance Metrics:\n";
+    std::cout << "Average FPS: " << fps << '\n';
+    std::cout << "1% Low FPS: " << 1000.0 / low1PercentTime << '\n';
+    std::cout << "99% High FPS: " << 1000.0 / high99PercentTime << '\n';
+    std::cout << "Total Frames Generated: " << totalFrames << '\n';
+    std::cout << "Total Runtime (seconds): " << totalTime << '\n';
+
+
     glfwTerminate();
 }
 
