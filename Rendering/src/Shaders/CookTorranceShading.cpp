@@ -9,6 +9,7 @@
 #include <memory>
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
 #include "iostream"
+#include "Geometry/include/unitGeometricObjects/UnitCircle.h"
 
 Color3
 CookTorranceShading::shade(const Ray &ray, Intersection &best,
@@ -22,13 +23,27 @@ CookTorranceShading::shade(const Ray &ray, Intersection &best,
     }
 
     Ray genRay;
-    best.getHits(0)->hitObject->transformRayToObjectSpace(ray, genRay);
+    best.getHits(0)->hitObject->transformRayToObjectSpace(ray, genRay); //object space
 
+
+
+   /* if (dynamic_cast<UnitSphere*>(best.getHits(0)->hitObject.get())){
+        auto p = best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point;
+        if (p.z() > 11){
+            if (p.y() > 0.98 && p.y() < 1.01) {
+                if (p.x() > 0.78 && p.x() < 0.8) {
+                    std::cout << best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point << std::endl;
+                }
+            }
+        }
+    }*/
 
     Eigen::Vector3d vCords = -genRay.dir.vector.head(3);
+    Vector3 v(vCords); //object space
 
-    Vector3 v(vCords); //manual v calc trying idk
-    Vector3 m(std::move(best.getHits(0)->hitNormal.vector));
+    Vector3 m;
+    m.set(best.getHits(0)->hitNormal); //object space
+
 
     Point3 hitLocation = best.getHits(0)->hitPoint;
 
@@ -79,7 +94,7 @@ CookTorranceShading::getDefusePartOneColor(const Vector3 &s, const Vector3 &m,
                                            const std::shared_ptr<FresnelMaterial> &material, int index) const {
 
 
-    double lambert = std::max(0.0, s.vector.head(3).dot(m.vector.head(3)));
+    double lambert = std::max(0.0, s * m );
 
     double secondPart = lightSource->Isr.colors[index] * dw * material->defusedLightFactor *
                         calcFresnelCoefficientForColor(0, material->getIndexOfRefractionByIndex(index)) * lambert;

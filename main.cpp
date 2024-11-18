@@ -22,12 +22,15 @@ int main() {
 
     Scene scene;
     std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(1, 0, 0, 0.4, 0.4, 0.2);
-    std::shared_ptr<AbstractMaterial> material2 = std::make_shared<FresnelMaterial>(0, 1, 0, 0.4, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material2 = std::make_shared<FresnelMaterial>(0, 1, 0, 1, 0.4, 0.2);
     std::shared_ptr<AbstractMaterial> material3 = std::make_shared<FresnelMaterial>(0, 0, 1, 0.4, 0.4, 0.2);
     std::shared_ptr<AbstractMaterial> material4 = std::make_shared<FresnelMaterial>(1, 1, 1, 0.4, 0.4, 0.2);
 
-    std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1);
-    std::shared_ptr<AbstractMaterial> gold = std::make_shared<FresnelMaterial>(0.989, 0.876, 0.399, 0.3, 0.15, 0.05);
+    //std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1);
+    std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1, 0, 0.05, 10000);
+    std::shared_ptr<AbstractMaterial> gold = std::make_shared<FresnelMaterial>(0.989, 0.876, 0.399, 0.3, 0.15, 0.95, 0.5, 0.05, 1000);
+    //std::shared_ptr<AbstractMaterial> gold = std::make_shared<FresnelMaterial>(0.989, 0.876, 0.399, 0.3, 0.35, 0.05);
+
     //std::shared_ptr<AbstractMaterial> silver = std::make_shared<FresnelMaterial>(0.25, 0.23, 0.18, 0.3, 0.3, 0.1);
 
 
@@ -104,25 +107,49 @@ int main() {
     }
 */
 
-    manager.pushTranslation(0, 0, 30);
-    manager.pushScale(20, 20, 2);
-    vector.emplace_back(ObjectFactory::createObject<UnitSphere>(manager, gold));
-
-
-    manager.pushScale(100, 100, 100);
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, sky));
-
-    manager.pushTranslation(0, 0.6, 0);
-    manager.pushScale(100, 0.1, 100);
+    /*manager.pushTranslation(0, 0, 30);
+    manager.pushScale(60, 40, 20);
+    vector.emplace_back(ObjectFactory::createObject<UnitSphere>(manager, gold));*/
+/*
+    manager.pushTranslation(0, 0, 10);
+    manager.pushScale(1, 8, 2);
+    manager.pushRotatePointY(180);
+    manager.pushRotatePointZ(29);
+*/
+    manager.pushScale(10, 10, 10);
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));
 
-    Point3 point(0, -20, -70);
+
+    manager.pushScale(1, 20, 1);
+    manager.pushTranslation(0, 0, 30);
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material1));
+
+
+    manager.pushTranslation(0, 0, -100);
+    manager.pushScale(100, 100, 1);
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material2));
+
+
+    manager.pushScale(1000, 1000, 1000);
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, sky));
+
+    //manager.pushTranslation(0, 0, 0);
+    //manager.pushScale(100, 0.1, 100);
+    //vector.emplace_back(ObjectFactory::createObject<UnitSphere>( gold));
+
     Camera camera(1920, 1080, 60);
-    camera.pitch(10);
+
+    Point3 point(0, 0, -40);
+    //Camera camera(1280, 720, 60);
+   /// camera.yaw(146.31);
+  //  camera.pitch(-34.77);
+  //  camera.roll(90);
+    //camera.yaw(180);
     //camera.yaw(20);
 
+    //camera.pitch(180);
 
-    Point3 lightPoint(80, 0, -70);
+    Point3 lightPoint(0, 0, -90);
     Color3 Iar(0.2, 0.2, 0.2);
     Color3 Isr(10000, 10000, 10000);
 
@@ -138,8 +165,8 @@ int main() {
     std::vector<std::shared_ptr<LightSource>> lightVector;
     lightVector.reserve(4);
     lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));
-    lightVector.emplace_back(std::make_shared<LightSource>(lightPoint2, Iar2, Isr2));
-    lightVector.emplace_back(std::make_shared<LightSource>(lightPoint3, Iar3, Isr3));
+    //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint2, Iar2, Isr2));
+    //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint3, Iar3, Isr3));
     //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));
     //Point3 lightPoint3(6, -6, -10);
     //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));

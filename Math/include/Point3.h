@@ -42,6 +42,13 @@ public:
         return point.z();
     }
 
+    void getRidOfVerySmallNumber(){
+        double threshold = 1;
+        point = point.unaryExpr([threshold](double x) {
+            return std::abs(x) < threshold ? 0 : x;
+        });
+    }
+
 };
 
 

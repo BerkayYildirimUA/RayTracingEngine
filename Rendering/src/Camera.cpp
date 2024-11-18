@@ -16,11 +16,6 @@
 #include "RayTracer.h"
 #include <numeric>
 
-const int MIN_SAMPLES = 4;
-const int MAX_SAMPLES = 16;
-const double THRESHOLD = 0.1;
-
-
 void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
     auto camera = static_cast<Camera *>(glfwGetWindowUserPointer(window));

@@ -3,3 +3,8 @@
 //
 
 #include "Rendering/include/Shaders/Material/AbstractMaterial.h"
+
+AbstractMaterial::AbstractMaterial(double transparency, double shininess, double speedOfLight) : transparency(transparency),
+                                                                            shininess(shininess), speedOfLight(speedOfLight) {}
+
+AbstractMaterial::AbstractMaterial() = default;

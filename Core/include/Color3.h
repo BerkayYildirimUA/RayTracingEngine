@@ -65,18 +65,19 @@ public:
     }
 
 
-    const double &getRed() const {
+    const double getRed() const {
         return colors[0];
     }
 
-    const double &getGreen() const {
+    const double getGreen() const {
         return colors[1];
     }
 
 
-    const double &getBlue() const {
+    const double getBlue() const {
         return colors[2];
     }
+
 
     Color3 operator+(const Color3 &other) const {
         return Color3(this->colors + other.colors);
@@ -89,7 +90,11 @@ public:
     Color3 operator*(double number) const {
         return {this->getRed()*number, this->getGreen()*number, this->getBlue()*number};
     }
+
+    friend Color3 operator*(double scalar, const Color3& obj);
+
 };
+
 
 
 #endif //RAYTRACINGENGINE_COLOR3_H

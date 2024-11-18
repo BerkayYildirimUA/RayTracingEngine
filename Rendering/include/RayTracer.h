@@ -13,6 +13,8 @@ class RayTracer {
 private:
     std::unique_ptr<AbstractShader> shader = std::make_unique<CookTorranceShading>();
 
+    const int MAX_RECURSION_DEPTH = 15;
+
 public:
 
     [[nodiscard]] const std::unique_ptr<AbstractShader> &getShader() const;
@@ -22,6 +24,8 @@ public:
     void render(Scene &scn, Camera *camera, int blockSize);
     void getFirstHit(const Ray &ray, Intersection &best, Scene &scn);
     Color3 shade(const Ray &ray, Scene &scn);
+    Color3 shade(const Ray &ray, Scene &scn, int recursionDepth);
+    Color3 shade(const Ray &ray, Scene &scn, Intersection &best);
     bool isInShadow(const Ray &ray, Scene &scn);
 
     Color3

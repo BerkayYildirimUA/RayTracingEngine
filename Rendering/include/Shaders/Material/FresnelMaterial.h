@@ -21,6 +21,9 @@ public:
 
     FresnelMaterial(double normalReflectanceRed, double normalReflectanceGreen, double normalReflectanceBlue, double ambientLightFactor, double defusedLightFactor, double roughness);
 
+    FresnelMaterial(double normalReflectanceRed, double normalReflectanceGreen, double normalReflectanceBlue, double ambientLightFactor, double defusedLightFactor, double roughness, double transparency, double shininess, double speedOfLight);
+
+
     const Eigen::Vector3d &getIndexOfRefraction() const;
 
     const double &getIndexOfRefractionByIndex(int i) const;

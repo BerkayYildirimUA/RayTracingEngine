@@ -17,6 +17,7 @@ public:
     void setStart(Point3 &&newStart);
     void setDir(Vector3 &&newDir);
     Eigen::Matrix<double, 3, 1> calcPoint(double t) const;
+    double speedOfLightInCurrentMaterial = 10000;
 
     void setStart(double x, double y, double z){
         start.set(x, y, z);

@@ -7,69 +7,13 @@
 #include <memory>
 #include <future>
 #include "iostream"
-#include <chrono>
-#include <thread>
-#include <fstream>
-#include <filesystem>
-#include <iostream>
-#include <fstream>
-#include <iomanip>
+#include "optional"
 
 void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
     int nColumns = camera->getScreenWidth() / blockSize;
     int nRows = camera->getScreenHight() / blockSize;
     int numThreads = std::min(nRows, static_cast<int>(std::thread::hardware_concurrency()));
-
-    if (numThreads == 0) {
-        numThreads = 1;
-    }
-
-    numThreads = 1; // todo debug
-
-    std::vector<std::vector<Color3>> pixelColors(nRows, std::vector<Color3>(nColumns));
-    std::mutex colorMutex;
-
-    auto processRows = [&](int startRow, int endRow) {
-        Ray threadRay;
-        threadRay.setStart(camera->getEye());
-
-        Vector3 dir;
-        Vector3 distanceVector(camera->getNormalDistanceVector().vector * camera->getDistance());
-
-        for (int row = startRow; row < endRow; row++) {
-            for (int col = 0; col < nColumns; col++) {
-
-                Color3 clr = {0, 0, 0};
-
-                if (row > 140 && row < 990 && col > 460 && col < 680 || true){
-                    clr.set(antiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
-                    //clr.set(noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
-
-                }
-
-
-                pixelColors[row][col] = clr;
-            }
-        }
-    };
-
-    // Launch threads, each handling a portion of rows
-    std::vector<std::thread> threads;
-    threads.reserve(numThreads);
-    int rowsPerThread = nRows / numThreads;
-    for (int i = 0; i < numThreads; ++i) {
-        int startRow = i * rowsPerThread;
-        int endRow = (i == numThreads - 1) ? nRows : (i + 1) * rowsPerThread;  // Last thread may handle extra rows
-        threads.emplace_back(processRows, startRow, endRow);
-    }
-
-    // Wait for all threads to finish
-    for (auto &thread: threads) {
-        if (thread.joinable()) {
-            thread.join();
-        }
-    }
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -79,15 +23,101 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
     glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    for (int row = 0; row < nRows; row++) {
-        int flippedRow = nRows - row - 1;
-        for (int col = 0; col < nColumns; col++) {
-            Color3 &clr = pixelColors[row][col];
-            glColor3f(clr.getRed() / (1 + clr.getRed()), clr.getGreen() / (1 + clr.getGreen()),
-                      clr.getBlue() / (1 + clr.getBlue())); // rainhard tone mapping: https://64.github.io/tonemapping/
-            glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+    GLuint pbo;
+    glGenBuffers(1, &pbo);
+    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, pbo);
+    glBufferData(GL_PIXEL_UNPACK_BUFFER, nColumns * nRows * 3 * sizeof(float), nullptr, GL_STREAM_DRAW);
+
+    if (numThreads == 0) {
+        numThreads = 1;
+    }
+
+    //numThreads = 1; // todo debug
+
+    std::vector<std::vector<Color3>> pixelColors(nRows, std::vector<Color3>(nColumns));
+    std::mutex colorMutex;
+
+    float* pboPtr = (float*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
+    auto processRows = [&](int startRow, int endRow) {
+        Ray threadRay;
+        threadRay.setStart(camera->getEye());
+
+        Vector3 dir;
+        Vector3 distanceVector(camera->getNormalDistanceVector().vector * camera->getDistance());
+
+        for (int row = startRow; row < endRow; row++) {
+            for (int col = 0; col < nColumns; col++) {
+                /*
+                Color3 clr = {0, 0, 0};
+
+                if (row > 346 && row < 349 && col > 643 && col < 645 || true){ //                 if (row > 384 && row < 400 && col > 632 && col < 680 ){
+                    //clr.set(antiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
+                    clr.set(noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
+
+                } else {
+                    clr.set(0, 255, 0);
+                }
+
+                pixelColors[row][col] = clr;*/
+
+                //pixelColors[row][col] = noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col);
+
+                Color3 clr = noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col);
+
+                //Color3 clr = {1, 1, 1};
+
+                int index = (row * nColumns + col) * 3;
+                pboPtr[index] = static_cast<float>(clr.getRed());
+                pboPtr[index + 1] = static_cast<float>(clr.getGreen());
+                pboPtr[index + 2] = static_cast<float>(clr.getBlue());
+            }
+        }
+    };
+
+    std::vector<std::thread> threads;
+    threads.reserve(numThreads);
+    int rowsPerThread = nRows / numThreads;
+    for (int i = 0; i < numThreads; ++i) {
+        int startRow = i * rowsPerThread;
+        int endRow = (i == numThreads - 1) ? nRows : (i + 1) * rowsPerThread;
+        threads.emplace_back(processRows, startRow, endRow);
+    }
+
+    for (auto &thread: threads) {
+        if (thread.joinable()) {
+            thread.join();
         }
     }
+
+    glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+
+    // Step 6: Render the PBO content to the screen
+    glRasterPos2i(0, 0);  // Set raster position to the bottom-left corner
+    glDrawPixels(camera->getScreenWidth(), camera->getScreenHight(), GL_RGB, GL_FLOAT, 0);
+
+    // Step 7: Clean up
+    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+    glDeleteBuffers(1, &pbo);
+
+
+
+
+    /* for (int row = 0; row < nRows; row++) {
+         int flippedRow = nRows - row - 1;
+         for (int col = 0; col < nColumns; col++) {
+             if (row > 384 && row < 400 && col > 632 && col < 680 ) {
+                 int i =1;
+             }
+
+             Color3 &clr = pixelColors[row][col];
+             glColor3f(clr.getRed() / (1 + clr.getRed()), clr.getGreen() / (1 + clr.getGreen()), clr.getBlue() / (1 + clr.getBlue())); // rainhard tone mapping: https://64.github.io/tonemapping/
+
+             //glColor3f( static_cast<float>(clr.getRed()) , static_cast<float>(clr.getGreen()), static_cast<float>(clr.getBlue()));
+             glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
+         }
+     }*/
 
 }
 
@@ -103,7 +133,7 @@ Color3 RayTracer::noAntiAlsiasing(Scene &scn, const Camera *camera, int nColumns
 
     dir.vector = std::move(dir_vector);
     threadRay.setDir(std::move(dir));
-    Color3 clr = shade(threadRay, scn);
+    Color3 clr = shade(threadRay, scn, 0);
     return clr;
 }
 
@@ -174,7 +204,12 @@ Color3 RayTracer::antiAlsiasing(Scene &scn, const Camera *camera, int nColumns, 
 }
 
 Color3 RayTracer::shade(const Ray &ray, Scene &scn) {
+
     Intersection best;
+    return shade(ray, scn, best);
+}
+
+Color3 RayTracer::shade(const Ray &ray, Scene &scn, Intersection &best) {
     getFirstHit(ray, best, scn);
 
     if (best.numHits == 0) {
@@ -202,6 +237,7 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn) {
     return color;
 }
 
+
 void RayTracer::getFirstHit(const Ray &ray, Intersection &best, Scene &scn) {
     Intersection inter;
     best.numHits = 0;
@@ -224,4 +260,81 @@ bool RayTracer::isInShadow(const Ray &ray, Scene &scn) {
 
 const std::unique_ptr<AbstractShader> &RayTracer::getShader() const {
     return shader;
+}
+
+Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
+    Intersection best;
+    Color3 regularColors = shade(ray, scn, best);
+
+    if (recursionDepth == MAX_RECURSION_DEPTH || best.numHits == 0){
+        return regularColors;
+    }
+
+    double shininess = best.getHits(0)->hitObject->material->shininess;
+    double transparency = best.getHits(0)->hitObject->material->transparency;
+    Point3 hitPoint(best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point); //real hitpoint
+    //Vector3 hitNormal = best.getHits(0)->hitNormal;
+
+    Vector3 hitNormal;
+    hitNormal.set((best.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() * best.getHits(0)->hitNormal.vector.head(3)).normalized()); //real hitnormal
+
+
+
+    //Vector3 normilizedRayDir(ray.dir.vector.head(3).normalized());
+    const double epsilon = 1e-5;
+
+    if (shininess > 0.0000001){
+        Ray reflectionRay;
+
+        reflectionRay.setStart(Point3(hitPoint.point.head(3) + epsilon * hitNormal.vector.head(3))); //move a bit like shadow
+        //reflectionRay.setDir(normilizedRayDir - 2 * (normilizedRayDir * hitNormal) * hitNormal);
+        reflectionRay.setDir(ray.dir - 2 * (ray.dir * hitNormal) * hitNormal);
+
+        reflectionRay.speedOfLightInCurrentMaterial = best.getHits(0)->hitObject->material->speedOfLight;
+
+        regularColors.add( shininess * shade(reflectionRay, scn, recursionDepth + 1)); //need real world ray
+    }
+
+
+    if (transparency > 0.0000001){
+        Ray transparencyRay;
+
+        double dotOfNormalAndDir =  hitNormal * ray.dir;
+        double indexOfRefraction;
+        if (dotOfNormalAndDir < 0) {
+            indexOfRefraction = ray.speedOfLightInCurrentMaterial / best.getHits(0)->hitObject->material->speedOfLight;
+        } else {
+            indexOfRefraction = best.getHits(0)->hitObject->material->speedOfLight / ray.speedOfLightInCurrentMaterial;
+            hitNormal = -hitNormal;
+            dotOfNormalAndDir = hitNormal * ray.dir;
+        }
+
+        //double dotOfNormalAndDir =  hitNormal * normilizedRayDir;
+
+        double cosTheta = 1 - (indexOfRefraction * indexOfRefraction) * (1 - dotOfNormalAndDir * dotOfNormalAndDir);
+
+        if (cosTheta > 0){
+            transparencyRay.setStart(Point3(hitPoint.point.head(3) - epsilon * hitNormal.vector.head(3)));
+            cosTheta = std::sqrt(cosTheta);
+
+            //transparencyRay.setDir( indexOfRefraction * normilizedRayDir + (indexOfRefraction * dotOfNormalAndDir - cosTheta) * hitNormal);
+            transparencyRay.setDir( indexOfRefraction * ray.dir + (indexOfRefraction * dotOfNormalAndDir - cosTheta) * hitNormal);
+
+            transparencyRay.speedOfLightInCurrentMaterial = best.getHits(0)->hitObject->material->speedOfLight;
+
+            regularColors.add( transparency * shade(transparencyRay, scn, recursionDepth + 1));
+        } else {
+            /*Ray totalReflectionRay;
+            transparencyRay.setStart(Point3(hitPoint.point.head(3) + epsilon * hitNormal.vector.head(3)));
+            totalReflectionRay.setDir(ray.dir - 2 * (ray.dir * hitNormal) * hitNormal);
+
+            totalReflectionRay.speedOfLightInCurrentMaterial = ray.speedOfLightInCurrentMaterial;
+
+            regularColors.add(transparency * shade(totalReflectionRay, scn, recursionDepth + 1));*/
+        }
+
+
+    }
+
+    return regularColors;
 }

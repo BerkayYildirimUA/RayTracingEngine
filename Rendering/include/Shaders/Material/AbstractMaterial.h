@@ -8,6 +8,15 @@
 
 class AbstractMaterial {
 public:
+    double transparency = 0;
+    double shininess = 0;
+    double speedOfLight = 1000;
+
+
+    AbstractMaterial(double transparency, double shininess, double speedOfLight);
+
+    AbstractMaterial();
+
     virtual ~AbstractMaterial() = default;
 };
 
