@@ -6,14 +6,15 @@
 #define RAYTRACINGENGINE_UNITCUBE_H
 
 #include "HitObject.h"
+#include "PrimitiveObjects.h"
 
-class UnitCube : public HitObject {
+class UnitCube : public PrimitiveObjects {
 public:
-    explicit UnitCube(const std::shared_ptr<AbstractMaterial> &material1) ;
-
     bool hit(const Ray &incomingRay, Intersection &intersection) override;
 
     bool hit(const Ray &incomingRay) const override;
+
+    explicit UnitCube(const std::shared_ptr<AbstractMaterial> &material);
 
 private:
 

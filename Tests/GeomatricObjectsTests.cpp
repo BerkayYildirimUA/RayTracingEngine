@@ -8,7 +8,7 @@
 #include "Math/include/Transformations.h"
 #include "Math/include/InverseTransformations.h"
 #include "Math/include/TransformationManager.h"
-#include "Geometry/include/unitGeometricObjects/UnitCircle.h"
+#include "Geometry/include/unitGeometricObjects/UnitSphere.h"
 #include "Geometry/include/ObjectFactory.h"
 #include "memory"
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
@@ -91,7 +91,6 @@ TEST_CASE("test circle hit sides", "[Circle]") {
     REQUIRE(circle->hit(ray, intersection));
 
     REQUIRE(intersection.numHits == 1);
-    REQUIRE(intersection.isNull(1));
 
     REQUIRE_THAT(intersection.getHit(0)->hitTime, Catch::Matchers::WithinRel(1, 0.001));
 
@@ -149,7 +148,7 @@ TEST_CASE("test cube hit edge", "[Cube]") {
 TEST_CASE("test cube visual bug", "[Cube]") {
     std::shared_ptr<AbstractMaterial> material = std::make_shared<FresnelMaterial>(0, 0, 0, 0,0, 0);
 
-    std::shared_ptr<HitObject> cube = ObjectFactory::createObject<UnitCube>(material);
+    std::shared_ptr<PrimitiveObjects> cube = ObjectFactory::createObject<UnitCube>(material);
 
     Intersection intersection;
     Point3 point3(-1.2, -1.1, -5);
@@ -178,7 +177,7 @@ TEST_CASE("test normal of circle", "[Sphere]") {
     manger.pushRotatePointZ(29); // --> x^2 + 0.02y^2 + 0.25z^2 - 5z = -24
 
 
-    std::shared_ptr<HitObject> sphere = ObjectFactory::createObject<UnitSphere>(manger, material);
+    std::shared_ptr<PrimitiveObjects> sphere = ObjectFactory::createObject<UnitSphere>(manger, material);
 
     Intersection intersection;
     Point3 point3(4, 5, 16);

@@ -32,9 +32,9 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
 
     if (action == GLFW_PRESS) {
         if (key == GLFW_KEY_UP) {
-            camera->slide(0, 0, -1);
-        } else if (key == GLFW_KEY_DOWN) {
             camera->slide(0, 0, 1);
+        } else if (key == GLFW_KEY_DOWN) {
+            camera->slide(0, 0, -1);
         } else if (key == GLFW_KEY_LEFT) {
             camera->slide(0, -1, 0);
         } else if (key == GLFW_KEY_RIGHT) {

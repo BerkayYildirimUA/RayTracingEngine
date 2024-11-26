@@ -2,10 +2,12 @@
 // Created by berka on 10/10/2024.
 //
 
-#include "../../include/unitGeometricObjects/UnitCircle.h"
+#include "../../include/unitGeometricObjects/UnitSphere.h"
 #include "../../include/HitInfo.h"
 #include "memory"
 #include "iostream"
+#include "Intersection.h"
+#include "HitInfo.h"
 
 bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
     Ray genRay;
@@ -13,14 +15,14 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
 
     double A, B, C;
 
-    Eigen::Vector3d direction(genRay.dir.vector.x(), genRay.dir.vector.y(), genRay.dir.vector.z());
-    Eigen::Vector3d start(genRay.start.point.x(), genRay.start.point.y(), genRay.start.point.z());
+    Vector3 direction(genRay.dir.vector.x(), genRay.dir.vector.y(), genRay.dir.vector.z());
+    Vector3 start(genRay.start.point.x(), genRay.start.point.y(), genRay.start.point.z());
 
 
-    A = calcNorm(direction, direction);
+    A = direction * direction;
     assert(A > 0);
-    B = calcNorm(start, direction);
-    C = calcNorm(start, start) - 1.0;
+    B = start * direction;
+    C = start * start - 1.0;
 
     bool isInside = false;
     if (C < 0){
@@ -45,7 +47,7 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
         info->hitTime = t1;
         info->surface = 0;
         info->isEntering = true;
-        info->hitObject = shared_from_this();
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
 
         Eigen::Vector3d point = genRay.calcPoint(t1);
         info->hitPoint.set(point.x(), point.y(), point.z());
@@ -67,7 +69,7 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
         info->hitTime = t2;
         info->surface = 0;
         info->isEntering = false;
-        info->hitObject = shared_from_this();
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
 
         Eigen::Vector3d point = genRay.calcPoint(t2);
         info->hitPoint.set(point.x(), point.y(), point.z());
@@ -89,23 +91,19 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
 
 }
 
-UnitSphere::UnitSphere(const std::shared_ptr<AbstractMaterial> &material1) : HitObject(material1) {
-
-}
-
 bool UnitSphere::hit(const Ray &incomingRay) const {
     Ray genRay;
     this->transformRayToObjectSpace(incomingRay, genRay);
 
     double A, B, C;
 
-    Eigen::Vector3d direction(genRay.dir.vector.x(), genRay.dir.vector.y(), genRay.dir.vector.z());
-    Eigen::Vector3d start(genRay.start.point.x(), genRay.start.point.y(), genRay.start.point.z());
+    Vector3 direction(genRay.dir.vector.x(), genRay.dir.vector.y(), genRay.dir.vector.z());
+    Vector3 start(genRay.start.point.x(), genRay.start.point.y(), genRay.start.point.z());
 
-    A = calcNorm(direction, direction);
+    A = direction * direction;
     assert(A > 0);
-    B = calcNorm(start, direction);
-    C = calcNorm(start, start) - 1.0;
+    B = start * direction;
+    C = start * start - 1.0;
 
     double discrim = B * B - A * C; // ax^2 + 2bx + c --> 4b^2 - 4AC
 
@@ -128,4 +126,6 @@ bool UnitSphere::hit(const Ray &incomingRay) const {
 
     return false;
 }
+
+UnitSphere::UnitSphere(const std::shared_ptr<AbstractMaterial> &material) : PrimitiveObjects(material) {}
 

@@ -4,10 +4,8 @@
 #include "Math/include/Transformations.h"
 #include "Rendering/include/Camera.h"
 #include "Geometry/include/ObjectFactory.h"
-#include "Geometry/include/unitGeometricObjects/UnitCircle.h"
-#include "Geometry/include/unitGeometricObjects/UnitCube.h"
-#include "Rendering/include/Shaders/Material/FresnelMaterial.h"
 #include "Shaders/CookTorranceShading.h"
+
 
 
 /*
@@ -116,18 +114,110 @@ int main() {
     manager.pushRotatePointY(180);
     manager.pushRotatePointZ(29);
 */
+
+/*
     manager.pushScale(9, 9, 9);
     vector.emplace_back(ObjectFactory::createObject<UnitSphere>(manager, gold));
-
+*/
 
   /*  manager.pushScale(1, 20, 1);
     manager.pushTranslation(0, 0, 30);
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material1));*/
 
-
+/*
     manager.pushTranslation(0, 40, -100);
     manager.pushScale(20, 20, 1);
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material2));
+*/
+
+
+
+/*
+    manager.pushScale(3, 3, 3);
+    auto cube1 = ObjectFactory::createObject<UnitCube>(manager, gold);
+    manager.pushTranslation(1.5, 0, 0);
+    manager.pushScale(3, 3, 3);
+    auto cube2 = ObjectFactory::createObject<UnitSphere>(manager, material1);
+
+
+    vector.emplace_back(ObjectFactory::createBoolObject<IntersectionBool>(cube2, cube1));*/
+    //vector.push_back(cube1);
+    //vector.push_back(cube2);
+
+
+
+    /*
+    manager.pushScale(40, 18, 1); // Scale [40, 18, 1]
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    auto baseCube = ObjectFactory::createObject<UnitCube>(manager, material1); // Creates and resets
+
+    std::vector<std::shared_ptr<PrimitiveObjects>> unionCubes;
+
+    manager.pushTranslation(15, 4, 0); // Translate
+    manager.pushScale(5, 5, 2);        // Scale
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+
+    manager.pushTranslation(15, -4, 0); // Translate
+    manager.pushScale(5, 5, 2);         // Scale
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+
+    manager.pushTranslation(8, 4, 0); // Translate
+    manager.pushScale(5, 5, 2);       // Scale
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+
+    manager.pushTranslation(8, -4, 0); // Translate
+    manager.pushScale(5, 5, 2);        // Scale
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+
+    manager.pushTranslation(-10, 0, 1); // Translate
+    manager.pushScale(15, 14, 1);         // Scale
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+
+    std::shared_ptr<HitObject> unionObject = unionCubes[0];
+    for (size_t i = 1; i < unionCubes.size(); ++i) {
+        unionObject = ObjectFactory::createBoolObject<UnionBool>(unionObject, unionCubes[i]);
+    }
+
+    auto diffObject = ObjectFactory::createBoolObject<DifferenceBool>(baseCube, unionObject);
+
+    manager.pushTranslation(1, 6, 1);   // Translate
+    manager.pushScale(0.6, 0.6, 1);     // Scale
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    auto extraCube1 = ObjectFactory::createObject<UnitCube>(manager, gold); // Creates and resets
+
+    manager.pushTranslation(1.0085, 5.301, 1.4); // Translate
+    manager.pushScale(0.6, 2, 0.2);              // Scale
+    manager.pushScale(0.5, 0.5, 0.5);     // Scale
+    auto extraCube2 = ObjectFactory::createObject<UnitCube>(manager, gold); // Creates and resets
+
+// Final Union (Difference + Extra Cubes)
+    auto finalObject = ObjectFactory::createBoolObject<UnionBool>(extraCube2, extraCube1);
+    finalObject = ObjectFactory::createBoolObject<UnionBool>(finalObject, diffObject);
+
+// Store the Final Object
+    vector.emplace_back(finalObject);
+
+*/
+
+    manager.pushScale(3, 3, 3);
+    auto cube1 = ObjectFactory::createObject<UnitCube>(manager, gold);
+
+    manager.pushRotatePointZ(45);
+    manager.pushScale(2, 2, 2);
+    manager.pushTranslation(0, 0, 0.8);
+    manager.pushRotatePointX(45);
+    manager.pushRotatePointY(45);
+    auto cube2 = ObjectFactory::createObject<UnitCube>(manager, gold);
+
+    auto finalObject = ObjectFactory::createBoolObject<DifferenceBool>(cube1, cube2);
+
+    vector.emplace_back(finalObject);
+
 
 
     manager.pushScale(1000, 1000, 1000);
@@ -140,22 +230,23 @@ int main() {
     //Camera camera(1920, 1080, 60);
 
 
-    Camera camera(600, 600, 60); //1280×720p
+    Camera camera(400, 400, 60); //1280×720p
 
-    Point3 point(30, 20, -40);
+    Point3 point(0, 0, 20);
     //Camera camera(1280, 720, 60);
    /// camera.yaw(146.31);
   //  camera.pitch(-34.77);
   //  camera.roll(90);
-    //camera.yaw(180);
+    camera.roll(90);
+    camera.yaw(180);
     //camera.yaw(20);
 
     //camera.pitch(180);
 
-    camera.pitch(-30);
-    camera.yaw(30);
+    //camera.pitch(-30);
+    //camera.yaw(30);
 
-    Point3 lightPoint(0, 0, -90);
+    Point3 lightPoint(0, 0, -20);
     Color3 Iar(0.2, 0.2, 0.2);
     Color3 Isr(10000, 10000, 10000);
 
@@ -163,14 +254,14 @@ int main() {
     Color3 Iar2(0, 0, 0);
     Color3 Isr2(10000, 10000, 10000);
 
-    Point3 lightPoint3(0, 0, 70);
-    Color3 Iar3(0, 0, 0);
+    Point3 lightPoint3(0, 0, 50);
+    Color3 Iar3(3, 3, 3);
     Color3 Isr3(5000, 5000, 5000);
 
 
     std::vector<std::shared_ptr<LightSource>> lightVector;
     lightVector.reserve(4);
-    lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));
+    lightVector.emplace_back(std::make_shared<LightSource>(lightPoint3, Iar, Isr));
     //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint2, Iar2, Isr2));
     //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint3, Iar3, Isr3));
     //lightVector.emplace_back(std::make_shared<LightSource>(lightPoint, Iar, Isr));

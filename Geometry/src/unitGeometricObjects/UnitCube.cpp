@@ -3,6 +3,9 @@
 //
 
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
+#include "Intersection.h"
+#include "HitInfo.h"
+#include "memory"
 
 bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection)  {
     Ray genRay;
@@ -76,7 +79,7 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection)  {
         info->hitTime = tIn;
         info->surface = inSurf;
         info->isEntering = true;
-        info->hitObject = shared_from_this();
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
 
         Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tIn);
         info->hitPoint.set(point.x(), point.y(), point.z());
@@ -101,7 +104,7 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection)  {
         info->hitTime = tOut;
         info->surface = outSurf;
         info->isEntering = false;
-        info->hitObject = shared_from_this();
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
 
         Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tOut);
         info->hitPoint.set(point.x(), point.y(), point.z());
@@ -142,10 +145,6 @@ Eigen::Vector3d UnitCube::cubeNormal(int side) const {
             return {0, 0, -1};
     }
     return {-1000, -1000, -1000};
-}
-
-UnitCube::UnitCube(const std::shared_ptr<AbstractMaterial> &material1) : HitObject(material1) {
-
 }
 
 bool UnitCube::hit(const Ray &incomingRay) const {
@@ -221,3 +220,5 @@ bool UnitCube::hit(const Ray &incomingRay) const {
 
     return false;
 }
+
+UnitCube::UnitCube(const std::shared_ptr<AbstractMaterial> &material) : PrimitiveObjects(material) {}

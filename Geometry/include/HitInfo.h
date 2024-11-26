@@ -11,25 +11,30 @@
 #include "Math/include/Vector3.h"
 #include "Eigen/Core"
 
-class HitObject;
+class PrimitiveObjects;
+
 class HitInfo {
 public:
     double hitTime;
-    std::shared_ptr<HitObject> hitObject;
-
+    std::shared_ptr<PrimitiveObjects> hitObject;
 
     bool isEntering;
     int surface;
     Point3 hitPoint;
     Vector3 hitNormal;
 
-    HitInfo();
+    HitInfo() = default;
 
-    bool operator<(const HitInfo& other) const {
+    HitInfo(const HitInfo &other) : hitTime(other.hitTime), hitObject(other.hitObject), isEntering(other.isEntering),
+                                    surface(other.surface), hitPoint(other.hitPoint), hitNormal(other.hitNormal) {}
+
+    explicit HitInfo(double hitTime) : hitTime(hitTime) {}
+
+    bool operator<(const HitInfo &other) const {
         return hitTime < other.hitTime;
     }
 
-    bool operator==(const HitInfo& other) const {
+    bool operator==(const HitInfo &other) const {
         return hitTime == other.hitTime;
     }
 

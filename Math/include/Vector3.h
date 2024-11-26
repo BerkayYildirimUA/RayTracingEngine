@@ -28,6 +28,8 @@ public:
     Vector3() { vector << 0, 0, 0, 0;}
 
     Vector3(Vector3 &vec) {vector << vec.vector.x(), vec.vector.y(), vec.vector.z(), 0;}
+    Vector3(const Vector3 &vec) {vector << vec.vector.x(), vec.vector.y(), vec.vector.z(), 0;}
+
     explicit Vector3(Eigen::Vector3d &vec) {vector << vec.x(), vec.y(), vec.z(), 0;}
 
 

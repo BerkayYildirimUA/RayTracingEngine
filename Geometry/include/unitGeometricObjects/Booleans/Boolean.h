@@ -31,17 +31,7 @@ public:
         Boolean::right = right;
     }
 
-    bool hit(const Ray &incomingRay, Intersection &intersection) override {
-        Intersection leftInter, rightInter;
-
-        if((!left->hit(incomingRay, leftInter)) || (!right->hit(incomingRay, rightInter))){
-            return false;
-        }
-
-        intersection = useOperation(leftInter, rightInter);
-
-        return (intersection.numHits > 0);
-    }
+    bool hit(const Ray &incomingRay, Intersection &intersection) override;
 
     bool hit(const Ray &incomingRay) const override {
         return false;

@@ -9,8 +9,10 @@
 #include <memory>
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
 #include "iostream"
-#include "Geometry/include/unitGeometricObjects/UnitCircle.h"
+#include "Geometry/include/unitGeometricObjects/UnitSphere.h"
 #include "DebugFlags.h"
+#include "Intersection.h"
+#include "HitInfo.h"
 
 Color3
 CookTorranceShading::shade(const Ray &ray, Intersection &best,

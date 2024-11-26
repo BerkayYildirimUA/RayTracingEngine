@@ -6,11 +6,14 @@
 #define RAYTRACINGENGINE_INTERSECTIONBOOL_H
 
 #include "Boolean.h"
-class IntersectionBool : Boolean{
-
-    Intersection useOperation(const Intersection &left, const Intersection &right) const override {
-        return Intersection();
+class IntersectionBool : public Boolean{
+public:
+    explicit IntersectionBool(const std::shared_ptr<HitObject>& leftObj, const std::shared_ptr<HitObject>& rightObj) {
+        setLeft(leftObj);
+        setRight(rightObj);
     }
+private:
+    Intersection useOperation(const Intersection &left, const Intersection &right) const override;
 };
 
 

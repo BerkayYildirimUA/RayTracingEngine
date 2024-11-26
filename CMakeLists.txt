@@ -64,7 +64,8 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Geometry/src/unitGeometricObjects/Booleans/IntersectionBool.cpp
         Geometry/include/unitGeometricObjects/Booleans/IntersectionBool.h
         Geometry/src/unitGeometricObjects/Booleans/DifferenceBool.cpp
-        Geometry/include/unitGeometricObjects/Booleans/DifferenceBool.h)
+        Geometry/include/unitGeometricObjects/Booleans/DifferenceBool.h
+        Geometry/include/unitGeometricObjects/PrimitiveObjects.h)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
@@ -82,7 +83,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 # Test executable
 add_executable(RayTracingEngineTests ${ALL_SOURCES} ${TEST_SOURCES}
         Tests/GeomatricObjectsTests.cpp
-        Tests/LookUpTableTest.cpp)
+        Tests/LookUpTableTest.cpp
+        Geometry/src/unitGeometricObjects/PrimitiveObjects.cpp
+        Tests/BooleanTests.cpp)
 target_link_libraries(RayTracingEngineTests PRIVATE
         glfw
         Catch2::Catch2WithMain

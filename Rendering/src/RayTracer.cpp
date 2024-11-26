@@ -9,6 +9,9 @@
 #include "iostream"
 #include "optional"
 #include "DebugFlags.h"
+#include "Intersection.h"
+#include "HitInfo.h"
+#include "Geometry/include/unitGeometricObjects/PrimitiveObjects.h"
 
 void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
@@ -31,9 +34,10 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, pbo);
     glBufferData(GL_PIXEL_UNPACK_BUFFER, nColumns * nRows * 3 * sizeof(float), nullptr, GL_STREAM_DRAW);
 
-    if (numThreads == 0 && !DebugFlags::getSingleThreadMode()) {
+    if (numThreads == 0 || DebugFlags::getSingleThreadMode()) {
         numThreads = 1;
     }
+
 
     float* pboPtr = (float*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
     auto processRows = [&](int startRow, int endRow) {
@@ -230,7 +234,6 @@ void RayTracer::getFirstHit(const Ray &ray, Intersection &best, Scene &scn) {
 
         if (best.numHits == 0 || inter.getHit(0)->hitTime < best.getHit(0)->hitTime) {
             best.set(inter);
-            //inter.resize(2);
         }
     }
 }
