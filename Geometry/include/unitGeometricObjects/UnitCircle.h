@@ -9,13 +9,16 @@
 #include "Core/include/Ray.h"
 #include "../Intersection.h"
 
+
+
 class UnitSphere : public HitObject {
 public:
+
     explicit UnitSphere(const std::shared_ptr<AbstractMaterial> &material1);
 
-    bool hit(const Ray &incomingRay, Intersection &intersection) const override;
-    bool hit(const Ray &incomingRay) const override;
 
+    bool hit(const Ray &incomingRay, Intersection &intersection) override;
+    bool hit(const Ray &incomingRay) const override;
 
 };
 

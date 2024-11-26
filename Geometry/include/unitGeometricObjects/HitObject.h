@@ -12,6 +12,7 @@
 #include "Math/include/TransformationManager.h"
 #include "Rendering/include/Shaders/Material/AbstractMaterial.h"
 #include "Rendering/include/Shaders/Material/AbstractMaterial.h"
+#include "HitObject.h"
 
 class Intersection;
 
@@ -19,7 +20,8 @@ class HitObject : public std::enable_shared_from_this<HitObject> {
 public:
     std::shared_ptr<AbstractMaterial> material;
 
-    virtual bool hit(const Ray &incomingRay, Intersection& intersection) const = 0;
+    virtual bool hit(const Ray &incomingRay, Intersection &intersection) = 0;
+
     virtual bool hit(const Ray &incomingRay) const = 0;
 
 
@@ -41,8 +43,6 @@ public:
 protected:
     Eigen::Matrix4d inverseTransform = Eigen::Matrix4d::Identity();
     Eigen::Matrix4d transform = Eigen::Matrix4d::Identity();
-
-protected:
 
     double calcNorm(const Point3 &point, const Vector3 &vector) const;
     double calcNorm(const Vector3 &vector1, const Vector3 &vector2) const;

@@ -24,6 +24,15 @@ public:
     Vector3 hitNormal;
 
     HitInfo();
+
+    bool operator<(const HitInfo& other) const {
+        return hitTime < other.hitTime;
+    }
+
+    bool operator==(const HitInfo& other) const {
+        return hitTime == other.hitTime;
+    }
+
 };
 
 

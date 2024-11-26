@@ -16,6 +16,18 @@
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\ObjectFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\Boolean.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\DifferenceBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\IntersectionBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\UnionBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\HitObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

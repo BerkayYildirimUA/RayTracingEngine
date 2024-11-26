@@ -7,7 +7,7 @@
 #include "memory"
 #include "iostream"
 
-bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) const {
+bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
     Ray genRay;
     this->transformRayToObjectSpace(incomingRay, genRay);
 
@@ -40,12 +40,12 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) const {
 
 
     if (t1 > 0.00001) {
-        auto &info = intersection.getHits(0);
+        auto &info = intersection.getHit(0);
 
         info->hitTime = t1;
-        info->hitObject = const_cast<UnitSphere *>(this)->shared_from_this();
-        info->isEntering = true;
         info->surface = 0;
+        info->isEntering = true;
+        info->hitObject = shared_from_this();
 
         Eigen::Vector3d point = genRay.calcPoint(t1);
         info->hitPoint.set(point.x(), point.y(), point.z());
@@ -62,12 +62,12 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) const {
     }
 
     if (t2 > 0.00001 && (std::abs(t1 - t2) > 0.00001)) {
-        auto &info = intersection.getHits(numberOfHits);
+        auto &info = intersection.getHit(numberOfHits);
 
         info->hitTime = t2;
-        info->hitObject = const_cast<UnitSphere *>(this)->shared_from_this();
-        info->isEntering = false;
         info->surface = 0;
+        info->isEntering = false;
+        info->hitObject = shared_from_this();
 
         Eigen::Vector3d point = genRay.calcPoint(t2);
         info->hitPoint.set(point.x(), point.y(), point.z());

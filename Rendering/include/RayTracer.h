@@ -15,6 +15,8 @@ private:
 
     const int MAX_RECURSION_DEPTH = 15;
 
+    bool singleThreadMode = false;
+
 public:
 
     [[nodiscard]] const std::unique_ptr<AbstractShader> &getShader() const;

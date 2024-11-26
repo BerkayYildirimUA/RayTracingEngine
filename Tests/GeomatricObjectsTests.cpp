@@ -32,17 +32,17 @@ TEST_CASE("test circle hit book page 620", "[Circle]") {
 
     REQUIRE(intersection.numHits == 2);
 
-    REQUIRE_THAT(intersection.getHits(0)->hitTime, Catch::Matchers::WithinRel(0.7868, 0.001));
-    REQUIRE_THAT(intersection.getHits(1)->hitTime, Catch::Matchers::WithinRel(1.2132, 0.001));
+    REQUIRE_THAT(intersection.getHit(0)->hitTime, Catch::Matchers::WithinRel(0.7868, 0.001));
+    REQUIRE_THAT(intersection.getHit(1)->hitTime, Catch::Matchers::WithinRel(1.2132, 0.001));
 
-    REQUIRE(intersection.getHits(0)->isEntering);
-    REQUIRE(!intersection.getHits(1)->isEntering);
+    REQUIRE(intersection.getHit(0)->isEntering);
+    REQUIRE(!intersection.getHit(1)->isEntering);
 
     Point3 enteringPoint(0.6393, 0.4264, 0.6396);
     Point3 exitPoint(-0.6393, -0.4264, -0.6396);
 
-    REQUIRE(enteringPoint.point.isApprox(intersection.getHits(0)->hitPoint.point, 0.001));
-    REQUIRE(exitPoint.point.isApprox(intersection.getHits(1)->hitPoint.point, 0.001));
+    REQUIRE(enteringPoint.point.isApprox(intersection.getHit(0)->hitPoint.point, 0.001));
+    REQUIRE(exitPoint.point.isApprox(intersection.getHit(1)->hitPoint.point, 0.001));
 
 }
 
@@ -62,17 +62,17 @@ TEST_CASE("test circle hit", "[Circle]") {
 
     REQUIRE(intersection.numHits == 2);
 
-    REQUIRE_THAT(intersection.getHits(0)->hitTime, Catch::Matchers::WithinRel(4, 0.001));
-    REQUIRE_THAT(intersection.getHits(1)->hitTime, Catch::Matchers::WithinRel(14.0/3.0, 0.001));
+    REQUIRE_THAT(intersection.getHit(0)->hitTime, Catch::Matchers::WithinRel(4, 0.001));
+    REQUIRE_THAT(intersection.getHit(1)->hitTime, Catch::Matchers::WithinRel(14.0 / 3.0, 0.001));
 
-    REQUIRE(intersection.getHits(0)->isEntering);
-    REQUIRE(!intersection.getHits(1)->isEntering);
+    REQUIRE(intersection.getHit(0)->isEntering);
+    REQUIRE(!intersection.getHit(1)->isEntering);
 
     Point3 enteringPoint(0, 0, 1);
     Point3 exitPoint(-2.0/3, -2.0/3, 1.0/3);
 
-    REQUIRE(enteringPoint.point.isApprox(intersection.getHits(0)->hitPoint.point, 0.001));
-    REQUIRE(exitPoint.point.isApprox(intersection.getHits(1)->hitPoint.point, 0.001));
+    REQUIRE(enteringPoint.point.isApprox(intersection.getHit(0)->hitPoint.point, 0.001));
+    REQUIRE(exitPoint.point.isApprox(intersection.getHit(1)->hitPoint.point, 0.001));
 
 }
 
@@ -93,13 +93,13 @@ TEST_CASE("test circle hit sides", "[Circle]") {
     REQUIRE(intersection.numHits == 1);
     REQUIRE(intersection.isNull(1));
 
-    REQUIRE_THAT(intersection.getHits(0)->hitTime, Catch::Matchers::WithinRel(1, 0.001));
+    REQUIRE_THAT(intersection.getHit(0)->hitTime, Catch::Matchers::WithinRel(1, 0.001));
 
-    REQUIRE(intersection.getHits(0)->isEntering);
+    REQUIRE(intersection.getHit(0)->isEntering);
 
     Point3 point(0, 1, 0);
 
-    REQUIRE(point.point.isApprox(intersection.getHits(0)->hitPoint.point, 0.001));
+    REQUIRE(point.point.isApprox(intersection.getHit(0)->hitPoint.point, 0.001));
 }
 
 TEST_CASE("test cube hit side", "[Cube]") {
@@ -117,11 +117,11 @@ TEST_CASE("test cube hit side", "[Cube]") {
     REQUIRE(cube->hit(ray, intersection));
 
     REQUIRE(intersection.numHits == 2);
-    REQUIRE(intersection.getHits(0)->isEntering);
-    REQUIRE(!intersection.getHits(1)->isEntering);
+    REQUIRE(intersection.getHit(0)->isEntering);
+    REQUIRE(!intersection.getHit(1)->isEntering);
 
-    REQUIRE(intersection.getHits(0)->hitPoint.point.isApprox(Point3(-0.5, 0.25, 1).point, 0.001));
-    REQUIRE(intersection.getHits(1)->hitPoint.point.isApprox(Point3(-1, -0.5, 0).point, 0.001));
+    REQUIRE(intersection.getHit(0)->hitPoint.point.isApprox(Point3(-0.5, 0.25, 1).point, 0.001));
+    REQUIRE(intersection.getHit(1)->hitPoint.point.isApprox(Point3(-1, -0.5, 0).point, 0.001));
 }
 
 TEST_CASE("test cube hit edge", "[Cube]") {
@@ -139,11 +139,11 @@ TEST_CASE("test cube hit edge", "[Cube]") {
     REQUIRE(cube->hit(ray, intersection));
 
     REQUIRE(intersection.numHits == 2);
-    REQUIRE(intersection.getHits(0)->isEntering);
-    REQUIRE(!intersection.getHits(1)->isEntering);
+    REQUIRE(intersection.getHit(0)->isEntering);
+    REQUIRE(!intersection.getHit(1)->isEntering);
 
-    REQUIRE(intersection.getHits(0)->hitPoint.point.isApprox(Point3(1, 1, 1).point, 0.001));
-    REQUIRE(intersection.getHits(1)->hitPoint.point.isApprox(Point3(-1, 1, 1).point, 0.001));
+    REQUIRE(intersection.getHit(0)->hitPoint.point.isApprox(Point3(1, 1, 1).point, 0.001));
+    REQUIRE(intersection.getHit(1)->hitPoint.point.isApprox(Point3(-1, 1, 1).point, 0.001));
 }
 
 TEST_CASE("test cube visual bug", "[Cube]") {
@@ -161,11 +161,11 @@ TEST_CASE("test cube visual bug", "[Cube]") {
     REQUIRE(cube->hit(ray, intersection));
 
     REQUIRE(intersection.numHits == 2);
-    REQUIRE(intersection.getHits(0)->isEntering);
-    REQUIRE(!intersection.getHits(1)->isEntering);
+    REQUIRE(intersection.getHit(0)->isEntering);
+    REQUIRE(!intersection.getHit(1)->isEntering);
 
-    REQUIRE((cube->getTransform() * intersection.getHits(0)->hitPoint.point).isApprox(Point3(-1, -1, 0).point, 0.001));
-    REQUIRE((cube->getTransform() * intersection.getHits(1)->hitPoint.point).isApprox(Point3(-0.96, -0.98, 1).point, 0.001));
+    REQUIRE((cube->getTransform() * intersection.getHit(0)->hitPoint.point).isApprox(Point3(-1, -1, 0).point, 0.001));
+    REQUIRE((cube->getTransform() * intersection.getHit(1)->hitPoint.point).isApprox(Point3(-0.96, -0.98, 1).point, 0.001));
 }
 
 TEST_CASE("test normal of circle", "[Sphere]") {
@@ -189,47 +189,50 @@ TEST_CASE("test normal of circle", "[Sphere]") {
 
     REQUIRE(sphere->hit(ray, intersection));
 
-    //std::cout << intersection.getHits(0)->hitNormal.vector << std::endl << std::endl;
+    //std::cout << intersection.getHit(0)->hitNormal.vector << std::endl << std::endl;
 
-    std::cout << sphere->getTransform() * intersection.getHits(0)->hitPoint.point << std::endl << std::endl;
-    std::cout << sphere->getTransform() * intersection.getHits(1)->hitPoint.point << std::endl << std::endl;
+    std::cout << sphere->getTransform() * intersection.getHit(0)->hitPoint.point << std::endl << std::endl;
+    std::cout << sphere->getTransform() * intersection.getHit(1)->hitPoint.point << std::endl << std::endl;
 
-    std::cout << ray.calcPoint(intersection.getHits(0)->hitTime) << std::endl << std::endl;
-    std::cout << ray.calcPoint(intersection.getHits(1)->hitTime) << std::endl << std::endl;
+    std::cout << ray.calcPoint(intersection.getHit(0)->hitTime) << std::endl << std::endl;
+    std::cout << ray.calcPoint(intersection.getHit(1)->hitTime) << std::endl << std::endl;
 
 
     //std::cout << "--------------------- affine (4x4) matrixes --------------------- " << "\n";
-    //std::cout << "transform: \n"                      << (intersection.getHits(0)->hitObject->getTransform() * intersection.getHits(0)->hitNormal.vector).normalized() << std::endl << std::endl;
-    //std::cout << "transform and transpose: \n"        << (intersection.getHits(0)->hitObject->getTransform().transpose() * intersection.getHits(0)->hitNormal.vector).normalized() << std::endl << std::endl;
-    //std::cout << "inversetransform: \n"               << (intersection.getHits(0)->hitObject->getInverseTransform() * intersection.getHits(0)->hitNormal.vector).normalized() << std::endl << std::endl;
-    //std::cout << "inversetransform and transpose: \n" << (intersection.getHits(0)->hitObject->getInverseTransform().transpose() * intersection.getHits(0)->hitNormal.vector).normalized() << std::endl << std::endl;
+    //std::cout << "transform: \n"                      << (intersection.getHits(0)->hitObject->getTransform() * intersection.getHit(0)->hitNormal.vector).normalized() << std::endl << std::endl;
+    //std::cout << "transform and transpose: \n"        << (intersection.getHit(0)->hitObject->getTransform().transpose() * intersection.getHits(0)->hitNormal.vector).normalized() << std::endl << std::endl;
+    //std::cout << "inversetransform: \n"               << (intersection.getHit(0)->hitObject->getInverseTransform() * intersection.getHits(0)->hitNormal.vector).normalized() << std::endl << std::endl;
+    //std::cout << "inversetransform and transpose: \n" << (intersection.getHits(0)->hitObject->getInverseTransform().transpose() * intersection.getHit(0)->hitNormal.vector).normalized() << std::endl << std::endl;
 
     //std::cout << "--------------------- (3x3) matrixes ---------------------" << "\n";
-    //std::cout <<  "transform: \n"                      << (intersection.getHits(0)->hitObject->getTransform().topLeftCorner<3, 3>() * intersection.getHits(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
-    //std::cout <<  "transform and transpose: \n"        << (intersection.getHits(0)->hitObject->getTransform().topLeftCorner<3, 3>().transpose() * intersection.getHits(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
-    //std::cout <<  "inversetransform: \n"               << (intersection.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>() * intersection.getHits(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
+    //std::cout <<  "transform: \n"                      << (intersection.getHit(0)->hitObject->getTransform().topLeftCorner<3, 3>() * intersection.getHits(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
+    //std::cout <<  "transform and transpose: \n"        << (intersection.getHits(0)->hitObject->getTransform().topLeftCorner<3, 3>().transpose() * intersection.getHit(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
+    //std::cout <<  "inversetransform: \n"               << (intersection.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>() * intersection.getHit(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
 
-    std::cout <<  "matrix: \n" << (intersection.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose()) << std::endl << std::endl;
-    std::cout <<  "normal: \n" << intersection.getHits(0)->hitNormal.vector.head(3) << std::endl << std::endl;
-    std::cout <<  "inversetransform and transpose 1: \n" << (intersection.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() * intersection.getHits(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
-    std::cout <<  "inversetransform and transpose 2: \n" << (intersection.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() * intersection.getHits(0)->hitNormal.vector.head(3).normalized()).normalized() << std::endl << std::endl;
-    std::cout <<  "inversetransform and transpose 3: \n" << (intersection.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() * intersection.getHits(0)->hitNormal.vector.normalized().head(3)).normalized() << std::endl << std::endl;
+    std::cout << "matrix: \n" << (intersection.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose()) << std::endl << std::endl;
+    std::cout << "normal: \n" << intersection.getHit(0)->hitNormal.vector.head(3) << std::endl << std::endl;
+    std::cout << "inversetransform and transpose 1: \n" << (intersection.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() *
+                                                            intersection.getHit(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
+    std::cout << "inversetransform and transpose 2: \n" << (intersection.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() *
+                                                            intersection.getHit(0)->hitNormal.vector.head(3).normalized()).normalized() << std::endl << std::endl;
+    std::cout << "inversetransform and transpose 3: \n" << (intersection.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() *
+                                                            intersection.getHit(0)->hitNormal.vector.normalized().head(3)).normalized() << std::endl << std::endl;
 
     //Eigen::Matrix4d matrix = Eigen::Matrix4d::Identity();
-    Eigen::Matrix3d matrix = intersection.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose();
+    Eigen::Matrix3d matrix = intersection.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose();
     double threshold = 1e-14;
     matrix = matrix.unaryExpr([threshold](double x) {
         return std::abs(x) < threshold ? 0 : x;
     });
 
     std::cout << matrix;
-    std::cout <<  "inversetransform and transpose 1: \n" << (matrix * intersection.getHits(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
+    std::cout << "inversetransform and transpose 1: \n" << (matrix * intersection.getHit(0)->hitNormal.vector.head(3)).normalized() << std::endl << std::endl;
 
 
     REQUIRE(intersection.numHits == 2);
-    REQUIRE(intersection.getHits(0)->isEntering);
-    REQUIRE(!intersection.getHits(1)->isEntering);
+    REQUIRE(intersection.getHit(0)->isEntering);
+    REQUIRE(!intersection.getHit(1)->isEntering);
 
-    REQUIRE((sphere->getTransform() * intersection.getHits(0)->hitPoint.point).isApprox(Point3(-1, -1, 0).point, 0.001));
-    REQUIRE((sphere->getTransform() * intersection.getHits(1)->hitPoint.point).isApprox(Point3(-0.96, -0.98, 1).point, 0.001));
+    REQUIRE((sphere->getTransform() * intersection.getHit(0)->hitPoint.point).isApprox(Point3(-1, -1, 0).point, 0.001));
+    REQUIRE((sphere->getTransform() * intersection.getHit(1)->hitPoint.point).isApprox(Point3(-0.96, -0.98, 1).point, 0.001));
 }

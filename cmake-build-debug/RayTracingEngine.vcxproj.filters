@@ -16,6 +16,18 @@
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\ObjectFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\Boolean.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\DifferenceBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\IntersectionBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\UnionBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\HitObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -100,6 +112,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\include\GeometricFunctionsLookup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\include\DebugFlags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\Boolean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\UnionBool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\IntersectionBool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\DifferenceBool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,13 +22,13 @@ int main() {
 
     Scene scene;
     std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(1, 0, 0, 0.4, 0.4, 0.2);
-    std::shared_ptr<AbstractMaterial> material2 = std::make_shared<FresnelMaterial>(0, 1, 0, 1, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material2 = std::make_shared<FresnelMaterial>(0, 1, 0, 0.4, 0.4, 0.2);
     std::shared_ptr<AbstractMaterial> material3 = std::make_shared<FresnelMaterial>(0, 0, 1, 0.4, 0.4, 0.2);
     std::shared_ptr<AbstractMaterial> material4 = std::make_shared<FresnelMaterial>(1, 1, 1, 0.4, 0.4, 0.2);
 
     //std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1);
     std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1, 0, 0.05, 10000);
-    std::shared_ptr<AbstractMaterial> gold = std::make_shared<FresnelMaterial>(0.989, 0.876, 0.399, 0.3, 0.15, 0.95, 0.5, 0.05, 1000);
+    std::shared_ptr<AbstractMaterial> gold = std::make_shared<FresnelMaterial>(1, 1, 0, 0.3, 0.35, 0.05, 0, 0.5, 100000);
     //std::shared_ptr<AbstractMaterial> gold = std::make_shared<FresnelMaterial>(0.989, 0.876, 0.399, 0.3, 0.35, 0.05);
 
     //std::shared_ptr<AbstractMaterial> silver = std::make_shared<FresnelMaterial>(0.25, 0.23, 0.18, 0.3, 0.3, 0.1);
@@ -116,17 +116,17 @@ int main() {
     manager.pushRotatePointY(180);
     manager.pushRotatePointZ(29);
 */
-    manager.pushScale(10, 10, 10);
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));
+    manager.pushScale(9, 9, 9);
+    vector.emplace_back(ObjectFactory::createObject<UnitSphere>(manager, gold));
 
 
-    manager.pushScale(1, 20, 1);
+  /*  manager.pushScale(1, 20, 1);
     manager.pushTranslation(0, 0, 30);
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material1));
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material1));*/
 
 
-    manager.pushTranslation(0, 0, -100);
-    manager.pushScale(100, 100, 1);
+    manager.pushTranslation(0, 40, -100);
+    manager.pushScale(20, 20, 1);
     vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material2));
 
 
@@ -137,9 +137,12 @@ int main() {
     //manager.pushScale(100, 0.1, 100);
     //vector.emplace_back(ObjectFactory::createObject<UnitSphere>( gold));
 
-    Camera camera(1920, 1080, 60);
+    //Camera camera(1920, 1080, 60);
 
-    Point3 point(0, 0, -40);
+
+    Camera camera(600, 600, 60); //1280×720p
+
+    Point3 point(30, 20, -40);
     //Camera camera(1280, 720, 60);
    /// camera.yaw(146.31);
   //  camera.pitch(-34.77);
@@ -148,6 +151,9 @@ int main() {
     //camera.yaw(20);
 
     //camera.pitch(180);
+
+    camera.pitch(-30);
+    camera.yaw(30);
 
     Point3 lightPoint(0, 0, -90);
     Color3 Iar(0.2, 0.2, 0.2);

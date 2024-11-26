@@ -4,14 +4,12 @@
 
 #include "Geometry/include/unitGeometricObjects/UnitCube.h"
 
-bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) const {
+bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection)  {
     Ray genRay;
     transformRayToObjectSpace(incomingRay, genRay);
     double tHit, numer, denom;
     double tIn = -1000000.0, tOut = 1000000.0;
     int inSurf, outSurf;
-
-    bool inside = isInsideCube(genRay.start);
 
     for (int i = 0; i < 6; i++) {
         switch (i) {
@@ -73,41 +71,50 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) const {
 
     int num = 0;
     if (tIn > 0.00001 ){
-        auto &info = intersection.getHits(0);
+        auto& info = intersection.getHit(num);
 
         info->hitTime = tIn;
         info->surface = inSurf;
         info->isEntering = true;
-        info->hitObject = const_cast<UnitCube*>(this)->shared_from_this();
+        info->hitObject = shared_from_this();
+
         Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tIn);
         info->hitPoint.set(point.x(), point.y(), point.z());
 
         Eigen::Vector3d cubeNorm = cubeNormal(inSurf);
 
-        if(this->isInsideCube(genRay.start)){
+        if (genRay.dir.vector.head(3).dot(cubeNorm) > 0){
             cubeNorm = -cubeNorm;
         }
+
+        /*if(this->isInsideCube(genRay.start)){
+            cubeNorm = -cubeNorm;
+        }*/
 
         info->hitNormal.set(cubeNorm.x(), cubeNorm.y(), cubeNorm.z());
         num++;
     }
 
     if (tOut > 0.00001){
-        auto &info = intersection.getHits(num);
+        auto& info = intersection.getHit(num);
 
         info->hitTime = tOut;
         info->surface = outSurf;
         info->isEntering = false;
-        info->hitObject = const_cast<UnitCube*>(this)->shared_from_this();
+        info->hitObject = shared_from_this();
 
         Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tOut);
         info->hitPoint.set(point.x(), point.y(), point.z());
 
         Eigen::Vector3d cubeNorm = cubeNormal(outSurf);
 
-        if(this->isInsideCube(genRay.start)){
+        if (genRay.dir.vector.head(3).dot(cubeNorm) > 0){
             cubeNorm = -cubeNorm;
         }
+
+        /*if(this->isInsideCube(genRay.start)){
+            cubeNorm = -cubeNorm;
+        }*/
 
         info->hitNormal.set(cubeNorm.x(), cubeNorm.y(), cubeNorm.z());
 

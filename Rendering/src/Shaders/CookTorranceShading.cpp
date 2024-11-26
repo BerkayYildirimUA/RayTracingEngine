@@ -10,6 +10,7 @@
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
 #include "iostream"
 #include "Geometry/include/unitGeometricObjects/UnitCircle.h"
+#include "DebugFlags.h"
 
 Color3
 CookTorranceShading::shade(const Ray &ray, Intersection &best,
@@ -23,43 +24,23 @@ CookTorranceShading::shade(const Ray &ray, Intersection &best,
     }
 
     Ray genRay;
-    best.getHits(0)->hitObject->transformRayToObjectSpace(ray, genRay); //object space
+    best.getHit(0)->hitObject->transformRayToObjectSpace(ray, genRay); //object space
+
+    Vector3 v(-genRay.dir.vector.head(3)); //object space
+    v.normalize();
+
+    Vector3 m(best.getHit(0)->hitNormal); //object space
+    m.normalize();
 
 
-
-   /* if (dynamic_cast<UnitSphere*>(best.getHits(0)->hitObject.get())){
-        auto p = best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point;
-        if (p.z() > 11){
-            if (p.y() > 0.98 && p.y() < 1.01) {
-                if (p.x() > 0.78 && p.x() < 0.8) {
-                    std::cout << best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point << std::endl;
-                }
-            }
-        }
-    }*/
-
-    Eigen::Vector3d vCords = -genRay.dir.vector.head(3);
-    Vector3 v(vCords); //object space
-
-    Vector3 m;
-    m.set(best.getHits(0)->hitNormal); //object space
-
-
-    Point3 hitLocation = best.getHits(0)->hitPoint;
-
-
-    v.vector.head(3).normalize();
-    m.vector.head(3).normalize();
-
-    double red = 0, green = 0, blue = 0;
-    Eigen::Vector3d sCords = (best.getHits(0)->hitObject->getInverseTransform() * lightSource->location.point).head(3) -
-                             hitLocation.point.head(3);
-    Vector3 s(sCords);
-    s.vector.head(3).normalize();
+    Point3 hitLocation = best.getHit(0)->hitPoint;
+    Vector3 s((best.getHit(0)->hitObject->getInverseTransform() * lightSource->location.point).head(3) - hitLocation.point.head(3));
+    s.normalize();
 
     Vector3 h = s + v;
-    h.vector.head(3).normalize();
+    h.normalize();
 
+    double red = 0, green = 0, blue = 0;
     red += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 0);;
     green += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 1);
     blue += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 2);
@@ -72,13 +53,18 @@ double
 CookTorranceShading::calcDefuseAndSpecular(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
                                            const std::shared_ptr<LightSource> &lightSource,
                                            const std::shared_ptr<FresnelMaterial> &material, int index) const {
+    double defusePart = 0;
+    double specularPart = 0;
 
+    if (!DebugFlags::getTurnOffDefusedColors()){
+        defusePart = getDefusePartOneColor(s, m, lightSource, material, index);
+    }
 
-    double defusePart = getDefusePartOneColor(s, m, lightSource, material, index);
+    if (!DebugFlags::getTurnOffSpecularColors()) {
+        specularPart = getSpecularPartOneColor(h, s, m, v, lightSource, material, index);
+    }
 
-    double specularPart = getSpecularPartOneColor(h, s, m, v, lightSource, material, index);
-
-    return specularPart + defusePart;
+    return  specularPart + defusePart;
 }
 
 double CookTorranceShading::getAmbientPartOneColor(const std::shared_ptr<LightSource> &lightSource,

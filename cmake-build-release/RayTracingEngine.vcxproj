@@ -362,6 +362,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\HitInfo.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\Intersection.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\ObjectFactory.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\Boolean.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\DifferenceBool.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\IntersectionBool.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\Booleans\UnionBool.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\HitObject.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCube.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitSphere.cpp" />
@@ -390,6 +394,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\Shaders\LightSource.h" />
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\include\RayTracer.h" />
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\include\GeometricFunctionsLookup.h" />
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\include\DebugFlags.h" />
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\Boolean.h" />
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\UnionBool.h" />
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\IntersectionBool.h" />
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\DifferenceBool.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\ZERO_CHECK.vcxproj">

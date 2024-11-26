@@ -55,7 +55,16 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Rendering/src/RayTracer.cpp
         Rendering/include/RayTracer.h
         Math/src/GeometricFunctionsLookup.cpp
-        Math/include/GeometricFunctionsLookup.h)
+        Math/include/GeometricFunctionsLookup.h
+        Core/include/DebugFlags.h
+        Geometry/src/unitGeometricObjects/Booleans/Boolean.cpp
+        Geometry/include/unitGeometricObjects/Booleans/Boolean.h
+        Geometry/src/unitGeometricObjects/Booleans/UnionBool.cpp
+        Geometry/include/unitGeometricObjects/Booleans/UnionBool.h
+        Geometry/src/unitGeometricObjects/Booleans/IntersectionBool.cpp
+        Geometry/include/unitGeometricObjects/Booleans/IntersectionBool.h
+        Geometry/src/unitGeometricObjects/Booleans/DifferenceBool.cpp
+        Geometry/include/unitGeometricObjects/Booleans/DifferenceBool.h)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 

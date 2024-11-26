@@ -8,6 +8,7 @@
 #include <future>
 #include "iostream"
 #include "optional"
+#include "DebugFlags.h"
 
 void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
@@ -30,14 +31,9 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, pbo);
     glBufferData(GL_PIXEL_UNPACK_BUFFER, nColumns * nRows * 3 * sizeof(float), nullptr, GL_STREAM_DRAW);
 
-    if (numThreads == 0) {
+    if (numThreads == 0 && !DebugFlags::getSingleThreadMode()) {
         numThreads = 1;
     }
-
-    //numThreads = 1; // todo debug
-
-    std::vector<std::vector<Color3>> pixelColors(nRows, std::vector<Color3>(nColumns));
-    std::mutex colorMutex;
 
     float* pboPtr = (float*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
     auto processRows = [&](int startRow, int endRow) {
@@ -49,20 +45,16 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
         for (int row = startRow; row < endRow; row++) {
             for (int col = 0; col < nColumns; col++) {
-                /*
-                Color3 clr = {0, 0, 0};
 
-                if (row > 346 && row < 349 && col > 643 && col < 645 || true){ //                 if (row > 384 && row < 400 && col > 632 && col < 680 ){
+                /*Color3 clr = {0, 0, 0};
+
+                if (row > 400 && row < 403 && col > 643 && col < 645){ //                 if (row > 384 && row < 400 && col > 632 && col < 680 ){
                     //clr.set(antiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
                     clr.set(noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
-
+                    std::cout << "pixle done" << std::endl;
                 } else {
                     clr.set(0, 255, 0);
-                }
-
-                pixelColors[row][col] = clr;*/
-
-                //pixelColors[row][col] = noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col);
+                }*/
 
                 Color3 clr = noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col);
 
@@ -100,24 +92,6 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
     // Step 7: Clean up
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
     glDeleteBuffers(1, &pbo);
-
-
-
-
-    /* for (int row = 0; row < nRows; row++) {
-         int flippedRow = nRows - row - 1;
-         for (int col = 0; col < nColumns; col++) {
-             if (row > 384 && row < 400 && col > 632 && col < 680 ) {
-                 int i =1;
-             }
-
-             Color3 &clr = pixelColors[row][col];
-             glColor3f(clr.getRed() / (1 + clr.getRed()), clr.getGreen() / (1 + clr.getGreen()), clr.getBlue() / (1 + clr.getBlue())); // rainhard tone mapping: https://64.github.io/tonemapping/
-
-             //glColor3f( static_cast<float>(clr.getRed()) , static_cast<float>(clr.getGreen()), static_cast<float>(clr.getBlue()));
-             glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
-         }
-     }*/
 
 }
 
@@ -217,21 +191,28 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, Intersection &best) {
     }
 
     Ray feeler;
-    Eigen::Vector4d hitPoint = best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point;
+    Eigen::Vector4d hitPoint = best.getHit(0)->hitObject->getTransform() * best.getHit(0)->hitPoint.point;
     feeler.setStart(Point3(hitPoint - 0.001 * ray.dir.vector.normalized()));
 
 
     auto tempLight = scn.getListOfLightsSourcePointers()[0];
-    Color3 color = shader->getAmbientPart(tempLight, best.getHits(0)->hitObject->material);
+
+    Color3 color;
+
+    if(!DebugFlags::getTurnOffAmbientColors()){
+        color.add(shader->getAmbientPart(tempLight, best.getHit(0)->hitObject->material));
+    }
+
+
     for (const auto &lightSource: scn.getListOfLightsSourcePointers()) {
         Eigen::Vector4d lightPos = lightSource->location.point;
         feeler.setDir(Vector3(lightPos - hitPoint));
 
-        if (this->isInShadow(feeler, scn)) {
+        if (this->isInShadow(feeler, scn) && !DebugFlags::getTurnOffShadows()) {
             continue;
         }
 
-        color = color + shader->shade(ray, best, lightSource, best.getHits(0)->hitObject->material);
+        color = color + shader->shade(ray, best, lightSource, best.getHit(0)->hitObject->material);
     }
 
     return color;
@@ -247,8 +228,9 @@ void RayTracer::getFirstHit(const Ray &ray, Intersection &best, Scene &scn) {
             continue;
         }
 
-        if (best.numHits == 0 || inter.getHits(0)->hitTime < best.getHits(0)->hitTime) {
+        if (best.numHits == 0 || inter.getHit(0)->hitTime < best.getHit(0)->hitTime) {
             best.set(inter);
+            //inter.resize(2);
         }
     }
 }
@@ -270,41 +252,41 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
         return regularColors;
     }
 
-    double shininess = best.getHits(0)->hitObject->material->shininess;
-    double transparency = best.getHits(0)->hitObject->material->transparency;
-    Point3 hitPoint(best.getHits(0)->hitObject->getTransform() * best.getHits(0)->hitPoint.point); //real hitpoint
-    //Vector3 hitNormal = best.getHits(0)->hitNormal;
+    double shininess = best.getHit(0)->hitObject->material->shininess;
+    double transparency = best.getHit(0)->hitObject->material->transparency;
+    Point3 hitPoint(best.getHit(0)->hitObject->getTransform() * best.getHit(0)->hitPoint.point); //real hitpoint
+    //Vector3 hitNormal = best.getHit(0)->hitNormal;
 
     Vector3 hitNormal;
-    hitNormal.set((best.getHits(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() * best.getHits(0)->hitNormal.vector.head(3)).normalized()); //real hitnormal
+    hitNormal.set((best.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() * best.getHit(0)->hitNormal.vector.head(3)).normalized()); //real hitnormal
 
 
 
     //Vector3 normilizedRayDir(ray.dir.vector.head(3).normalized());
     const double epsilon = 1e-5;
 
-    if (shininess > 0.0000001){
+    if (shininess > 0.0000001 && !DebugFlags::getTurnOffReflection()){
         Ray reflectionRay;
 
         reflectionRay.setStart(Point3(hitPoint.point.head(3) + epsilon * hitNormal.vector.head(3))); //move a bit like shadow
         //reflectionRay.setDir(normilizedRayDir - 2 * (normilizedRayDir * hitNormal) * hitNormal);
         reflectionRay.setDir(ray.dir - 2 * (ray.dir * hitNormal) * hitNormal);
 
-        reflectionRay.speedOfLightInCurrentMaterial = best.getHits(0)->hitObject->material->speedOfLight;
+        reflectionRay.speedOfLightInCurrentMaterial = best.getHit(0)->hitObject->material->speedOfLight;
 
         regularColors.add( shininess * shade(reflectionRay, scn, recursionDepth + 1)); //need real world ray
     }
 
 
-    if (transparency > 0.0000001){
+    if (transparency > 0.0000001 && !DebugFlags::getTurnOffRefraction()){
         Ray transparencyRay;
 
-        double dotOfNormalAndDir =  hitNormal * ray.dir;
+        double dotOfNormalAndDir =   ray.dir.vector.head(3).normalized().dot(hitNormal.vector.head(3));
         double indexOfRefraction;
         if (dotOfNormalAndDir < 0) {
-            indexOfRefraction = ray.speedOfLightInCurrentMaterial / best.getHits(0)->hitObject->material->speedOfLight;
+            indexOfRefraction = ray.speedOfLightInCurrentMaterial / best.getHit(0)->hitObject->material->speedOfLight;
         } else {
-            indexOfRefraction = best.getHits(0)->hitObject->material->speedOfLight / ray.speedOfLightInCurrentMaterial;
+            indexOfRefraction = best.getHit(0)->hitObject->material->speedOfLight / ray.speedOfLightInCurrentMaterial;
             hitNormal = -hitNormal;
             dotOfNormalAndDir = hitNormal * ray.dir;
         }
@@ -313,24 +295,29 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
 
         double cosTheta = 1 - (indexOfRefraction * indexOfRefraction) * (1 - dotOfNormalAndDir * dotOfNormalAndDir);
 
+        //std::cout << cosTheta << std::endl;
+
         if (cosTheta > 0){
-            transparencyRay.setStart(Point3(hitPoint.point.head(3) - epsilon * hitNormal.vector.head(3)));
+
+            Eigen::Vector3d slightyInsidePoint = hitPoint.point.head(3) - epsilon * hitNormal.vector.head(3);;
+
+            transparencyRay.setStart(Point3(slightyInsidePoint));
             cosTheta = std::sqrt(cosTheta);
 
             //transparencyRay.setDir( indexOfRefraction * normilizedRayDir + (indexOfRefraction * dotOfNormalAndDir - cosTheta) * hitNormal);
             transparencyRay.setDir( indexOfRefraction * ray.dir + (indexOfRefraction * dotOfNormalAndDir - cosTheta) * hitNormal);
 
-            transparencyRay.speedOfLightInCurrentMaterial = best.getHits(0)->hitObject->material->speedOfLight;
+            transparencyRay.speedOfLightInCurrentMaterial = best.getHit(0)->hitObject->material->speedOfLight;
 
             regularColors.add( transparency * shade(transparencyRay, scn, recursionDepth + 1));
         } else {
-            /*Ray totalReflectionRay;
+            Ray totalReflectionRay;
             transparencyRay.setStart(Point3(hitPoint.point.head(3) + epsilon * hitNormal.vector.head(3)));
             totalReflectionRay.setDir(ray.dir - 2 * (ray.dir * hitNormal) * hitNormal);
 
             totalReflectionRay.speedOfLightInCurrentMaterial = ray.speedOfLightInCurrentMaterial;
 
-            regularColors.add(transparency * shade(totalReflectionRay, scn, recursionDepth + 1));*/
+            regularColors.add(transparency * shade(totalReflectionRay, scn, recursionDepth + 1));
         }
 
 
