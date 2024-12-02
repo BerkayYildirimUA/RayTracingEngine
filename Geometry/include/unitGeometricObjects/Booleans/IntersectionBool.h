@@ -12,6 +12,9 @@ public:
         setLeft(leftObj);
         setRight(rightObj);
     }
+
+    bool hit(const Ray &incomingRay) const override;
+
 private:
     Intersection useOperation(const Intersection &left, const Intersection &right) const override;
 };

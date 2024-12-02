@@ -16,8 +16,8 @@ Intersection UnionBool::useOperation(const Intersection &left, const Intersectio
         bool rightInside = false;
         bool combInside = false;
 
-        while (leftIndex < left.numHits || rightIndex < right.numHits) { //while both not empty
-            const HitInfo* currentHit = nullptr;
+        while (leftIndex < left.numHits || rightIndex < right.numHits) { //while one still full
+            HitInfo* currentHit = nullptr;
 
             // left not empty and (right empty or (left <= right))
             if (leftIndex < left.numHits && (rightIndex >= right.numHits || (left.getHit(leftIndex)->hitTime <= right.getHit(rightIndex)->hitTime))) {
@@ -41,4 +41,8 @@ Intersection UnionBool::useOperation(const Intersection &left, const Intersectio
         }
 
         return result;
+}
+
+bool UnionBool::hit(const Ray &incomingRay) const {
+    return left->hit(incomingRay) || right->hit(incomingRay);
 }

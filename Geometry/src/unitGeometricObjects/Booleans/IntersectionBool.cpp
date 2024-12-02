@@ -16,7 +16,7 @@ Intersection IntersectionBool::useOperation(const Intersection &left, const Inte
     bool combInside = false;
 
 
-    while (leftIndex < left.numHits && rightIndex < right.numHits) { //while either not empty
+    while (leftIndex < left.numHits && rightIndex < right.numHits) { //while neither empty
         HitInfo* currentHit = nullptr;
 
         if (left.getHit(leftIndex)->hitTime <= right.getHit(rightIndex)->hitTime) {
@@ -41,4 +41,8 @@ Intersection IntersectionBool::useOperation(const Intersection &left, const Inte
     }
 
     return result;
+}
+
+bool IntersectionBool::hit(const Ray &incomingRay) const {
+    return left->hit(incomingRay) && right->hit(incomingRay);
 }

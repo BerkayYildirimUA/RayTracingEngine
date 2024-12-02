@@ -13,7 +13,7 @@
 
 class UnitSphere : public PrimitiveObjects {
 public:
-    bool hit(const Ray &incomingRay, Intersection &intersection) override;
+    bool hit(const Ray &incomingRay, Intersection &intersection) const override;
     bool hit(const Ray &incomingRay) const override;
 
     explicit UnitSphere(const std::shared_ptr<AbstractMaterial> &material);

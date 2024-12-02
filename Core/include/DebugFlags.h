@@ -7,7 +7,7 @@
 
 class DebugFlags { 
 private:
-    static constexpr bool singleThreadMode = false;
+    static constexpr bool singleThreadMode = true;
     static constexpr bool turnOffAmbientColors = false;
     static constexpr bool turnOffSpecularColors = false;
     static constexpr bool turnOffDefusedColors = false;

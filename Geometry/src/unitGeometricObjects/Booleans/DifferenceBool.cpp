@@ -5,7 +5,7 @@
 #include "Geometry/include/unitGeometricObjects/Booleans/DifferenceBool.h"
 #include "Intersection.h"
 
-Intersection DifferenceBool::useOperation(const Intersection &left, const Intersection &right) const { //TODO something wrong here, I can see through door
+Intersection DifferenceBool::useOperation(const Intersection &left, const Intersection &right) const {
     Intersection result;
 
     int leftIndex = 0, rightIndex = 0;
@@ -16,7 +16,7 @@ Intersection DifferenceBool::useOperation(const Intersection &left, const Inters
     bool combInside = false;
 
 
-    while (leftIndex < left.numHits) { //while both not empty
+    while (leftIndex < left.numHits) { //while left not empty
         HitInfo* currentHit = nullptr;
 
         if ((rightIndex >= right.numHits) || (left.getHit(leftIndex)->hitTime < right.getHit(rightIndex)->hitTime)) {
@@ -26,10 +26,10 @@ Intersection DifferenceBool::useOperation(const Intersection &left, const Inters
         } else {
             currentHit = right.getHit(rightIndex).get();
             rightInside = currentHit->isEntering;
+
+            currentHit->hitNormal = -currentHit->hitNormal;
+            currentHit->hitObject = left.getHit(0)->hitObject;
             ++rightIndex;
-
-            //currentHit->hitNormal = -currentHit->hitNormal;
-
         }
 
 
@@ -44,4 +44,8 @@ Intersection DifferenceBool::useOperation(const Intersection &left, const Inters
     }
 
     return result;
+}
+
+bool DifferenceBool::hit(const Ray &incomingRay) const {
+    return left->hit(incomingRay) && !right->hit(incomingRay);
 }

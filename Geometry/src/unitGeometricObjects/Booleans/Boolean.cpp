@@ -5,7 +5,7 @@
 #include "Geometry/include/unitGeometricObjects/Booleans/Boolean.h"
 #include "Intersection.h"
 
-bool Boolean::hit(const Ray &incomingRay, Intersection &intersection) {
+bool Boolean::hit(const Ray &incomingRay, Intersection &intersection) const {
     Intersection leftInter, rightInter;
 
     bool test = left->hit(incomingRay, leftInter);

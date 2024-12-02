@@ -15,6 +15,8 @@ public:
     }
 
     Intersection useOperation(const Intersection &left, const Intersection &right) const override;
+
+    bool hit(const Ray &incomingRay) const override;
 };
 
 

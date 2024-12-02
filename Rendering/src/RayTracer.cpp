@@ -38,9 +38,10 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
         numThreads = 1;
     }
 
-
     float* pboPtr = (float*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
-    auto processRows = [&](int startRow, int endRow) {
+
+
+   /* auto processRows = [&](int startRow, int endRow) {
         Ray threadRay;
         threadRay.setStart(camera->getEye());
 
@@ -50,19 +51,34 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
         for (int row = startRow; row < endRow; row++) {
             for (int col = 0; col < nColumns; col++) {
 
-                /*Color3 clr = {0, 0, 0};
+                Color3 clr = {0, 0, 0};
 
-                if (row > 400 && row < 403 && col > 643 && col < 645){ //                 if (row > 384 && row < 400 && col > 632 && col < 680 ){
+                if (row == 190 && col == 160){ //
                     //clr.set(antiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
                     clr.set(noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
-                    std::cout << "pixle done" << std::endl;
+                   // std::cout << "pixle done" << std::endl;
                 } else {
                     clr.set(0, 255, 0);
-                }*/
+                }
 
+                int index = (row * nColumns + col) * 3;
+                pboPtr[index] = static_cast<float>(clr.getRed());
+                pboPtr[index + 1] = static_cast<float>(clr.getGreen());
+                pboPtr[index + 2] = static_cast<float>(clr.getBlue());
+            }
+        }
+    };
+*/
+    auto processRows = [&](int startRow, int endRow) {
+        Ray threadRay;
+        threadRay.setStart(camera->getEye());
+
+        Vector3 dir;
+        Vector3 distanceVector(camera->getNormalDistanceVector().vector * camera->getDistance());
+
+        for (int row = startRow; row < endRow; row++) {
+            for (int col = 0; col < nColumns; col++) {
                 Color3 clr = noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col);
-
-                //Color3 clr = {1, 1, 1};
 
                 int index = (row * nColumns + col) * 3;
                 pboPtr[index] = static_cast<float>(clr.getRed());

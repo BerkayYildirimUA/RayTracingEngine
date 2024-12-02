@@ -31,11 +31,8 @@ public:
         Boolean::right = right;
     }
 
-    bool hit(const Ray &incomingRay, Intersection &intersection) override;
+    bool hit(const Ray &incomingRay, Intersection &intersection) const override;
 
-    bool hit(const Ray &incomingRay) const override {
-        return false;
-    }
 };
 
 

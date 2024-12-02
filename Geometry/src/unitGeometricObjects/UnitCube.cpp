@@ -7,7 +7,7 @@
 #include "HitInfo.h"
 #include "memory"
 
-bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection)  {
+bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) const {
     Ray genRay;
     transformRayToObjectSpace(incomingRay, genRay);
     double tHit, numer, denom;
@@ -79,16 +79,18 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection)  {
         info->hitTime = tIn;
         info->surface = inSurf;
         info->isEntering = true;
-        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(
+                const_cast<UnitCube*>(this)->shared_from_this()
+        );
 
         Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tIn);
         info->hitPoint.set(point.x(), point.y(), point.z());
 
         Eigen::Vector3d cubeNorm = cubeNormal(inSurf);
-
+/*
         if (genRay.dir.vector.head(3).dot(cubeNorm) > 0){
             cubeNorm = -cubeNorm;
-        }
+        }*/
 
         /*if(this->isInsideCube(genRay.start)){
             cubeNorm = -cubeNorm;
@@ -104,14 +106,16 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection)  {
         info->hitTime = tOut;
         info->surface = outSurf;
         info->isEntering = false;
-        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(
+                const_cast<UnitCube*>(this)->shared_from_this()
+        );
 
         Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tOut);
         info->hitPoint.set(point.x(), point.y(), point.z());
 
         Eigen::Vector3d cubeNorm = cubeNormal(outSurf);
 
-        if (genRay.dir.vector.head(3).dot(cubeNorm) > 0){
+        if (genRay.dir.vector.head(3).dot(cubeNorm) > 0 && tIn < 0){
             cubeNorm = -cubeNorm;
         }
 

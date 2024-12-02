@@ -9,7 +9,7 @@
 #include "Intersection.h"
 #include "HitInfo.h"
 
-bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
+bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) const {
     Ray genRay;
     this->transformRayToObjectSpace(incomingRay, genRay);
 
@@ -47,7 +47,9 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
         info->hitTime = t1;
         info->surface = 0;
         info->isEntering = true;
-        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(
+                const_cast<UnitSphere*>(this)->shared_from_this()
+        );
 
         Eigen::Vector3d point = genRay.calcPoint(t1);
         info->hitPoint.set(point.x(), point.y(), point.z());
@@ -69,7 +71,9 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) {
         info->hitTime = t2;
         info->surface = 0;
         info->isEntering = false;
-        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(shared_from_this());
+        info->hitObject = std::static_pointer_cast<PrimitiveObjects>(
+                const_cast<UnitSphere*>(this)->shared_from_this()
+        );
 
         Eigen::Vector3d point = genRay.calcPoint(t2);
         info->hitPoint.set(point.x(), point.y(), point.z());
