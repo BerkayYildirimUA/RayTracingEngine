@@ -40,8 +40,8 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
     float* pboPtr = (float*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
 
-
-   /* auto processRows = [&](int startRow, int endRow) {
+/*
+    auto processRows = [&](int startRow, int endRow) {
         Ray threadRay;
         threadRay.setStart(camera->getEye());
 
@@ -53,10 +53,10 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
                 Color3 clr = {0, 0, 0};
 
-                if (row == 190 && col == 160){ //
+                if (row == 200 && col == 200){ //
                     //clr.set(antiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
                     clr.set(noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
-                   // std::cout << "pixle done" << std::endl;
+                   std::cout << "" << std::endl;
                 } else {
                     clr.set(0, 255, 0);
                 }
@@ -67,8 +67,8 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
                 pboPtr[index + 2] = static_cast<float>(clr.getBlue());
             }
         }
-    };
-*/
+    };*/
+
     auto processRows = [&](int startRow, int endRow) {
         Ray threadRay;
         threadRay.setStart(camera->getEye());
@@ -87,6 +87,7 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
             }
         }
     };
+
 
     std::vector<std::thread> threads;
     threads.reserve(numThreads);

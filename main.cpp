@@ -147,36 +147,36 @@ int main() {
 
 
 
-    manager.pushScale(40, 18, 1); // Scale [40, 18, 1]
-    manager.pushScale(0.5, 0.5, 0.5);     // Scale
-    auto baseCube = ObjectFactory::createObject<UnitCube>(manager, gold); // Creates and resets
+    manager.pushScale(40, 18, 1);
+    manager.pushScale(0.5, 0.5, 0.5);
+    auto baseCube = ObjectFactory::createObject<UnitCube>(manager, gold);
 
     std::vector<std::shared_ptr<PrimitiveObjects>> unionCubes;
 
-    manager.pushTranslation(15, 4, 0); // Translate
-    manager.pushScale(5, 5, 2);        // Scale
-    manager.pushScale(0.5, 0.5, 0.5);     // Scale
-    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+    manager.pushTranslation(15, 4, 0);
+    manager.pushScale(5, 5, 2);
+    manager.pushScale(0.5, 0.5, 0.5);
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));
 
-    manager.pushTranslation(15, -4, 0); // Translate
-    manager.pushScale(5, 5, 2);         // Scale
-    manager.pushScale(0.5, 0.5, 0.5);     // Scale
-    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+    manager.pushTranslation(15, -4, 0);
+    manager.pushScale(5, 5, 2);
+    manager.pushScale(0.5, 0.5, 0.5);
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));
 
-    manager.pushTranslation(8, 4, 0); // Translate
-    manager.pushScale(5, 5, 2);       // Scale
-    manager.pushScale(0.5, 0.5, 0.5);     // Scale
-    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+   /* manager.pushTranslation(8, 4, 0);
+    manager.pushScale(5, 5, 2);
+    manager.pushScale(0.5, 0.5, 0.5);
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));*/
 
-    manager.pushTranslation(8, -4, 0); // Translate
-    manager.pushScale(5, 5, 2);        // Scale
-    manager.pushScale(0.5, 0.5, 0.5);     // Scale
-    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+    manager.pushTranslation(8, -4, 0);
+    manager.pushScale(5, 5, 2);
+    manager.pushScale(0.5, 0.5, 0.5);
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));
 
-    manager.pushTranslation(-10, 0, 0.8); // Translate
-    manager.pushScale(15, 14, 1);         // Scale
-    manager.pushScale(0.5, 0.5, 0.5);     // Scale
-    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold)); // Creates and resets
+    manager.pushTranslation(-10, 0, 0.8);
+    manager.pushScale(15, 14, 1);
+    manager.pushScale(0.5, 0.5, 0.5);
+    unionCubes.emplace_back(ObjectFactory::createObject<UnitCube>(manager, gold));
 
     std::shared_ptr<HitObject> unionObject = unionCubes[0];
     for (size_t i = 1; i < unionCubes.size(); ++i) {
@@ -187,7 +187,7 @@ int main() {
 
     vector.emplace_back(diffObject);
 
-
+/*
 
     manager.pushTranslation(1, 6, 1);
     manager.pushScale(0.6, 0.6, 1);
@@ -201,27 +201,26 @@ int main() {
     manager.pushScale(0.5, 0.5, 0.5);     // Scale
     auto extraCube2 = ObjectFactory::createObject<UnitCube>(manager, gold);
 
-    diffObject = ObjectFactory::createBoolObject<UnionBool>(diffObject, extraCube2);
+    diffObject = ObjectFactory::createBoolObject<UnionBool>(diffObject, extraCube2);*/
 
 
-    vector.emplace_back(diffObject);
+    //vector.emplace_back(diffObject);
 
-    /*
-    manager.pushTranslation(1.0085, 5.301, 1.4); // Translate
-    manager.pushScale(0.6, 2, 0.2);              // Scale
-    manager.pushScale(0.5, 0.5, 0.5);     // Scale
-    auto extraCube2 = ObjectFactory::createObject<UnitCube>(manager, gold); // Creates and resets
+    manager.pushTranslation(1, 6, 1);
+    manager.pushScale(0.6, 0.6, 1);
+    manager.pushScale(0.5, 0.5, 0.5);
+    auto extraCube1 = ObjectFactory::createObject<UnitCube>(manager, gold);
 
-    auto finalObject = ObjectFactory::createBoolObject<UnionBool>(diffObject, extraCube1);
-     finalObject = ObjectFactory::createBoolObject<UnionBool>(finalObject,extraCube2 );
+    manager.pushTranslation(1.0085, 5.301, 1.4);
+    manager.pushScale(0.6, 2, 0.2);
+    manager.pushScale(0.5, 0.5, 0.5);
+    auto extraCube2 = ObjectFactory::createObject<UnitCube>(manager, gold);
 
-
-// Final Union (Difference + Extra Cubes)
-   // auto finalObject = ObjectFactory::createBoolObject<UnionBool>(extraCube2, extraCube1);
-   // finalObject = ObjectFactory::createBoolObject<UnionBool>(finalObject, extraCube1);
+    auto doorHandel = ObjectFactory::createBoolObject<UnionBool> (extraCube2, extraCube1);
+    auto finalObject = ObjectFactory::createBoolObject<UnionBool>(diffObject, doorHandel );
 
 // Store the Final Object
-    vector.emplace_back(finalObject);*/
+    vector.emplace_back(finalObject);
 
 
 /*
@@ -251,7 +250,9 @@ int main() {
 
     Camera camera(400, 400, 60); //1280×720p
 
-    Point3 point(8, 0, 30);
+    Point3 point(-5, 0, 30);
+    //Point3 point(-190, 0, -30);
+
     //Camera camera(1280, 720, 60);
    // camera.yaw(146.31);
     //camera.pitch(-40);

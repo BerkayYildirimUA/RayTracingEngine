@@ -155,7 +155,6 @@ bool UnitCube::hit(const Ray &incomingRay) const {
     Ray genRay;
     this->transformRayToObjectSpace(incomingRay, genRay);
 
-
     double tHit, numer, denom;
     double tIn = -1000000.0, tOut = 1000000.0;
 

@@ -109,6 +109,11 @@ bool UnitSphere::hit(const Ray &incomingRay) const {
     B = start * direction;
     C = start * start - 1.0;
 
+    if (C > 0){
+        return false;
+    }
+
+
     double discrim = B * B - A * C; // ax^2 + 2bx + c --> 4b^2 - 4AC
 
     if (discrim < 0.0) {

@@ -27,6 +27,9 @@ public:
     std::unique_ptr<HitInfo> &getHit(int i);
     [[nodiscard]] const std::unique_ptr<HitInfo> &getHit(int i) const;
 
+    const std::vector<std::unique_ptr<HitInfo>> &getHits() const;
+
+
     void resize(int size);
 
     auto begin();

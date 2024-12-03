@@ -70,4 +70,8 @@ auto Intersection::end() const {
     return hits.end();
 }
 
+const std::vector<std::unique_ptr<HitInfo>> &Intersection::getHits() const {
+    return hits;
+}
+
 

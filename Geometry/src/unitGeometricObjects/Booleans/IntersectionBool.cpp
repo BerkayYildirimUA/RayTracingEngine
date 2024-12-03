@@ -11,13 +11,13 @@ Intersection IntersectionBool::useOperation(const Intersection &left, const Inte
     int leftIndex = 0, rightIndex = 0;
 
 
-    bool leftInside = false;
-    bool rightInside = false;
-    bool combInside = false;
+    bool leftInside = (left.numHits > 0) ? !left.getHit(0)->isEntering : false;
+    bool rightInside = (right.numHits > 0) ? !right.getHit(0)->isEntering : false;
+    bool combInside = leftInside && rightInside;
 
 
     while (leftIndex < left.numHits && rightIndex < right.numHits) { //while neither empty
-        HitInfo* currentHit = nullptr;
+        HitInfo *currentHit = nullptr;
 
         if (left.getHit(leftIndex)->hitTime <= right.getHit(rightIndex)->hitTime) {
             currentHit = left.getHit(leftIndex).get();
@@ -26,7 +26,6 @@ Intersection IntersectionBool::useOperation(const Intersection &left, const Inte
         } else {
             currentHit = right.getHit(rightIndex).get();
             rightInside = currentHit->isEntering;
-            currentHit->hitObject = left.getHit(0)->hitObject;
             ++rightIndex;
         }
 
@@ -35,7 +34,7 @@ Intersection IntersectionBool::useOperation(const Intersection &left, const Inte
         if (newCombInside != combInside) {
             combInside = newCombInside;
             result.resize(result.numHits + 1);
-            auto& newHit = result.getHit(result.numHits++);
+            auto &newHit = result.getHit(result.numHits++);
             newHit = std::make_unique<HitInfo>(*currentHit);
         }
     }
@@ -44,5 +43,9 @@ Intersection IntersectionBool::useOperation(const Intersection &left, const Inte
 }
 
 bool IntersectionBool::hit(const Ray &incomingRay) const {
-    return left->hit(incomingRay) && right->hit(incomingRay);
+    bool leftBool = left->hit(incomingRay);
+    bool rightBool = right->hit(incomingRay);
+
+
+    return leftBool && rightBool;
 }

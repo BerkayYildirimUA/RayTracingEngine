@@ -40,9 +40,9 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
         } else if (key == GLFW_KEY_RIGHT) {
             camera->slide(0, 1, 0);
         } else if (key == GLFW_KEY_W) {
-            camera->pitch(-10);
-        } else if (key == GLFW_KEY_S) {
             camera->pitch(10);
+        } else if (key == GLFW_KEY_S) {
+            camera->pitch(-10);
         } else if (key == GLFW_KEY_A) {
             camera->yaw(10);
         } else if (key == GLFW_KEY_D) {
