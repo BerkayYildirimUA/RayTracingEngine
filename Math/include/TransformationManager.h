@@ -10,9 +10,6 @@
 #include "optional"
 #include "utility"
 
-/*
- * TODO: make inverse and normal at the same time.
- */
 
 class TransformationManager {
 private:
