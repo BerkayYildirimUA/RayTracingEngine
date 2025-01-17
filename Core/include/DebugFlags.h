@@ -7,11 +7,11 @@
 
 class DebugFlags { 
 private:
-    static constexpr bool singleThreadMode = false;
+    static constexpr bool singleThreadMode = true;
     static constexpr bool turnOffAmbientColors = false;
     static constexpr bool turnOffSpecularColors = false;
     static constexpr bool turnOffDefusedColors = false;
-    static constexpr bool turnOffShadows = false;
+    static constexpr bool turnOffShadows = true;
     static constexpr bool turnOffRefraction = true;
     static constexpr bool turnOffReflection = true;
 

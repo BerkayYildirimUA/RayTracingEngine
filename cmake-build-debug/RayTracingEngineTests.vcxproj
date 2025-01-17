@@ -377,6 +377,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\HitObject.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\PrimitiveObjects.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCube.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCylinder.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitSphere.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\GeometricFunctionsLookup.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\InverseTransformations.cpp" />

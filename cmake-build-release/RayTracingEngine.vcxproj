@@ -369,6 +369,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\HitObject.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\PrimitiveObjects.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCube.cpp" />
+    <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitCylinder.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\unitGeometricObjects\UnitSphere.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\GeometricFunctionsLookup.cpp" />
     <ClCompile Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Math\src\InverseTransformations.cpp" />
@@ -401,6 +402,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\IntersectionBool.h" />
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\Booleans\DifferenceBool.h" />
     <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\PrimitiveObjects.h" />
+    <ClInclude Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\include\unitGeometricObjects\UnitCylinder.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\ZERO_CHECK.vcxproj">

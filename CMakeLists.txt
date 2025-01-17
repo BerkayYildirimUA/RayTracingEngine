@@ -65,7 +65,9 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Geometry/include/unitGeometricObjects/Booleans/IntersectionBool.h
         Geometry/src/unitGeometricObjects/Booleans/DifferenceBool.cpp
         Geometry/include/unitGeometricObjects/Booleans/DifferenceBool.h
-        Geometry/include/unitGeometricObjects/PrimitiveObjects.h)
+        Geometry/include/unitGeometricObjects/PrimitiveObjects.h
+        Geometry/src/unitGeometricObjects/UnitCylinder.cpp
+        Geometry/include/unitGeometricObjects/UnitCylinder.h)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 

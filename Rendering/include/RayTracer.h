@@ -13,9 +13,8 @@ class RayTracer {
 private:
     std::unique_ptr<AbstractShader> shader = std::make_unique<CookTorranceShading>();
 
-    const int MAX_RECURSION_DEPTH = 15;
+    const int MAX_RECURSION_DEPTH = 5;
 
-    bool singleThreadMode = false;
 
 public:
 
