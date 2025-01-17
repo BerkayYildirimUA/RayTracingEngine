@@ -8,10 +8,13 @@
 #include "Eigen/Core"
 #include "Color3.h"
 #include "AbstractMaterial.h"
+#include <functional>
 
 class FresnelMaterial : public AbstractMaterial{
 
+private:
     Eigen::Vector3d indexOfRefraction;
+    std::function<Color3(double, double, double)> textureFunction;
 
 public:
     double defusedLightFactor;
@@ -27,6 +30,9 @@ public:
     const Eigen::Vector3d &getIndexOfRefraction() const;
 
     const double &getIndexOfRefractionByIndex(int i) const;
+
+    void setTextureFunction(const std::function<Color3(double, double, double)> &func);
+    Color3 getTexture(double x, double y, double z) const;
 
 };
 

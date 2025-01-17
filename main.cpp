@@ -240,10 +240,11 @@ int main() {
     vector.emplace_back(finalObject);
 */
     manager.pushScale(1000, 1000, 1000);
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, sky));
+    manager.pushTranslation(0, 0, -0.5);
+    vector.emplace_back(ObjectFactory::createObject<UnitCylinder>(manager, material1, 1));
 
     manager.pushScale(1, 1, 10);
-    vector.emplace_back(ObjectFactory::createObject<UnitCylinder>(manager, material1, 1));
+    vector.emplace_back(ObjectFactory::createObject<UnitCylinder>(manager, sky, 0.1));
 
     //manager.pushTranslation(0, 0, 0);
     //manager.pushScale(100, 0.1, 100);
@@ -254,7 +255,8 @@ int main() {
 
     Camera camera(400, 400, 60); //1280×720p
 
-    Point3 point(0, 0, -20);
+    Point3 point(0, 0, 5);
+    camera.yaw(180);
     //Point3 point(-190, 0, -30);
 
     //Camera camera(1280, 720, 60);
@@ -279,7 +281,7 @@ int main() {
     Color3 Iar2(0, 0, 0);
     Color3 Isr2(10000, 10000, 10000);
 
-    Point3 lightPoint3(0, 10, 3);
+    Point3 lightPoint3(0, 3, 5);
     Color3 Iar3(3, 3, 3);
     Color3 Isr3(5000, 5000, 5000);
 

@@ -42,6 +42,8 @@ CookTorranceShading::shade(const Ray &ray, Intersection &best,
     Vector3 h = s + v;
     h.normalize();
 
+
+
     double red = 0, green = 0, blue = 0;
     red += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 0);;
     green += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 1);
@@ -107,7 +109,13 @@ CookTorranceShading::getSpecularPartOneColor(const Vector3 &h, const Vector3 &s,
 }
 
 double CookTorranceShading::getG(const Vector3 &s, const Vector3 &v, const Vector3 &h, const Vector3 &m) const {
-    double gCommonPart = (2 * (m * h)) / (h * s);
+    double hS = (h*s);
+
+    if (hS == 0){
+        hS = 1e-16;
+    }
+
+    double gCommonPart = (2 * (m * h)) / hS;
     double Gm = gCommonPart * (m * s);
     double Gs = gCommonPart * (m * v);
     return std::min(Gs, std::min(Gm, 1.0));

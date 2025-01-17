@@ -39,7 +39,6 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
     }
 
     float* pboPtr = (float*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
-
 /*
     auto processRows = [&](int startRow, int endRow) {
         Ray threadRay;
