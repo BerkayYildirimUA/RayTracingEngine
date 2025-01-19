@@ -29,7 +29,6 @@ Scene::Scene(const std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers
         if (primitive) {
             auto material = primitive->getMaterial();
             if (material->emission != Color3{0, 0, 0}) {
-                std::cout << "glowingObjects.size() "<< std::endl;
                 glowingObjects.push_back(primitive);
             }
             continue; // Continue to check other objects
