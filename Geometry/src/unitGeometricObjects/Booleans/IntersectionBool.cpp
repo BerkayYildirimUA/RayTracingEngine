@@ -43,9 +43,53 @@ Intersection IntersectionBool::useOperation(const Intersection &left, const Inte
 }
 
 bool IntersectionBool::hit(const Ray &incomingRay) const {
-    bool leftBool = left->hit(incomingRay);
-    bool rightBool = right->hit(incomingRay);
+    Intersection leftInt, rightInt;
+    left->hit(incomingRay, leftInt);
+    right->hit(incomingRay, rightInt);
+
+    int leftIndex = 0;
+    int rightIndex = 0;
+
+    bool insideLeft = (leftInt.numHits > 0) ? !leftInt.getHit(0)->isEntering : false;
+    bool insideRight = (rightInt.numHits > 0) ? !rightInt.getHit(0)->isEntering : false;
+    bool combInside = insideLeft && insideRight;
+
+    while (leftIndex < leftInt.numHits || rightIndex < rightInt.numHits) {
+        HitInfo* nextEvent;
+        bool fromLeft;
+
+        // Pick whichever event is earlier in time:
+        if (rightIndex >= rightInt.numHits ||
+            (leftIndex < leftInt.numHits &&
+             leftInt.getHit(leftIndex)->hitTime <= rightInt.getHit(rightIndex)->hitTime)) {
+            nextEvent = leftInt.getHit(leftIndex).get();
+            fromLeft = true;
+            leftIndex++;
+        } else {
+            nextEvent = rightInt.getHit(rightIndex).get();
+            fromLeft = false;
+            rightIndex++;
+        }
+
+        if (nextEvent->hitTime > 1) {
+            return false;
+        }
+
+        // Update whether we are inside left or right
+        if (fromLeft) {
+            insideLeft = nextEvent->isEntering;
+        } else {
+            insideRight = nextEvent->isEntering;
+        }
+
+        bool newCombInside = insideLeft && insideRight;
+
+        if (newCombInside != combInside) {
+            return true;
+        }
+    }
 
 
-    return leftBool && rightBool;
+
+    return false;
 }

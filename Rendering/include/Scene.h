@@ -23,7 +23,7 @@ private:
     std::vector<std::shared_ptr<PrimitiveObjects>> glowingObjects;
 
     void collectGlowingObjects(const std::shared_ptr<HitObject>& obj,
-                               std::vector<std::shared_ptr<PrimitiveObjects>>& glowingObjects); // Helper for recursion
+                               std::vector<std::shared_ptr<PrimitiveObjects>>& glowingObjects);
 
 
 public:

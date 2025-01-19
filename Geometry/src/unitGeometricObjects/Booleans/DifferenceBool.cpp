@@ -54,8 +54,9 @@ bool DifferenceBool::hit(const Ray &incomingRay) const {
     int leftIndex = 0;
     int rightIndex = 0;
 
-    bool insideLeft = false;
-    bool insideRight = false;
+    bool insideLeft = (leftInt.numHits > 0) ? !rightInt.getHit(0)->isEntering : false;
+    bool insideRight = (leftInt.numHits > 0) ? !rightInt.getHit(0)->isEntering : false;
+    bool combInside = insideLeft && !insideRight;
 
     double maxHitTime = 0;
 
@@ -88,7 +89,9 @@ bool DifferenceBool::hit(const Ray &incomingRay) const {
             insideRight = isEntering;
         }
 
-        if (insideLeft && !insideRight) {
+        bool newCombInside = insideLeft && !insideRight;
+
+        if (newCombInside != combInside) {
             return true;
         }
     }

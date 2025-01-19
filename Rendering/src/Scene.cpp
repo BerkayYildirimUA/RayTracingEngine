@@ -31,7 +31,7 @@ Scene::Scene(const std::vector<std::shared_ptr<HitObject>> &listOfObjectPointers
             if (material->emission != Color3{0, 0, 0}) {
                 glowingObjects.push_back(primitive);
             }
-            continue; // Continue to check other objects
+            continue;
         }
 
         auto boolean = std::dynamic_pointer_cast<Boolean>(obj);

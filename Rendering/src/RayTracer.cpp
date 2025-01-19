@@ -332,8 +332,6 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
 
         double cosTheta = 1 - (indexOfRefraction * indexOfRefraction) * (1 - dotOfNormalAndDir * dotOfNormalAndDir);
 
-        //std::cout << cosTheta << std::endl;
-
         if (cosTheta > 0) {
 
             Eigen::Vector3d slightyInsidePoint = hitPoint.point.head(3) - epsilon * hitNormal.vector.head(3);;

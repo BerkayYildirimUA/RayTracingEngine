@@ -1,0 +1,19 @@
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLightPole.txt {
+
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLightPole.txt {
+    translate 3 0 0
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLightPole.txt {
+    translate 6 0 0
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLightPole.txt {
+    translate 9 0 0
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLightPole.txt {
+    translate 12 0 0
+}

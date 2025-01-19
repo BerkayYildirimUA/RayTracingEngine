@@ -1,5 +1,5 @@
 Light {
-    location 0 0 -20
+    location 0 0 20
     ambientIntensity 0.2 0.2 0.2
     specularIntensity 10000 10000 10000
 }

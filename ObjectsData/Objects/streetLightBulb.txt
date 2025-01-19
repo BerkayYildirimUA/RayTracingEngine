@@ -1,0 +1,68 @@
+material glass {
+    indexOfRefraction 0.1 0.1 0.4
+    ambientLightFactor 0.01
+    defusedLightFactor 0.1
+    roughness 0.01
+    transparency 0.99
+    shininess 0.8
+    speedOfLight 10000.0
+    texture default
+}
+
+material streetlight {
+    indexOfRefraction 1 0 0
+    ambientLightFactor 0.01
+    defusedLightFactor 0.1
+    roughness 0.01
+    transparency 0
+    shininess 0
+    speedOfLight 10000.0
+    texture default
+    emission 1 2 0.5
+}
+
+shape BooleanUnion {
+    left {
+        shape BooleanDifference {
+            left {
+                shape Sphere {
+                    transformations {
+                        rotate X -90
+                        translate 0 0 0
+                        scale 1 1 2
+                    }
+                    material streetlight
+                }
+            }
+            right {
+                shape Cube {
+                    transformations {
+                        rotate X -90
+                        translate 0 0 2
+                        scale 1.5 1.5 2
+                    }
+                    material streetlight
+                }
+            }
+        }
+    }
+    right {
+        shape Sphere {
+            transformations {
+                rotate X -90
+                translate 0 0 0
+                scale 1 1 0.3
+            }
+            material streetlight
+        }
+    }
+}
+
+shape Sphere {
+    transformations {
+        rotate X -90
+        translate 0 0 0
+        scale 1 1 1
+    }
+    material streetlight
+}
