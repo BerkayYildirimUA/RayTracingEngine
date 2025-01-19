@@ -13,10 +13,12 @@ class AbstractMaterial {
 protected:
     std::function<Color3(double, double, double)> textureFunction;
 
+
 public:
     double transparency = 0;
     double shininess = 0;
     double speedOfLight = 1000;
+    Color3 emission = {0, 0, 0};
 
 
     AbstractMaterial(double transparency, double shininess, double speedOfLight);
@@ -29,6 +31,7 @@ public:
     Color3 getTexture(double x, double y, double z) const;
 
     Color3 getTexture(Point3 point) const;
+
 };
 
 

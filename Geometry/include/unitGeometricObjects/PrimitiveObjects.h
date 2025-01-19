@@ -43,6 +43,8 @@ public:
 
     explicit PrimitiveObjects(const std::shared_ptr<AbstractMaterial> &material) : material(material) {};
 
+    virtual Point3 getCenter() = 0;
+
 };
 
 #endif //RAYTRACINGENGINE_PRIMITIVEOBJECTS_H

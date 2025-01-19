@@ -12,6 +12,7 @@
 #include "Geometry/include/unitGeometricObjects/HitObject.h"
 #include "Shaders/AbstractShader.h"
 #include "Shaders/LightSource.h"
+#include "unitGeometricObjects/Booleans/Boolean.h"
 
 
 class Scene {
@@ -19,6 +20,11 @@ class Scene {
 private:
     std::vector<std::shared_ptr<HitObject>> listOfObjectPointers;
     std::vector<std::shared_ptr<LightSource>> listOfLightsSourcePointers;
+    std::vector<std::shared_ptr<PrimitiveObjects>> glowingObjects;
+
+    void collectGlowingObjects(const std::shared_ptr<HitObject>& obj,
+                               std::vector<std::shared_ptr<PrimitiveObjects>>& glowingObjects); // Helper for recursion
+
 
 public:
     explicit Scene();
@@ -35,6 +41,8 @@ public:
     [[nodiscard]] const std::vector<std::shared_ptr<LightSource>> &getListOfLightsSourcePointers() const;
 
     void loadScene(const std::string & filename);
+
+    const std::vector<std::shared_ptr<PrimitiveObjects>> &getGlowingObjects() const;
 };
 
 

@@ -269,3 +269,7 @@ bool UnitCylinder::hit(const Ray &incomingRay) const {
 
 UnitCylinder::UnitCylinder(const std::shared_ptr<AbstractMaterial> &material, double s) : PrimitiveObjects(
         material) { this->s = s; }
+
+Point3 UnitCylinder::getCenter() {
+    return {0, 0, 0.5};
+}

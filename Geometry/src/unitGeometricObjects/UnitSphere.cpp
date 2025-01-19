@@ -138,3 +138,7 @@ bool UnitSphere::hit(const Ray &incomingRay) const {
 
 UnitSphere::UnitSphere(const std::shared_ptr<AbstractMaterial> &material) : PrimitiveObjects(material) {}
 
+Point3 UnitSphere::getCenter() {
+    return {0, 0, 0};
+}
+

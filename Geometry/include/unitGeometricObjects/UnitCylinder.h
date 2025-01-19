@@ -19,6 +19,8 @@ public:
     bool hit(const Ray &incomingRay) const override;
 
     explicit UnitCylinder(const std::shared_ptr<AbstractMaterial> &material, double s);
+
+    Point3 getCenter() override;
 };
 
 

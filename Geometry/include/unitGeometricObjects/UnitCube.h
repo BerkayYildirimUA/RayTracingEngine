@@ -26,7 +26,8 @@ private:
                (point.getZ() >= -1.0 && point.getZ() <= 1.0);
     }
 
-
+public:
+    Point3 getCenter() override;
 };
 
 

@@ -19,7 +19,6 @@
 
 int main() {
 
-    Scene scene;
 
     /*
     std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(1, 0, 0, 0.4, 0.4, 0.2);
@@ -73,12 +72,16 @@ int main() {
 
 */
 
+    std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(1, 0, 0, 0.4, 0.4, 0.2);
+    material1->emission = Color3(1, 0, 1);
+
     Parser parser;
     std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\testScene");
     std::vector<std::shared_ptr<LightSource>> lightVector = parser.ParseLights("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Lights\\lights.txt");
 
-    scene.setObjects(vector);
-    scene.setListOfLightsSourcePointers(lightVector);
+    vector.emplace_back(ObjectFactory::createObject<UnitCylinder>(material1, 0.1));
+
+    Scene scene(vector, lightVector);
 
     Camera camera(400, 400, 60); //1280×720p
 

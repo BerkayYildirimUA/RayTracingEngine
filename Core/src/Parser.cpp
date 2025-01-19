@@ -64,6 +64,7 @@ std::vector<std::shared_ptr<HitObject>> Parser::ParseFile(const std::string &fil
 
 void Parser::ParseMaterial(std::ifstream &file, const std::string &name) {
     double r = 0, g = 0, b = 0;
+    double emission_r = 0, emission_g = 0, emission_b = 0; //colors of emissive objects
     double ambient = 0, diffuse = 0, rough = 0;
     double transparency = 0, shininess = 0, speed = 0;
     bool extended = false;
@@ -94,6 +95,8 @@ void Parser::ParseMaterial(std::ifstream &file, const std::string &name) {
             extended = true;
         } else if (keyword == "texture") {
             iss >> texture;
+        } else if (keyword == "emission") {
+            iss >> emission_r >> emission_g >> emission_b;
         } else if (keyword == "}") {
             break;
         }
@@ -111,6 +114,10 @@ void Parser::ParseMaterial(std::ifstream &file, const std::string &name) {
         material->setTextureFunction(TextureFactory::getInstance().getTexture(texture));
     } catch (const std::runtime_error& e) {
         throw std::runtime_error("Error in material '" + name + "': " + e.what());
+    }
+
+    if (emission_r != 0 || emission_g != 0 || emission_b != 0) {
+        material->emission = Color3(emission_r, emission_g, emission_b); // quick and dirt solution, don't want to change my constructor this late in the project
     }
 
     materialMap[name] = material;

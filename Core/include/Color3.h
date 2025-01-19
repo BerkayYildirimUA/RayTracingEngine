@@ -94,6 +94,15 @@ public:
         return {this->getRed()*number, this->getGreen()*number, this->getBlue()*number};
     }
 
+    bool operator!=(Color3 color) const {
+        return color.colors != colors;
+    }
+
+    bool operator==(Color3 color) const {
+        return color.colors == colors;
+    }
+
+
     friend Color3 operator*(double scalar, const Color3& obj);
 
 };

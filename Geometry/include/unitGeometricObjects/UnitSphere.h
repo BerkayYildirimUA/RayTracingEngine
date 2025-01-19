@@ -17,6 +17,8 @@ public:
     bool hit(const Ray &incomingRay) const override;
 
     explicit UnitSphere(const std::shared_ptr<AbstractMaterial> &material);
+
+    Point3 getCenter() override;
 };
 
 

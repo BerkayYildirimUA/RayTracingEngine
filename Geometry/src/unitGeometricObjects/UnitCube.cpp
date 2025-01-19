@@ -220,3 +220,7 @@ bool UnitCube::hit(const Ray &incomingRay) const {
 }
 
 UnitCube::UnitCube(const std::shared_ptr<AbstractMaterial> &material) : PrimitiveObjects(material) {}
+
+Point3 UnitCube::getCenter() {
+    return {0, 0, 0};
+}

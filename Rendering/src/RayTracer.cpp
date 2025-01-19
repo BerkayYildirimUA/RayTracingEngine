@@ -12,6 +12,7 @@
 #include "Intersection.h"
 #include "HitInfo.h"
 #include "Geometry/include/unitGeometricObjects/PrimitiveObjects.h"
+#include "unitGeometricObjects/Booleans/Boolean.h"
 
 void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
@@ -38,7 +39,7 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
         numThreads = 1;
     }
 
-    float* pboPtr = (float*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
+    float *pboPtr = (float *) glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
 /*
     auto processRows = [&](int startRow, int endRow) {
         Ray threadRay;
@@ -163,7 +164,8 @@ Color3 RayTracer::antiAlsiasing(Scene &scn, const Camera *camera, int nColumns, 
         colorOfCurrentArea[3] = sampleColor(offsetX + halfSize, offsetY + halfSize);
 
 
-        Color3 layerAvrage = (colorOfCurrentArea[0] + colorOfCurrentArea[1] + colorOfCurrentArea[2] + colorOfCurrentArea[3]) / 4.0;
+        Color3 layerAvrage =
+                (colorOfCurrentArea[0] + colorOfCurrentArea[1] + colorOfCurrentArea[2] + colorOfCurrentArea[3]) / 4.0;
 
 
         needsSubdivision = false;
@@ -188,8 +190,8 @@ Color3 RayTracer::antiAlsiasing(Scene &scn, const Camera *camera, int nColumns, 
     Color3 finalColor(0, 0, 0);
 
     int i = 0;
-    for (const Color3& color : averageColorPerLayer) {
-        finalColor.add(color/(i+1));
+    for (const Color3 &color: averageColorPerLayer) {
+        finalColor.add(color / (i + 1));
         i++;
     }
 
@@ -219,20 +221,34 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, Intersection &best) {
 
     Color3 color;
 
-    if(!DebugFlags::getTurnOffAmbientColors()){
+    if (!DebugFlags::getTurnOffAmbientColors()) {
         color.add(shader->getAmbientPart(tempLight, best));
     }
 
+    if (!DebugFlags::getTurnOffEmission()) {
+        for (const auto &object: scn.getGlowingObjects()) {
+            Eigen::Vector4d lightPos = object->getTransform() * object->getCenter().point;
+            Eigen::Vector4d toLight = lightPos - hitPoint;
 
-    for (const auto &lightSource: scn.getListOfLightsSourcePointers()) {
-        Eigen::Vector4d lightPos = lightSource->location.point;
-        feeler.setDir(Vector3(lightPos - hitPoint));
+            double distance = toLight.norm();
+            double attenuation = 1.0 / (distance * distance); // Inverse square law
 
-        if (this->isInShadow(feeler, scn) && !DebugFlags::getTurnOffShadows()) {
-            continue;
+            color = color + attenuation * object->getMaterial()->emission;
         }
 
-        color = color + shader->shade(ray, best, lightSource);
+    }
+
+    if (DebugFlags::getTurnOffEmission() || best.getHit(0)->hitObject->material->emission == Color3(0, 0, 0)) {
+        for (const auto &lightSource: scn.getListOfLightsSourcePointers()) {
+            Eigen::Vector4d lightPos = lightSource->location.point;
+            feeler.setDir(Vector3(lightPos - hitPoint));
+
+            if (this->isInShadow(feeler, scn) && !DebugFlags::getTurnOffShadows()) {
+                continue;
+            }
+
+            color = color + shader->shade(ray, best, lightSource);
+        }
     }
 
     return color;
@@ -267,7 +283,7 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
     Intersection best;
     Color3 regularColors = shade(ray, scn, best);
 
-    if (recursionDepth == MAX_RECURSION_DEPTH || best.numHits == 0){
+    if (recursionDepth == MAX_RECURSION_DEPTH || best.numHits == 0) {
         return regularColors;
     }
 
@@ -277,30 +293,32 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
     //Vector3 hitNormal = best.getHit(0)->hitNormal;
 
     Vector3 hitNormal;
-    hitNormal.set((best.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() * best.getHit(0)->hitNormal.vector.head(3)).normalized()); //real hitnormal
+    hitNormal.set((best.getHit(0)->hitObject->getInverseTransform().topLeftCorner<3, 3>().transpose() *
+                   best.getHit(0)->hitNormal.vector.head(3)).normalized()); //real hitnormal
 
 
 
     //Vector3 normilizedRayDir(ray.dir.vector.head(3).normalized());
     const double epsilon = 1e-5;
 
-    if (shininess > 0.0000001 && !DebugFlags::getTurnOffReflection()){
+    if (shininess > 0.0000001 && !DebugFlags::getTurnOffReflection()) {
         Ray reflectionRay;
 
-        reflectionRay.setStart(Point3(hitPoint.point.head(3) + epsilon * hitNormal.vector.head(3))); //move a bit like shadow
+        reflectionRay.setStart(
+                Point3(hitPoint.point.head(3) + epsilon * hitNormal.vector.head(3))); //move a bit like shadow
         //reflectionRay.setDir(normilizedRayDir - 2 * (normilizedRayDir * hitNormal) * hitNormal);
         reflectionRay.setDir(ray.dir - 2 * (ray.dir * hitNormal) * hitNormal);
 
         reflectionRay.speedOfLightInCurrentMaterial = best.getHit(0)->hitObject->material->speedOfLight;
 
-        regularColors.add( shininess * shade(reflectionRay, scn, recursionDepth + 1)); //need real world ray
+        regularColors.add(shininess * shade(reflectionRay, scn, recursionDepth + 1)); //need real world ray
     }
 
 
-    if (transparency > 0.0000001 && !DebugFlags::getTurnOffRefraction()){
+    if (transparency > 0.0000001 && !DebugFlags::getTurnOffRefraction()) {
         Ray transparencyRay;
 
-        double dotOfNormalAndDir =   ray.dir.vector.head(3).normalized().dot(hitNormal.vector.head(3));
+        double dotOfNormalAndDir = ray.dir.vector.head(3).normalized().dot(hitNormal.vector.head(3));
         double indexOfRefraction;
         if (dotOfNormalAndDir < 0) {
             indexOfRefraction = ray.speedOfLightInCurrentMaterial / best.getHit(0)->hitObject->material->speedOfLight;
@@ -316,7 +334,7 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
 
         //std::cout << cosTheta << std::endl;
 
-        if (cosTheta > 0){
+        if (cosTheta > 0) {
 
             Eigen::Vector3d slightyInsidePoint = hitPoint.point.head(3) - epsilon * hitNormal.vector.head(3);;
 
@@ -324,11 +342,12 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, int recursionDepth) {
             cosTheta = std::sqrt(cosTheta);
 
             //transparencyRay.setDir( indexOfRefraction * normilizedRayDir + (indexOfRefraction * dotOfNormalAndDir - cosTheta) * hitNormal);
-            transparencyRay.setDir( indexOfRefraction * ray.dir + (indexOfRefraction * dotOfNormalAndDir - cosTheta) * hitNormal);
+            transparencyRay.setDir(
+                    indexOfRefraction * ray.dir + (indexOfRefraction * dotOfNormalAndDir - cosTheta) * hitNormal);
 
             transparencyRay.speedOfLightInCurrentMaterial = best.getHit(0)->hitObject->material->speedOfLight;
 
-            regularColors.add( transparency * shade(transparencyRay, scn, recursionDepth + 1));
+            regularColors.add(transparency * shade(transparencyRay, scn, recursionDepth + 1));
         } else {
             Ray totalReflectionRay;
             transparencyRay.setStart(Point3(hitPoint.point.head(3) + epsilon * hitNormal.vector.head(3)));
