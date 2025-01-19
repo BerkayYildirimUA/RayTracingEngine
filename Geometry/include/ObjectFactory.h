@@ -21,20 +21,6 @@
 
 class ObjectFactory {
 public:
-/*
-    template<class T>
-    static std::shared_ptr<PrimitiveObjects> createObject(const std::shared_ptr<AbstractMaterial> &material){
-        static_assert(std::is_base_of<PrimitiveObjects, T>::value, "T must inherit from PrimitiveObjects");
-        return std::make_shared<T>(material);
-    }
-
-    template<class T>
-    static std::shared_ptr<PrimitiveObjects> createObject(TransformationManager &manager, std::shared_ptr<AbstractMaterial> &material){
-        static_assert(std::is_base_of<PrimitiveObjects, T>::value, "T must inherit from PrimitiveObjects");
-        std::shared_ptr<PrimitiveObjects> object = std::make_shared<T>(material);
-        object->setTransformations(manager);
-        return object;
-    }*/
 
     template<class T, typename... Args>
     static std::shared_ptr<PrimitiveObjects> createObject(const std::shared_ptr<AbstractMaterial> &material, Args&&... args) {

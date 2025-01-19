@@ -15,10 +15,10 @@
 #include "HitInfo.h"
 
 Color3
-CookTorranceShading::shade(const Ray &ray, Intersection &best,
-                           const std::shared_ptr<LightSource> &lightSource,
-                           std::shared_ptr<AbstractMaterial> &material) {
+CookTorranceShading::shade(const Ray &ray, const Intersection &best,
+                           const std::shared_ptr<LightSource> &lightSource) {
 
+    auto material = best.getHit(0)->hitObject->material;
 
     auto fresnelMaterial = std::dynamic_pointer_cast<FresnelMaterial>(material);
     if (!fresnelMaterial) {
@@ -42,40 +42,50 @@ CookTorranceShading::shade(const Ray &ray, Intersection &best,
     Vector3 h = s + v;
     h.normalize();
 
+    Color3 texture = fresnelMaterial->getTexture(hitLocation);
 
+
+
+    auto calcDefuseAndSpecular = [&](int index) -> double {
+        double defusePart = 0;
+        double specularPart = 0;
+
+        if (!DebugFlags::getTurnOffDefusedColors()) {
+            defusePart = getDefusePartOneColor(s, m, lightSource, fresnelMaterial, index) * texture.getColor(index);
+        }
+
+        if (!DebugFlags::getTurnOffSpecularColors()) {
+            specularPart = getSpecularPartOneColor(h, s, m, v, lightSource, fresnelMaterial, index);
+        }
+
+        return specularPart + defusePart;
+    };
 
     double red = 0, green = 0, blue = 0;
-    red += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 0);;
-    green += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 1);
-    blue += calcDefuseAndSpecular(h, s, m, v, lightSource, fresnelMaterial, 2);
+    red += calcDefuseAndSpecular( 0);;
+    green += calcDefuseAndSpecular(1);
+    blue += calcDefuseAndSpecular(2);
 
 
     return {red, green, blue};
 }
 
-double
-CookTorranceShading::calcDefuseAndSpecular(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
-                                           const std::shared_ptr<LightSource> &lightSource,
-                                           const std::shared_ptr<FresnelMaterial> &material, int index) const {
-    double defusePart = 0;
-    double specularPart = 0;
-
-    if (!DebugFlags::getTurnOffDefusedColors()){
-        defusePart = getDefusePartOneColor(s, m, lightSource, material, index);
-    }
-
-    if (!DebugFlags::getTurnOffSpecularColors()) {
-        specularPart = getSpecularPartOneColor(h, s, m, v, lightSource, material, index);
-    }
-
-    return  specularPart + defusePart;
-}
-
 double CookTorranceShading::getAmbientPartOneColor(const std::shared_ptr<LightSource> &lightSource,
-                                                   const std::shared_ptr<FresnelMaterial> &material, int index) const {
-    double ambientPart = lightSource->Iar.colors[index] * material->ambientLightFactor *
-                         calcFresnelCoefficientForColor(0, material->getIndexOfRefractionByIndex(index));
-    return ambientPart;
+                                                   const Intersection &best, int index) const {
+    auto material = best.getHit(0)->hitObject->material;
+
+    auto fresnelMaterial = std::dynamic_pointer_cast<FresnelMaterial>(material);
+    if (!fresnelMaterial) {
+        throw std::runtime_error("Failed to cast AbstractMaterial to FresnelMaterial");
+    }
+
+    double ambientPart = lightSource->Iar.colors[index] * fresnelMaterial->ambientLightFactor *
+                         calcFresnelCoefficientForColor(0, fresnelMaterial->getIndexOfRefractionByIndex(index));
+
+    Point3 hitLocation = best.getHit(0)->hitPoint;
+    auto texture = fresnelMaterial->getTexture(hitLocation);
+
+    return ambientPart * texture.getColor(index);
 }
 
 double
@@ -169,14 +179,11 @@ CookTorranceShading::calcFresnelCoefficientForColor(double angleBetweenInRadians
 }
 
 Color3 CookTorranceShading::getAmbientPart(const std::shared_ptr<LightSource> &lightSource,
-                                           const std::shared_ptr<AbstractMaterial> &material) {
-    auto fresnelMaterial = std::dynamic_pointer_cast<FresnelMaterial>(material);
-    if (!fresnelMaterial) {
-        throw std::runtime_error("Failed to cast AbstractMaterial to FresnelMaterial");
-    }
-    return {getAmbientPartOneColor(lightSource, fresnelMaterial, 0),
-            getAmbientPartOneColor(lightSource, fresnelMaterial, 1),
-            getAmbientPartOneColor(lightSource, fresnelMaterial, 2)};
+                                           const Intersection &best) {
+
+    return {getAmbientPartOneColor(lightSource, best, 0),
+            getAmbientPartOneColor(lightSource, best, 1),
+            getAmbientPartOneColor(lightSource, best, 2)};
 }
 
 Color3

@@ -39,17 +39,7 @@ FresnelMaterial::FresnelMaterial(double normalReflectanceRed, double normalRefle
 
 }
 
-void FresnelMaterial::setTextureFunction(const std::function<Color3(double, double, double)> &func) {
-    textureFunction = func;
-}
 
-Color3 FresnelMaterial::getTexture(double x, double y, double z) const {
-    if (textureFunction) {
-        return textureFunction(x, y, z);
-    }
-
-    return {1.0, 1.0, 1.0};
-}
 /*
 Eigen::Vector3d FresnelMaterial::calcFresnalCoefficient(double angleInDegrees) {
 

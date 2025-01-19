@@ -1,4 +1,5 @@
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\src\Color3.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Color3.obj
+D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\src\Parser.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Parser.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Core\src\Ray.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Ray.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\HitInfo.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\HitInfo.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Geometry\src\Intersection.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\Intersection.obj
@@ -26,5 +27,6 @@ D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\LightSource.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\LightSource.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\Material\AbstractMaterial.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\AbstractMaterial.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Shaders\Material\FresnelMaterial.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\FresnelMaterial.obj
+D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\Rendering\src\Textures\TextureFactory.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\TextureFactory.obj
 D:\Libs\Glad\src\glad.c;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\glad.obj
 D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\main.cpp;D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\cmake-build-release\RayTracingEngine.dir\Release\main.obj

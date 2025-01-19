@@ -78,6 +78,9 @@ public:
         return colors[2];
     }
 
+    const double getColor(int i) const {
+        return colors[i];
+    }
 
     Color3 operator+(const Color3 &other) const {
         return Color3(this->colors + other.colors);

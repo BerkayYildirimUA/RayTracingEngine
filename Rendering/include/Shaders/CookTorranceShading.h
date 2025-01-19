@@ -11,11 +11,10 @@
 class CookTorranceShading : public AbstractShader {
 
 public:
-    Color3 shade(const Ray &ray, Intersection &best, const std::shared_ptr<LightSource> &lightSources,
-                 std::shared_ptr<AbstractMaterial> &material) override;
+    Color3 shade(const Ray &ray, const Intersection &best, const std::shared_ptr<LightSource> &lightSources) override;
 
     Color3 getAmbientPart(const std::shared_ptr<LightSource> &lightSource,
-                          const std::shared_ptr<AbstractMaterial> &material) override;
+                          const Intersection &best) override;
 
     Color3 getDefusePart(const Vector3 &s, const Vector3 &m, const std::shared_ptr<LightSource> &lightSource,
                          const std::shared_ptr<AbstractMaterial> &material) override;
@@ -28,9 +27,6 @@ private:
     const double dw = 0.0001;
 
 
-    double calcDefuseAndSpecular(const Vector3 &h, const Vector3 &s, const Vector3 &m, const Vector3 &v,
-                                 const std::shared_ptr<LightSource> &lightSource,
-                                 const std::shared_ptr<FresnelMaterial> &material, int index) const;
 
     //Eigen::Vector3d calcFresnelCoefficient(double angleBetweenInRadians, std::unique_ptr<FresnelMaterial> &material);
     double calcFresnelCoefficientForColor(double angleBetweenInRadians, double indexOfRefraction) const;
@@ -48,7 +44,7 @@ private:
                           const std::shared_ptr<FresnelMaterial> &material, int index) const;
 
     double
-    getAmbientPartOneColor(const std::shared_ptr<LightSource> &lightSource, const std::shared_ptr<FresnelMaterial> &material,
+    getAmbientPartOneColor(const std::shared_ptr<LightSource> &lightSource, const Intersection &best,
                            int index) const;
 };
 

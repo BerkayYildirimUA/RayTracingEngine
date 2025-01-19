@@ -87,14 +87,12 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) const {
         info->hitPoint.set(point.x(), point.y(), point.z());
 
         Eigen::Vector3d cubeNorm = cubeNormal(inSurf);
-/*
+
         if (genRay.dir.vector.head(3).dot(cubeNorm) > 0){
             cubeNorm = -cubeNorm;
-        }*/
+        }
 
-        /*if(this->isInsideCube(genRay.start)){
-            cubeNorm = -cubeNorm;
-        }*/
+
 
         info->hitNormal.set(cubeNorm.x(), cubeNorm.y(), cubeNorm.z());
         num++;
@@ -111,6 +109,7 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) const {
         );
 
         Eigen::Matrix<double, 3, 1> point = genRay.calcPoint(tOut);
+
         info->hitPoint.set(point.x(), point.y(), point.z());
 
         Eigen::Vector3d cubeNorm = cubeNormal(outSurf);
@@ -118,10 +117,6 @@ bool UnitCube::hit(const Ray &incomingRay, Intersection &intersection) const {
         if (genRay.dir.vector.head(3).dot(cubeNorm) > 0 && tIn < 0){
             cubeNorm = -cubeNorm;
         }
-
-        /*if(this->isInsideCube(genRay.start)){
-            cubeNorm = -cubeNorm;
-        }*/
 
         info->hitNormal.set(cubeNorm.x(), cubeNorm.y(), cubeNorm.z());
 
@@ -214,10 +209,10 @@ bool UnitCube::hit(const Ray &incomingRay) const {
         }
     }
 
-    if (tIn > 0 && tIn < 1){
+    if (tIn >= 0 && tIn <= 1){
         return true;
     }
-    if (tOut > 0 && tOut < 1){
+    if (tOut >= 0 && tOut <= 1){
         return true;
     }
 

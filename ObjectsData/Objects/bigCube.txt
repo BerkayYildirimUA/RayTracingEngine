@@ -1,0 +1,18 @@
+material sky {
+    indexOfRefraction 0.3 0.4 0.8
+    ambientLightFactor 0.3
+    defusedLightFactor 0.5
+    roughness 1
+    transparency 0.0
+    shininess 0.0
+    speedOfLight 10000.0
+    texture marble
+}
+
+shape Cube {
+    transformations {
+        scale 10000 10000 10000
+        translate 0 0 -0.5
+    }
+    material sky
+}

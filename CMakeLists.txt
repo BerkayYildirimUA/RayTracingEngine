@@ -67,7 +67,11 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Geometry/include/unitGeometricObjects/Booleans/DifferenceBool.h
         Geometry/include/unitGeometricObjects/PrimitiveObjects.h
         Geometry/src/unitGeometricObjects/UnitCylinder.cpp
-        Geometry/include/unitGeometricObjects/UnitCylinder.h)
+        Geometry/include/unitGeometricObjects/UnitCylinder.h
+        Core/src/Parser.cpp
+        Core/include/Parser.h
+        Rendering/src/Textures/TextureFactory.cpp
+        Rendering/include/Textures/TextureFactory.h)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
@@ -108,7 +112,10 @@ target_include_directories(RayTracingEngineTests PRIVATE
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Zi /Od")
 set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} /DEBUG")
+#set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Od /Zi")
+
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /Zi")
+
 set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /DEBUG")
 
 

@@ -30,17 +30,11 @@ public:
 
     void setListOfLightsSourcePointers(const std::vector<std::shared_ptr<LightSource>> &listOfLightsSourcePointers);
 
-    //Color3 shade(const Ray &ray);
-
-    void setShader(std::unique_ptr<AbstractShader> &&shader);
-
-    //void getFirstHit(const Ray& ray, Intersection& best);
-
-    //bool isInShadow(const Ray& ray);
-
     [[nodiscard]] const std::vector<std::shared_ptr<HitObject>> &getListOfObjectPointers() const;
 
     [[nodiscard]] const std::vector<std::shared_ptr<LightSource>> &getListOfLightsSourcePointers() const;
+
+    void loadScene(const std::string & filename);
 };
 
 

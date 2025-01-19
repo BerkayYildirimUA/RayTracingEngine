@@ -30,3 +30,7 @@ const std::vector<std::shared_ptr<HitObject>> &Scene::getListOfObjectPointers() 
 const std::vector<std::shared_ptr<LightSource>> &Scene::getListOfLightsSourcePointers() const {
     return listOfLightsSourcePointers;
 }
+
+void Scene::loadScene(const std::string &filename) {
+
+}

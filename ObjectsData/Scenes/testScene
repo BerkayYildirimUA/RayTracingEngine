@@ -1,0 +1,7 @@
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\bigCube.txt {
+    rotate Y 45
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\test.txt {
+    scale 5 1 1
+}

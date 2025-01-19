@@ -13,10 +13,10 @@
 
 class AbstractShader {
 public:
-    virtual Color3 shade(const Ray &ray, Intersection &best, const std::shared_ptr<LightSource>& lightSources, std::shared_ptr<AbstractMaterial> &material) = 0;
+    virtual Color3 shade(const Ray &ray, const Intersection &best, const std::shared_ptr<LightSource>& lightSources) = 0;
 
     virtual Color3 getAmbientPart(const std::shared_ptr<LightSource> &lightSource,
-                                  const std::shared_ptr<AbstractMaterial> &material) = 0;
+                                  const Intersection &best) = 0;
 
     virtual Color3 getDefusePart(const Vector3 &s, const Vector3 &m, const std::shared_ptr<LightSource> &lightSource,
                                  const std::shared_ptr<AbstractMaterial> &material) = 0;

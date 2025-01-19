@@ -220,7 +220,7 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, Intersection &best) {
     Color3 color;
 
     if(!DebugFlags::getTurnOffAmbientColors()){
-        color.add(shader->getAmbientPart(tempLight, best.getHit(0)->hitObject->material));
+        color.add(shader->getAmbientPart(tempLight, best));
     }
 
 
@@ -232,7 +232,7 @@ Color3 RayTracer::shade(const Ray &ray, Scene &scn, Intersection &best) {
             continue;
         }
 
-        color = color + shader->shade(ray, best, lightSource, best.getHit(0)->hitObject->material);
+        color = color + shader->shade(ray, best, lightSource);
     }
 
     return color;
