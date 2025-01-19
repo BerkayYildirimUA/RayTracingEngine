@@ -1,0 +1,11 @@
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/RayTracingEngine.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/RayTracingEngineTests.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/INSTALL.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/ALL_BUILD.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/CMakeFiles/ZERO_CHECK.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/glfw_build/CMakeFiles/uninstall.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/glfw_build/CMakeFiles/INSTALL.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/glfw_build/CMakeFiles/ALL_BUILD.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/glfw_build/src/CMakeFiles/update_mappings.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/glfw_build/src/CMakeFiles/glfw.dir
+D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/glfw_build/src/CMakeFiles/INSTALL.dir

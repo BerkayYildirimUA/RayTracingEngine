@@ -1,0 +1,5 @@
+if(EXISTS "D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/RayTracingEngineTests-b12d07c_tests.cmake")
+  include("D:/UA/Semester7/ComputerGraphics/CppCode/RayTracingEngine/cmake-build-debug/RayTracingEngineTests-b12d07c_tests.cmake")
+else()
+  add_test(RayTracingEngineTests_NOT_BUILT-b12d07c RayTracingEngineTests_NOT_BUILT-b12d07c)
+endif()

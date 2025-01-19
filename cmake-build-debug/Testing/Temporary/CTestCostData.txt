@@ -1,0 +1,19 @@
+test 0 0
+test 0 0
+test 0 0
+test 0 0
+Translation 2 0.0061807
+Scaling 2 0.0058445
+X-rotation 2 0.0060982
+Y-rotation 2 0.00626615
+Z-rotation 1 0.011435
+Z-rotation 1 0.011435
+example 0 0
+test circle hit book page 620 1 0.0124292
+test circle hit 1 0.0148247
+test circle hit sides 1 0.0132891
+test cube hit side 1 0.013235
+test cube hit edge 1 0.0133066
+Z-rotation and inverse 1 0.011793
+example book page 220 1 0.013097
+---
