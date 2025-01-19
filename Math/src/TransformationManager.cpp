@@ -2,6 +2,7 @@
 // Created by berka on 14/10/2024.
 //
 
+#include <iostream>
 #include "Math/include/TransformationManager.h"
 #include "Math/include/Transformations.h"
 #include "Math/include/InverseTransformations.h"
@@ -69,26 +70,27 @@ void TransformationManager::pushInverseRotatePointZ(double angle) {
 std::pair<Eigen::Matrix4d, Eigen::Matrix4d> TransformationManager::getTotalTransformation() {
 
     if (transformStack.empty()) {
-        throw std::runtime_error("transformStack is Empty");
+        return {Eigen::Matrix4d::Identity(), Eigen::Matrix4d::Identity()};
     }
 
     Eigen::Matrix4d totalTransform = transformStack.top();
+    //std::cout << totalTransform << "\n" << "\n" << std::endl;
     transformStack.pop();
 
     while (!transformStack.empty()) {
-        totalTransform = totalTransform * transformStack.top();
+        totalTransform = transformStack.top() * totalTransform;
+        //std::cout << totalTransform << "\n" << "\n" << std::endl;
         transformStack.pop();
     }
 
-    if (invTransformStack.empty()) {
-        throw std::runtime_error("invTransformStack is Empty");
-    }
 
     Eigen::Matrix4d totalInvTransform = invTransformStack.top();
+    //std::cout << totalInvTransform << "\n" << "\n" << std::endl;
     invTransformStack.pop();
 
     while (!invTransformStack.empty()) {
-        totalInvTransform = totalInvTransform * invTransformStack.top();
+        totalInvTransform =  totalInvTransform * invTransformStack.top();
+        //std::cout << totalInvTransform << "\n" << "\n" << std::endl;
         invTransformStack.pop();
     }
 

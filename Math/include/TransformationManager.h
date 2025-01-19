@@ -10,9 +10,6 @@
 #include "optional"
 #include "utility"
 
-/*
- * TODO: make inverse and normal at the same time.
- */
 
 class TransformationManager {
 private:
@@ -23,7 +20,16 @@ private:
 public:
     TransformationManager() = default;
 
-    //TransformationManager(const TransformationManager& other) : transformStack(other.transformStack), invTransformStack(other.invTransformStack) {}
+    TransformationManager(const TransformationManager& other) : transformStack(other.transformStack), invTransformStack(other.invTransformStack) {}
+
+    TransformationManager& operator=(const TransformationManager& other) {
+        if (this != &other) { // Avoid self-assignment
+            transformStack = other.transformStack;
+            invTransformStack = other.invTransformStack;
+        }
+        return *this;
+    }
+
 
     void pushTranslation(double x, double y, double z);
 

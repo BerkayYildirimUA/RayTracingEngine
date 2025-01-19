@@ -11,85 +11,10 @@
 #include <filesystem>
 #include <iostream>
 #include <fstream>
-
-
-void Camera::raytrace(Scene &scn, int blockSize) {
-    Ray theRay;
-    theRay.setStart(std::move(this->eye));
-
-    int nColumns = screenWidth / blockSize;
-    int nRows = screenHight / blockSize;
-
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(0, screenWidth, 0, screenHight, -1, 1);
-    glDisable(GL_LIGHTING);
-    glDisable(GL_DEPTH_TEST);
-
-
-    Vector3 dir;
-
-    // Screen size (W and H)
-
-    Vector3 distanceVector(normalDistanceVector.vector * distance);
-
-    //Eigen::MatrixXd redChannel(nColumns, nRows);
-
-
-    for (int row = 0; row < nRows; row++) {
-        bool loggedFirstRedCol = false;
-
-        for (int col = 0; col < nColumns; col++) {
-
-            double rightVectorAmplitude = (screenWidth / 2.0) * ((2.0 * col / nColumns) - 1);
-            double upVectorAmplitude = (screenHight / 2.0) * ((2.0 * row / nRows) - 1);
-
-            Eigen::Vector4d dir_vector = -distanceVector.vector + rightVectorAmplitude * normalRightVector.vector +
-                                         upVectorAmplitude * normalUpVector.vector;
-
-            dir_vector.normalize();
-            dir.vector = std::move(dir_vector);
-
-            theRay.setDir(std::move(dir));
-            Color3 clr = scn.shade(theRay);
-
-            int flippedRow = nRows - row - 1;
-
-            /*
-            if (row % 50 == 0 || col % 50 == 0) {
-                glColor3f(0, 255, 0);
-            } */
-
-            glColor3f(clr.R, clr.G, clr.B);
-
-            glRecti(col * blockSize, flippedRow * blockSize, (col + 1) * blockSize, (flippedRow + 1) * blockSize);
-
-        }
-    }
-
-    /*std::ofstream file("color_matrix.txt");
-
-    if (file.is_open()) {
-        // Write the red channel matrix
-        file << "Red Channel:\n" << redChannel << "\n";
-        file.close();
-
-        // Verify if the file was written successfully
-        std::string filePath = std::filesystem::absolute("color_matrix.txt").string();
-        if (std::filesystem::exists(filePath)) {
-            std::cout << "File successfully written to: " << filePath << std::endl;
-        } else {
-            std::cerr << "Error: File was not created in the expected location." << std::endl;
-        }
-    } else {
-        std::cerr << "Error: Unable to create or write to 'color_matrix.txt'.\n";
-    }*/
-
-}
-
+#include <iomanip> // for std::setw and std::setprecision
+#include <future>
+#include "RayTracer.h"
+#include <numeric>
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -107,13 +32,29 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
 
     if (action == GLFW_PRESS) {
         if (key == GLFW_KEY_UP) {
-            camera->slide(0, 0, -0.1);
+            camera->slide(0, 0, 1);
         } else if (key == GLFW_KEY_DOWN) {
-            camera->slide(0, 0, 0.1);
+            camera->slide(0, 0, -1);
         } else if (key == GLFW_KEY_LEFT) {
-            camera->slide(0, -0.1, 0);
+            camera->slide(0, -1, 0);
         } else if (key == GLFW_KEY_RIGHT) {
-            camera->slide(0, 0.1, 0);
+            camera->slide(0, 1, 0);
+        } else if (key == GLFW_KEY_W) {
+            camera->pitch(10);
+        } else if (key == GLFW_KEY_S) {
+            camera->pitch(-10);
+        } else if (key == GLFW_KEY_A) {
+            camera->yaw(10);
+        } else if (key == GLFW_KEY_D) {
+            camera->yaw(-10);
+        } else if (key == GLFW_KEY_Q) {
+            camera->roll(-10);
+        } else if (key == GLFW_KEY_E) {
+            camera->roll(10);
+        } else if (key == GLFW_KEY_KP_SUBTRACT) {
+            camera->slide(1, 0, 0);
+        } else if (key == GLFW_KEY_KP_ADD) {
+            camera->slide(-1, 0, 0);
         }
     }
 }
@@ -163,44 +104,96 @@ void Camera::initializeOpenGL() {
 
 void Camera::initialize(Scene &scn, Point3 &eye) {
     this->initializeOpenGL();
-
     this->eye = eye;
 
     if (window == nullptr) {
         return;
     }
 
-   // const int MAX_FPS = 60;
-   //const double FRAME_TIME = 1.0 / MAX_FPS;
+    RayTracer rayTracer;
 
-    // rendering loop
+    int totalFrames = 0;
+
+    std::vector<double> frameTimes;
+    auto startTime = std::chrono::high_resolution_clock::now();
+
+
     while (!glfwWindowShouldClose(window.get())) {
+        auto frameStart = std::chrono::high_resolution_clock::now();
 
-        //auto frame_start = std::chrono::high_resolution_clock::now();
-
-
-        //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // check and call events and swap the buffers
-        raytrace(scn, 1);
+        rayTracer.render(scn, this, 1);
+
         glfwSwapBuffers(window.get());
         glfwPollEvents();
-/*
-        auto frame_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = frame_end - frame_start;
-        // If the frame finished early, sleep for the remaining time
-        if (elapsed.count() < FRAME_TIME) {
-            std::this_thread::sleep_for(std::chrono::duration<double>(FRAME_TIME - elapsed.count()));
-        }*/
+
+        auto frameEnd = std::chrono::high_resolution_clock::now();
+        double frameTime = std::chrono::duration<double, std::milli>(frameEnd - frameStart).count();
+        frameTimes.push_back(frameTime);
+        totalFrames++;
 
     }
+
+    auto endTime = std::chrono::high_resolution_clock::now();
+    double totalTime = std::chrono::duration<double>(endTime - startTime).count();
+
+    // Calculate performance metrics
+    std::sort(frameTimes.begin(), frameTimes.end());
+    double avgFrameTime = std::accumulate(frameTimes.begin(), frameTimes.end(), 0.0) / frameTimes.size();
+    double fps = 1000.0 / avgFrameTime;
+    double low1PercentTime = frameTimes[frameTimes.size() * 0.01];
+    double high99PercentTime = frameTimes[frameTimes.size() * 0.99];
+
+    std::cout << "Performance Metrics:\n";
+    std::cout << "Average FPS: " << fps << '\n';
+    std::cout << "1% Low FPS: " << 1000.0 / low1PercentTime << '\n';
+    std::cout << "99% High FPS: " << 1000.0 / high99PercentTime << '\n';
+    std::cout << "Total Frames Generated: " << totalFrames << '\n';
+    std::cout << "Total Runtime (seconds): " << totalTime << '\n';
+
 
     glfwTerminate();
 }
 
 const Point3 &Camera::getEye() const {
     return eye;
+}
+
+int Camera::getScreenHight() const {
+    return screenHight;
+}
+
+int Camera::getScreenWidth() const {
+    return screenWidth;
+}
+
+double Camera::getAspectRatio() const {
+    return aspectRatio;
+}
+
+double Camera::getViewAngle() const {
+    return viewAngle;
+}
+
+double Camera::getDistance() const {
+    return distance;
+}
+
+const std::unique_ptr<GLFWwindow, decltype(&glfwDestroyWindow)> &Camera::getWindow() const {
+    return window;
+}
+
+const Vector3 &Camera::getNormalDistanceVector() const {
+    return normalDistanceVector;
+}
+
+const Vector3 &Camera::getNormalUpVector() const {
+    return normalUpVector;
+}
+
+const Vector3 &Camera::getNormalRightVector() const {
+    return normalRightVector;
 }
 
 

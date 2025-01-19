@@ -3,3 +3,8 @@
 //
 
 #include "Math/include/Vector3.h"
+
+
+Vector3 operator*(double scalar, const Vector3& obj) {
+    return obj * scalar;
+}

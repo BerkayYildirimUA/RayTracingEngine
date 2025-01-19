@@ -3,3 +3,8 @@
 //
 
 #include "../include/Color3.h"
+
+
+Color3 operator*(double scalar, const Color3& obj) {
+    return obj * scalar;
+}

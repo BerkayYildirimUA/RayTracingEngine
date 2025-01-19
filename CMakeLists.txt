@@ -41,8 +41,40 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES} "${CMAKE_CURRENT_SOURCE_DIR}/main.
         Math/src/TransformationManager.cpp
         Math/include/TransformationManager.h
         Geometry/src/unitGeometricObjects/UnitCube.cpp
-        Geometry/include/unitGeometricObjects/UnitCube.h)
+        Geometry/include/unitGeometricObjects/UnitCube.h
+        Rendering/src/Shaders/Material/FresnelMaterial.cpp
+        Rendering/include/Shaders/Material/FresnelMaterial.h
+        Rendering/src/Shaders/AbstractShader.cpp
+        Rendering/include/Shaders/AbstractShader.h
+        Rendering/src/Shaders/CookTorranceShading.cpp
+        Rendering/include/Shaders/CookTorranceShading.h
+        Rendering/src/Shaders/Material/AbstractMaterial.cpp
+        Rendering/include/Shaders/Material/AbstractMaterial.h
+        Rendering/src/Shaders/LightSource.cpp
+        Rendering/include/Shaders/LightSource.h
+        Rendering/src/RayTracer.cpp
+        Rendering/include/RayTracer.h
+        Math/src/GeometricFunctionsLookup.cpp
+        Math/include/GeometricFunctionsLookup.h
+        Core/include/DebugFlags.h
+        Geometry/src/unitGeometricObjects/Booleans/Boolean.cpp
+        Geometry/include/unitGeometricObjects/Booleans/Boolean.h
+        Geometry/src/unitGeometricObjects/Booleans/UnionBool.cpp
+        Geometry/include/unitGeometricObjects/Booleans/UnionBool.h
+        Geometry/src/unitGeometricObjects/Booleans/IntersectionBool.cpp
+        Geometry/include/unitGeometricObjects/Booleans/IntersectionBool.h
+        Geometry/src/unitGeometricObjects/Booleans/DifferenceBool.cpp
+        Geometry/include/unitGeometricObjects/Booleans/DifferenceBool.h
+        Geometry/include/unitGeometricObjects/PrimitiveObjects.h
+        Geometry/src/unitGeometricObjects/UnitCylinder.cpp
+        Geometry/include/unitGeometricObjects/UnitCylinder.h
+        Core/src/Parser.cpp
+        Core/include/Parser.h
+        Rendering/src/Textures/TextureFactory.cpp
+        Rendering/include/Textures/TextureFactory.h)
+
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/Core/include
@@ -56,7 +88,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 # Test executable
 add_executable(RayTracingEngineTests ${ALL_SOURCES} ${TEST_SOURCES}
-        Tests/GeomatricObjectsTests.cpp)
+        Tests/GeomatricObjectsTests.cpp
+        Tests/LookUpTableTest.cpp
+        Geometry/src/unitGeometricObjects/PrimitiveObjects.cpp
+        Tests/BooleanTests.cpp)
 target_link_libraries(RayTracingEngineTests PRIVATE
         glfw
         Catch2::Catch2WithMain
@@ -74,13 +109,14 @@ target_include_directories(RayTracingEngineTests PRIVATE
         ${EIGEN_PATH}
 )
 
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
-endif()
 
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O3 -g")
-endif()
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Zi /Od")
+set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} /DEBUG")
+#set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Od /Zi")
+
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /Zi")
+
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /DEBUG")
 
 
 # CTest and Catch2 test discovery

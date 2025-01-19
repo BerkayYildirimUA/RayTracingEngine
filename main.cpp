@@ -3,9 +3,9 @@
 #include <GLFW/glfw3.h>
 #include "Math/include/Transformations.h"
 #include "Rendering/include/Camera.h"
-#include "Geometry/include/unitGeometricObjects/ObjectFactory.h"
-#include "Geometry/include/unitGeometricObjects/UnitCircle.h"
-#include "Geometry/include/unitGeometricObjects/UnitCube.h"
+#include "Geometry/include/ObjectFactory.h"
+#include "Shaders/CookTorranceShading.h"
+#include "Core/include/Parser.h"
 
 
 
@@ -21,33 +21,69 @@ int main() {
 
     Scene scene;
 
-    TransformationManager manager;
-    manager.pushTranslation(-3, 0, 0);
+    /*
+    std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(1, 0, 0, 0.4, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material2 = std::make_shared<FresnelMaterial>(0, 1, 0, 0.4, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material3 = std::make_shared<FresnelMaterial>(0, 0, 1, 0.4, 0.4, 0.2);
+    std::shared_ptr<AbstractMaterial> material4 = std::make_shared<FresnelMaterial>(1, 1, 1, 0.4, 0.4, 0.2);
 
-    std::vector<std::shared_ptr<HitObject>> vector;
-    vector.reserve(6);
-    vector.emplace_back(ObjectFactory::createObject<UnitCircle>());
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
+    //std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1);
+    std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1, 0.9, 0.3, 10000);
+    std::shared_ptr<AbstractMaterial> brown = std::make_shared<FresnelMaterial>(0.6, 0.30, 0.15, 0.3, 0.75, 0.85, 0, 0, 100000);
+    std::shared_ptr<AbstractMaterial> darkBrown = std::make_shared<FresnelMaterial>(0.3, 0.15, 0.075, 0.3, 0.75, 0.85, 0, 0, 100000);
+    //std::shared_ptr<AbstractMaterial> gold = std::make_shared<FresnelMaterial>(0.989, 0.876, 0.399, 0.3, 0.35, 0.05);
 
-    manager.pushTranslation(3, 0, 0);
-    manager.pushRotatePointZ(45);
+    //std::shared_ptr<AbstractMaterial> silver = std::make_shared<FresnelMaterial>(0.25, 0.23, 0.18, 0.3, 0.3, 0.1);
 
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
+    sky->setTextureFunction([](double x, double y, double z) -> Color3 {
+        // Define the number of squares along each axis in the range [-1, 1]
+        int numSquaresPerAxis = 10;
 
-    //manager.pushScale(2, 1, 1);
-    manager.pushTranslation(2, 2, -5);
+        // Map coordinates from [-1, 1] to [0, numSquaresPerAxis]
+        int xSquare = static_cast<int>(floor((x + 1.0) * 0.5 * numSquaresPerAxis)) % 2;
+        int ySquare = static_cast<int>(floor((y + 1.0) * 0.5 * numSquaresPerAxis)) % 2;
+        int zSquare = static_cast<int>(floor((z + 1.0) * 0.5 * numSquaresPerAxis)) % 2;
 
-    vector.emplace_back(ObjectFactory::createObject<UnitCircle>(manager));
+        // XOR the squares to alternate between black and white
+        bool isWhite = (xSquare ^ ySquare ^ zSquare) == 0;
 
-    manager.pushTranslation(0, 1.5, 0);
-    manager.pushScale(0.2, 1.3, 1);
+        // Return white or black based on the result
+        return isWhite ? Color3{1.0, 1.0, 1.0} : Color3{0.0, 0.0, 0.0};
+    });
+
+    sky->setTextureFunction([](double x, double y, double z) -> Color3 {
+
+        if (x > 0.5){
+            return {1, 0.2, 0.2};
+        }
 
 
-    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager));
+        if (y > 0.5){
+            return {0.2, 1, 0.2};
+        }
 
-    Point3 point(0, 0, -15);
-    Camera camera(1000, 1000, 60);
+
+        if (z > 0.5){
+            return {0.2, 0.2, 1};
+        }
+        
+        return {1, 1, 1};
+    });
+
+
+*/
+
+    Parser parser;
+    std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\testScene");
+    std::vector<std::shared_ptr<LightSource>> lightVector = parser.ParseLights("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Lights\\lights.txt");
+
     scene.setObjects(vector);
+    scene.setListOfLightsSourcePointers(lightVector);
+
+    Camera camera(400, 400, 60); //1280×720p
+
+    Point3 point(0, 0, 5);
+    camera.yaw(179);
 
     camera.initialize(scene, point);
 

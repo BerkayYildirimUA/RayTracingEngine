@@ -1,0 +1,47 @@
+material firstMaterial {
+    indexOfRefraction 1.0 0.3 1.0
+    defusedLightFactor 0.5
+    specularLightFactor 0.7
+    roughness 0.1
+    ambientLightFactor 0.3
+}
+
+shape Sphere {
+    transformations {
+        translate 1 0 -10
+        scale 2 2 2
+    }
+    material firstMaterial
+}
+
+shape Sphere {
+    transformations {
+        translate -2 0 0
+        rotate Z 45
+        scale 1 1 1
+    }
+    material firstMaterial
+}
+
+
+shape BooleanDifference {
+    left {
+        shape Sphere {
+            transformations {
+                translate 0 1 0
+                scale 1.5 1.5 1.5
+            }
+            material firstMaterial
+        }
+    }
+    right {
+        shape Sphere {
+            transformations {
+                translate 1 -1 0
+                rotate X 30
+                scale 1 2 1
+            }
+            material firstMaterial
+        }
+    }
+}
