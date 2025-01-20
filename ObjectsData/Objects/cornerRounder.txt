@@ -1,0 +1,28 @@
+material wood {
+    indexOfRefraction 0.3 0.15 0.10
+    defusedLightFactor 0.8
+    specularLightFactor 0.2
+    roughness 0.6
+    ambientLightFactor 0.3
+}
+
+
+shape BooleanDifference {
+    left {
+        shape Cylinder {
+            transformations {
+                translate 0 0 0
+            }
+            material wood
+        }
+    }
+    right {
+        shape Cylinder {
+            transformations {
+                translate 0.5 0 -0.2
+                scale 1 0.6 1.5
+            }
+            material wood
+        }
+    }
+}

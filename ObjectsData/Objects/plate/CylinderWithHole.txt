@@ -1,0 +1,37 @@
+material porcelain {
+    indexOfRefraction 0.7 0.7 0.7
+    defusedLightFactor 0.9
+    specularLightFactor 0.2
+    roughness 0.1
+    ambientLightFactor 0.3
+    transparency 0
+    shininess 0.3
+    speedOfLight 10.0
+    texture porcelain
+}
+
+
+shape BooleanDifference {
+    left {
+        shape Cylinder {
+            transformations {
+                rotate X 90
+                translate 0 0 0
+                scale 1.01 1.01 2
+            }
+            material porcelain
+            s 0.5
+        }
+    }
+    right {
+        shape Cylinder {
+            transformations {
+                rotate X 90
+                translate 0 0 -0.1
+                scale 1 1 1.99
+            }
+            material porcelain
+            s 0.5
+        }
+    }
+}

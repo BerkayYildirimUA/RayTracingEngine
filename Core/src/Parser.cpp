@@ -29,6 +29,13 @@ std::vector<std::shared_ptr<HitObject>> Parser::ParseFile(const std::string &fil
 
     std::string line;
     while (std::getline(file, line)) {
+        line.erase(0, line.find_first_not_of(" \t"));
+
+        // Skip lines starting with '#'
+        if (!line.empty() && line[0] == '#') {
+            continue;
+        }
+
         std::istringstream iss(line);
         std::string keyword;
         iss >> keyword;

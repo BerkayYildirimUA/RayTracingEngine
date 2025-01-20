@@ -11,10 +11,10 @@ private:
     static constexpr bool turnOffAmbientColors = false;
     static constexpr bool turnOffSpecularColors = false;
     static constexpr bool turnOffDefusedColors = false;
-    static constexpr bool turnOffShadows = true;
-    static constexpr bool turnOffRefraction = true;
-    static constexpr bool turnOffReflection = true;
-    static constexpr bool turnOffEmission = true;
+    static constexpr bool turnOffShadows = false;
+    static constexpr bool turnOffRefraction = false;
+    static constexpr bool turnOffReflection = false;
+    static constexpr bool turnOffEmission = false;
 
 public:
     DebugFlags(const DebugFlags &) = delete;

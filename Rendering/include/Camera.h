@@ -45,6 +45,12 @@ public:
 
     }
 
+    void setNormalRightVector(const Vector3 &normalRightVector);
+
+    void setNormalUpVector(const Vector3 &normalUpVector);
+
+    void setNormalDistanceVector(const Vector3 &normalDistanceVector);
+
     Camera(int width, int height, double viewAngle)
             : viewAngle(viewAngle), screenHight(height), screenWidth(width) {
         this->aspectRatio = static_cast<double>(width) / height;

@@ -15,7 +15,6 @@ Intersection DifferenceBool::useOperation(const Intersection &left, const Inters
     bool rightInside = (right.numHits > 0) ? !right.getHit(0)->isEntering : false;
     bool combInside = leftInside && !rightInside;
 
-
     while (leftIndex < left.numHits) { //while left not empty
         HitInfo* currentHit = nullptr;
 
@@ -27,7 +26,9 @@ Intersection DifferenceBool::useOperation(const Intersection &left, const Inters
             currentHit = right.getHit(rightIndex).get();
             rightInside = currentHit->isEntering;
 
-            currentHit->hitNormal = -currentHit->hitNormal;
+
+
+            //currentHit->hitNormal = -currentHit->hitNormal;
             ++rightIndex;
         }
 
@@ -41,7 +42,6 @@ Intersection DifferenceBool::useOperation(const Intersection &left, const Inters
             newHit = std::make_unique<HitInfo>(*currentHit);
         }
     }
-
     return result;
 }
 
@@ -57,6 +57,7 @@ bool DifferenceBool::hit(const Ray &incomingRay) const {
     bool insideLeft = (leftInt.numHits > 0) ? !rightInt.getHit(0)->isEntering : false;
     bool insideRight = (leftInt.numHits > 0) ? !rightInt.getHit(0)->isEntering : false;
     bool combInside = insideLeft && !insideRight;
+
 
     double maxHitTime = 0;
 
@@ -79,7 +80,7 @@ bool DifferenceBool::hit(const Ray &incomingRay) const {
             rightIndex++;
         }
 
-        if (maxHitTime > 1){
+        if (maxHitTime >= 1){
             return false;
         }
 

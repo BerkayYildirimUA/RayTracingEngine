@@ -39,30 +39,30 @@ int main() {
 
 
     Parser parser;
-    //std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Objects\\streetLightPole.txt");
-    std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\streetSecne.txt");
+    //std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Objects\\fork.txt");
+    std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\dinnerScene");
     std::vector<std::shared_ptr<LightSource>> lightVector = parser.ParseLights("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Lights\\lights.txt");
-
-    TransformationManager manager;
-    manager.pushScale(1000, 1000, 1000);
-    std::shared_ptr<AbstractMaterial> sky = std::make_shared<FresnelMaterial>(0.3, 0.4, 0.8, 0.3, 0.5, 1);
-
-    auto bigCube = ObjectFactory::createObject<UnitCube>(manager, sky);
-
-
-    manager.pushScale(3, 3, 3);
-    auto other = ObjectFactory::createObject<UnitCube>(manager, sky);
-
-
-    vector.emplace_back(ObjectFactory::createBoolObject<DifferenceBool>(bigCube, other));
 
     Scene scene(vector, lightVector);
 
-    Camera camera(400, 400, 60); //1280×720p
-
-    Point3 point(10, 25, 25);
-    camera.yaw(179);
+    //Camera camera(400, 400, 60); //1280×720p
+    Camera camera(1280, 720, 60);
+    Point3 point(0, 25,25);
+    camera.yaw(180);
     camera.pitch(-45);
+
+
+    /*
+    // show of this
+    Point3 point(10,1,15);
+    camera.yaw(160);
+
+     */
+/*
+    camera.setNormalUpVector(Vector3(0,-0.939693,-0.34202));
+    camera.setNormalRightVector(Vector3(1,0,0));
+    camera.setNormalDistanceVector(Vector3 (0,-0.34202,0.939693));
+*/
 
     camera.initialize(scene, point);
 

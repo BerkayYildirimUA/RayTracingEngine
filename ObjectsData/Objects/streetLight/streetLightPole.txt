@@ -40,7 +40,7 @@ shape Cylinder {
     material steel
 }
 
-ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLightBulb.txt {
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLight\streetLightBulb.txt {
     rotate X -180
     translate 0 -12 0
 

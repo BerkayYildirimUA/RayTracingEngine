@@ -18,7 +18,7 @@ material streetlight {
     shininess 0
     speedOfLight 10000.0
     texture default
-    emission 1 2 0.5
+    emission 0.1 0.05 0.05
 }
 
 shape BooleanUnion {
@@ -31,7 +31,7 @@ shape BooleanUnion {
                         translate 0 0 0
                         scale 1 1 2
                     }
-                    material streetlight
+                    material glass
                 }
             }
             right {
@@ -41,7 +41,7 @@ shape BooleanUnion {
                         translate 0 0 2
                         scale 1.5 1.5 2
                     }
-                    material streetlight
+                    material glass
                 }
             }
         }
@@ -53,7 +53,7 @@ shape BooleanUnion {
                 translate 0 0 0
                 scale 1 1 0.3
             }
-            material streetlight
+            material glass
         }
     }
 }

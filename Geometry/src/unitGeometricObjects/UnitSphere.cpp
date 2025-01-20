@@ -84,6 +84,7 @@ bool UnitSphere::hit(const Ray &incomingRay, Intersection &intersection) const {
         } else {
             Vector3 norm(point.x(), point.y(), point.z());
             info->hitNormal.set(norm);
+
         }
 
         numberOfHits++;

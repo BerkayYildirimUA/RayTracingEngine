@@ -1,0 +1,88 @@
+material steel {
+    indexOfRefraction 0.10 0.10 0.10
+    ambientLightFactor 0.2
+    defusedLightFactor 0.6
+    roughness 0.2
+    transparency 0
+    shininess 0.4
+    speedOfLight 10000.0
+    texture default
+}
+
+material test {
+    indexOfRefraction 0.99 0.0 0.0
+    ambientLightFactor 0.2
+    defusedLightFactor 0.6
+    roughness 0.2
+    transparency 0
+    shininess 0.8
+    speedOfLight 10000.0
+    texture default
+}
+
+shape Cylinder {
+    transformations {
+        scale 1 0.1 12
+        translate 0 0 0
+    }
+    material steel
+}
+
+shape Cylinder {
+    transformations {
+        scale 6 0.1 2
+        translate -0.5 0 -1
+        rotate Y 90
+    }
+    material steel
+}
+
+shape Cylinder {
+    transformations {
+        scale 0.9 0.05 13
+        translate 2 0 -0.1
+        rotate X 180
+    }
+
+    s = 0.1
+    material steel
+}
+
+
+shape Cylinder {
+    transformations {
+        scale 0.9 0.05 13
+        translate -2 0 -0.1
+        rotate X 180
+    }
+
+    s = 0.1
+    material steel
+}
+
+
+shape Cylinder {
+    transformations {
+        scale 0.9 0.05 13
+        translate 0 0 -0.1
+        rotate X 180
+    }
+
+    s = 0.1
+    material steel
+}
+
+material sky {
+    indexOfRefraction 0.3 0.4 0.8
+    ambientLightFactor 0.3
+    defusedLightFactor 0.5
+    roughness 1
+}
+
+shape Cube {
+    transformations {
+        scale 10000 10000 10000
+        translate 0 0 -0.5
+    }
+    material sky
+}

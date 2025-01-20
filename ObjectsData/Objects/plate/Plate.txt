@@ -1,0 +1,3 @@
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\plate\CylinderWithHole.txt {
+    scale 5 0.2 5
+}

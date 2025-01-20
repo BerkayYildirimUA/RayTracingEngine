@@ -1,17 +1,11 @@
 Light {
-    location 0 0 20
+    location 0 50 10
     ambientIntensity 0.2 0.2 0.2
     specularIntensity 10000 10000 10000
 }
 
 Light {
-    location -80 0 -70
-    ambientIntensity 0 0 0
+    location 0 -2 0
+    ambientIntensity 0.2 0.2 0.2
     specularIntensity 10000 10000 10000
-}
-
-Light {
-    location 0 20 20
-    ambientIntensity 3 3 3
-    specularIntensity 5000 5000 5000
 }

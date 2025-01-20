@@ -1,0 +1,46 @@
+material steel {
+    indexOfRefraction 0.10 0.10 0.10
+    ambientLightFactor 0.2
+    defusedLightFactor 0.6
+    roughness 0.2
+    transparency 0
+    shininess 0.4
+    speedOfLight 10000.0
+    texture default
+}
+
+shape BooleanDifference {
+    left {
+        shape BooleanDifference {
+            left {
+                shape Cube {
+                    transformations {
+                        scale 1 0.1 6
+                    }
+                    material steel
+                }
+            }
+            right {
+                shape Cube {
+                    transformations {
+                        scale 1 0.4 6
+                        scale 0.5 3 0.5
+                        translate -1 0 -1
+                    }
+                    material steel
+                }
+            }
+        }
+    }
+    right {
+        shape Cube {
+            transformations {
+                scale 1 0.4 6
+                scale 2 3 1
+                translate -1 0 1
+                rotate Y 45
+            }
+            material steel
+        }
+    }
+}

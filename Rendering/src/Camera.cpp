@@ -55,6 +55,12 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
             camera->slide(1, 0, 0);
         } else if (key == GLFW_KEY_KP_ADD) {
             camera->slide(-1, 0, 0);
+        } else if (key == GLFW_KEY_ENTER) {
+            std::cout << "cords are: (" << camera->getEye().point.x() << "," << camera->getEye().point.y() <<  "," << camera->getEye().point.z() << ") \n";
+            std::cout << "normal Up is: (" << camera->getNormalUpVector().getX() << "," << camera->getNormalUpVector().getY() <<  "," << camera->getNormalUpVector().getZ() << ") \n";
+            std::cout << "normal Right is: (" << camera->getNormalRightVector().getX() << "," << camera->getNormalRightVector().getY() <<  "," << camera->getNormalRightVector().getZ() << ") \n";
+            std::cout << "normal Distance is: (" << camera->getNormalDistanceVector().getX() << "," << camera->getNormalDistanceVector().getY() <<  "," << camera->getNormalDistanceVector().getZ() << ") \n" << std::endl;
+
         }
     }
 }
@@ -194,6 +200,18 @@ const Vector3 &Camera::getNormalUpVector() const {
 
 const Vector3 &Camera::getNormalRightVector() const {
     return normalRightVector;
+}
+
+void Camera::setNormalRightVector(const Vector3 &normalRightVector) {
+    Camera::normalRightVector = normalRightVector;
+}
+
+void Camera::setNormalUpVector(const Vector3 &normalUpVector) {
+    Camera::normalUpVector = normalUpVector;
+}
+
+void Camera::setNormalDistanceVector(const Vector3 &normalDistanceVector) {
+    Camera::normalDistanceVector = normalDistanceVector;
 }
 
 

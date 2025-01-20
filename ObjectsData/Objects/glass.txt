@@ -1,0 +1,56 @@
+material glass {
+    indexOfRefraction 0.1 0.1 0.5
+    ambientLightFactor 0.1
+    defusedLightFactor 0.1
+    roughness 0.01
+    transparency 0.90
+    shininess 0.2
+    speedOfLight 1000.0
+    texture default
+}
+
+
+
+shape BooleanDifference {
+    left {
+        shape Cylinder {
+            transformations {
+                rotate X 90
+                translate 0 0 0
+                scale 1.01 1.01 2
+            }
+            material glass
+            s 1
+        }
+    }
+    right {
+        shape Cylinder {
+            transformations {
+                rotate X 90
+                translate 0 0 -0.1
+                scale 1 1 1.99
+            }
+            material glass
+            s 1
+        }
+    }
+}
+
+material sky {
+    indexOfRefraction 0.3 0.4 0.8
+    ambientLightFactor 0.3
+    defusedLightFactor 0.5
+    roughness 1
+    transparency 0.0
+    shininess 0.0
+    speedOfLight 10000.0
+    texture marble
+}
+
+shape Cube {
+    transformations {
+        scale 10000 10000 10000
+        translate 0 0 -0.5
+    }
+    material sky
+}

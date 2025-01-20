@@ -40,8 +40,8 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
     }
 
     float *pboPtr = (float *) glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
-/*
-    auto processRows = [&](int startRow, int endRow) {
+
+  /*  auto processRows = [&](int startRow, int endRow) {
         Ray threadRay;
         threadRay.setStart(camera->getEye());
 
@@ -52,8 +52,8 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
             for (int col = 0; col < nColumns; col++) {
 
                 Color3 clr = {0, 0, 0};
-
-                if (row == 200 && col == 200){ //
+                // if (row >= 90 && row <= 110 && col >= 630 && col <= 650) {
+                if (row >= 250 && row <= 250 && col >= 615 && col <= 615) {
                     //clr.set(antiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
                     clr.set(noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
                    std::cout << "" << std::endl;

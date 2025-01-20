@@ -1,0 +1,88 @@
+material wood {
+    indexOfRefraction 0.3 0.15 0.10
+    defusedLightFactor 0.8
+    specularLightFactor 0.2
+    roughness 0.6
+    ambientLightFactor 0.3
+    texture subtleWoodDesk
+}
+
+
+shape Cube {
+    transformations {
+        scale 5 0.3 5
+    }
+    material wood
+}
+
+shape Cube {
+    transformations {
+        translate 3 -5 3
+        scale 0.6 5 0.6
+    }
+    material wood
+}
+
+shape Cube {
+    transformations {
+        translate -3 -5 3
+        scale 0.6 5 0.6
+    }
+    material wood
+}
+
+
+shape Cube {
+    transformations {
+        translate 3 -5 -3
+        scale 0.6 5 0.6
+    }
+    material wood
+}
+
+
+shape Cube {
+    transformations {
+        translate -3 -5 -3
+        scale 0.6 5 0.6
+    }
+    material wood
+}
+
+shape BooleanDifference {
+    left {
+        shape BooleanDifference {
+            left {
+                shape Cube {
+                    transformations {
+                        translate 0 7 -4.7
+                        scale 5 7 0.3
+                    }
+                    material wood
+                }
+            }
+            right {
+                shape Cube {
+                    transformations {
+                        translate 0 7 -4.7
+                        scale 5 7 0.3
+                        translate -0.5 0 0
+                        scale 0.1 0.7 3
+                    }
+                    material wood
+                }
+            }
+        }
+    }
+    right {
+        shape Cube {
+            transformations {
+                translate 0 7 -4.7
+                scale 5 7 0.3
+                translate 0.5 0 0
+                scale 0.1 0.7 3
+            }
+            material wood
+        }
+    }
+}

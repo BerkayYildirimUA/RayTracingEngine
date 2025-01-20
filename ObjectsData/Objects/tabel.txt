@@ -1,0 +1,50 @@
+material wood {
+    indexOfRefraction 0.3 0.15 0.10
+    defusedLightFactor 0.8
+    specularLightFactor 0.2
+    roughness 0.6
+    ambientLightFactor 0.3
+    texture denseWoodDeskNoPattern
+}
+
+
+shape Cube {
+    transformations {
+        scale 20 0.3 20
+    }
+    material wood
+}
+
+shape Cube {
+    transformations {
+        translate 15 -7 15
+        scale 2 7 2
+    }
+    material wood
+}
+
+shape Cube {
+    transformations {
+        translate -15 -7 15
+        scale 2 7 2
+    }
+    material wood
+}
+
+
+shape Cube {
+    transformations {
+        translate -15 -7 -15
+        scale 2 7 2
+    }
+    material wood
+}
+
+
+shape Cube {
+    transformations {
+        translate 15 -7 -15
+        scale 2 7 2
+    }
+    material wood
+}

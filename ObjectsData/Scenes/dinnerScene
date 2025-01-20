@@ -1,0 +1,149 @@
+material room {
+    indexOfRefraction 0.4 0.30 0.20
+    defusedLightFactor 0.8
+    specularLightFactor 0.2
+    roughness 0.6
+    ambientLightFactor 0.3
+    texture woodPlanksOrientedNormalized
+}
+
+# ------------------ tabel ------------------
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\tabel.txt {
+    scale 0.5 1 1
+}
+
+# ------------------ chairs ------------------
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\chair.txt {
+    translate 9 -4 -7
+    rotate Y -90
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\chair.txt {
+    translate 9 -4 7
+    rotate Y -90
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\chair.txt {
+    translate -9 -4 -7
+    rotate Y 90
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\chair.txt {
+    translate -9 -4 7
+    rotate Y 90
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\chair.txt {
+    translate 0 -4 -18
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\chair.txt {
+    rotate Y 180
+    translate 0 -4 -18
+}
+
+# ------------------ Plates ------------------
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\plate\Plate.txt {
+    translate 0 0.5  -16
+    scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\plate\Plate.txt {
+    translate 0 0.5  16
+    scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\plate\Plate.txt {
+    translate -6.5 0.5  6
+    scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\plate\Plate.txt {
+    translate 6.5 0.5  6
+    scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\plate\Plate.txt {
+    translate -6.5 0.5  -6
+    scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\plate\Plate.txt {
+    translate 6.5 0.5 -6
+    scale 0.5 0.5 0.5
+}
+
+# ------------------ Candel ------------------
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\streetLight\streetLightPole.txt {
+    translate 0 0.3 0
+    scale 0.3 0.3 0.3
+}
+
+# ------------------ drinks ------------------
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\glass.txt {
+        translate 4 1.34 -3
+        scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\glass.txt {
+        translate -4 1.34 3
+        scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\glass.txt {
+        translate 4 1.34 8.5
+        scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\glass.txt {
+        translate -4 1.5 -8.5
+        scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\glass.txt {
+        translate 2 1.34 -13
+        scale 0.5 0.5 0.5
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\glass.txt {
+        translate -2 1.34 13
+        scale 0.5 0.5 0.5
+}
+
+# ------------------ forks ------------------
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
+        translate 3 1.0 -15
+        scale 0.1 0.1 0.1
+        rotate Y 180
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
+        translate -3 1.0 15
+        scale 0.1 0.1 0.1
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
+        translate -3 1.0 15
+        scale 0.1 0.1 0.1
+        rotate Y 90
+}
+
+# ------------------ knifes ------------------
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
+        translate -2 1.34 13
+        scale 0.5 0.5 0.5
+}
+
+
+shape Cube {
+    transformations {
+        scale 30 50 80
+        translate 0 0.72 0
+    }
+    material room
+}
