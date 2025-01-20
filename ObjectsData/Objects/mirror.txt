@@ -1,0 +1,77 @@
+material mirror {
+    indexOfRefraction 0.01 0.1 0.01
+    ambientLightFactor 0.01
+    defusedLightFactor 0.01
+    roughness 0
+    transparency 0.0
+    shininess 1
+    speedOfLight 10000.0
+}
+
+material wood {
+    indexOfRefraction 0.3 0.15 0.10
+    defusedLightFactor 0.8
+    specularLightFactor 0.2
+    roughness 0.6
+    ambientLightFactor 0.3
+    texture denseWoodDeskNoPattern
+}
+
+shape Cube {
+    transformations {
+        scale 1 1 0.1
+    }
+    material mirror
+}
+
+
+shape BooleanDifference {
+    left {
+        shape Cube {
+            transformations {
+                scale 1.1 1.1 0.1
+                scale 1 1 0.1
+            }
+            material wood
+        }
+    }
+    right {
+        shape Cube {
+            transformations {
+                scale 1 1 0.2
+            }
+            material wood
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+material sky {
+    indexOfRefraction 0.3 0.4 0.8
+    ambientLightFactor 0.3
+    defusedLightFactor 0.5
+    roughness 1
+    transparency 0.0
+    shininess 0.0
+    speedOfLight 10000.0
+    texture marble
+}
+
+shape Cube {
+    transformations {
+        scale 10000 10000 10000
+        translate 0 0 -0.5
+    }
+    material sky
+}
+

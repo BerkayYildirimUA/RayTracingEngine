@@ -42,6 +42,8 @@ Intersection DifferenceBool::useOperation(const Intersection &left, const Inters
             newHit = std::make_unique<HitInfo>(*currentHit);
         }
     }
+
+
     return result;
 }
 
@@ -54,9 +56,9 @@ bool DifferenceBool::hit(const Ray &incomingRay) const {
     int leftIndex = 0;
     int rightIndex = 0;
 
-    bool insideLeft = (leftInt.numHits > 0) ? !rightInt.getHit(0)->isEntering : false;
-    bool insideRight = (leftInt.numHits > 0) ? !rightInt.getHit(0)->isEntering : false;
-    bool combInside = insideLeft && !insideRight;
+    bool insideLeft = false;
+    bool insideRight = false;
+    bool combInside = false;
 
 
     double maxHitTime = 0;

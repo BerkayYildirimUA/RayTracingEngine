@@ -49,13 +49,18 @@ int main() {
     Camera camera(1280, 720, 60);
     Point3 point(0, 25,25);
     camera.yaw(180);
-    camera.pitch(-45);
+    camera.pitch(-10);
 
 
     /*
     // show of this
     Point3 point(10,1,15);
     camera.yaw(160);
+
+     // this
+    Point3 point(0, 25,25);
+    camera.yaw(180);
+    camera.pitch(-45);
 
      */
 /*
