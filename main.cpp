@@ -6,6 +6,7 @@
 #include "Geometry/include/ObjectFactory.h"
 #include "Shaders/CookTorranceShading.h"
 #include "Core/include/Parser.h"
+#include "Textures/TextureFactory.h"
 
 
 
@@ -39,23 +40,38 @@ int main() {
 
 
     Parser parser;
-    //std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Objects\\fork.txt");
-    std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\dinnerScene");
+    std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Objects\\streetLight\\streetLightPole.txt");
+
+    //std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\dinnerScene");
     std::vector<std::shared_ptr<LightSource>> lightVector = parser.ParseLights("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Lights\\lights.txt");
 
-    Scene scene(vector, lightVector);
+
 
     //Camera camera(400, 400, 60); //1280×720p
-    Camera camera(1280, 720, 60);
-    Point3 point(0, 25,25);
+    Camera camera(1920, 1080, 100);
+
+    TransformationManager manager;
+    manager.pushTranslation(2, 14, 0);
+
+    std::shared_ptr<AbstractMaterial> material1 = std::make_shared<FresnelMaterial>(0, 0, 1, 0.2, 0.8, 1);
+
+
+    vector.emplace_back(ObjectFactory::createObject<UnitCube>(manager, material1));
+
+
+    Point3 point(0,15,2);
     camera.yaw(180);
-    camera.pitch(-10);
+    camera.pitch(-45);
+
+
+
 
 
     /*
     // show of this
-    Point3 point(10,1,15);
+  Point3 point(10,3,20);
     camera.yaw(160);
+    camera.pitch(-10);
 
      // this
     Point3 point(0, 25,25);
@@ -68,6 +84,7 @@ int main() {
     camera.setNormalRightVector(Vector3(1,0,0));
     camera.setNormalDistanceVector(Vector3 (0,-0.34202,0.939693));
 */
+    Scene scene(vector, lightVector);
 
     camera.initialize(scene, point);
 

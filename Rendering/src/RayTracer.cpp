@@ -68,6 +68,7 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
             }
         }
     };*/
+    static std::atomic<int> rowsCompleted(0);
 
     auto processRows = [&](int startRow, int endRow) {
         Ray threadRay;
@@ -78,13 +79,22 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
 
         for (int row = startRow; row < endRow; row++) {
             for (int col = 0; col < nColumns; col++) {
-                Color3 clr = noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col);
+                Color3 clr;
 
-                int index = (row * nColumns + col) * 3;
+                if (DebugFlags::getTurnOffAntiAliasing()){
+                    clr.set(noAntiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
+                } else {
+                    clr.set(antiAlsiasing(scn, camera, nColumns, nRows, threadRay, dir, distanceVector, row, col));
+                }
+
+
+            int index = (row * nColumns + col) * 3;
                 pboPtr[index] = static_cast<float>(clr.getRed());
                 pboPtr[index + 1] = static_cast<float>(clr.getGreen());
                 pboPtr[index + 2] = static_cast<float>(clr.getBlue());
             }
+
+            rowsCompleted.fetch_add(1, std::memory_order_relaxed);
         }
     };
 
@@ -98,11 +108,26 @@ void RayTracer::render(Scene &scn, Camera *camera, int blockSize) {
         threads.emplace_back(processRows, startRow, endRow);
     }
 
+    float totalRows = nRows;
+
+    while (rowsCompleted < nRows) {
+        float progressRatio = rowsCompleted.load(std::memory_order_relaxed) / totalRows;
+
+        std::cout << "\rProgress: " << (progressRatio * 100.0f) << "%      " << std::flush;
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    }
+
+    std::cout << "\rProgress: 100%      " << std::endl;
+
+
     for (auto &thread: threads) {
         if (thread.joinable()) {
             thread.join();
         }
     }
+
+    rowsCompleted.store(0);
 
     glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
 
@@ -135,8 +160,9 @@ Color3 RayTracer::noAntiAlsiasing(Scene &scn, const Camera *camera, int nColumns
 Color3 RayTracer::antiAlsiasing(Scene &scn, const Camera *camera, int nColumns, int nRows, Ray &threadRay,
                                 Vector3 &dir, const Vector3 &distanceVector, int row, int col) {
 
-    const double THRESHOLD = 10;
-    const int MAX_LOOPS = 9;
+    const double THRESHOLD = 2;
+    const int MAX_LOOPS = 100;
+
     int loop = 0;
 
 

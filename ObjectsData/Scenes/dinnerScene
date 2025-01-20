@@ -117,72 +117,72 @@ ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData
 
 # ------------------ forks ------------------
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
-        translate 3 0.4 -15
+        translate 3 0.34 -15
         scale 0.1 0.1 0.1
         rotate Y 180
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
-        translate -3 0.4 15
+        translate -3 0.34 15
         scale 0.1 0.1 0.1
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
-        translate 7 0.4 10
-        scale 0.1 0.1 0.1
-        rotate Y 90
-}
-
-ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
-        translate 7 0.4 -2
+        translate 7 0.34 10
         scale 0.1 0.1 0.1
         rotate Y 90
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
-        translate -7 0.4 -9
+        translate 7 0.34 -2
+        scale 0.1 0.1 0.1
+        rotate Y 90
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
+        translate -7 0.34 -9
         scale 0.1 0.1 0.1
         rotate Y -90
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\fork.txt {
-        translate -7 0.4 3
+        translate -7 0.34 3
         scale 0.1 0.1 0.1
         rotate Y -90
 }
 
 # ------------------ knifes ------------------
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
-        translate 3 0.4 15
+        translate 3 0.34 15
         scale 0.2 0.2 0.2
         rotate Y 180
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
-        translate -3 0.4 -15
+        translate -3 0.34 -15
         scale 0.2 0.2 0.2
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
-        translate -7 0.4 10
-        scale 0.2 0.2 0.2
-        rotate Y 90
-}
-
-ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
-        translate -7 0.4 -2
+        translate -7 0.34 10
         scale 0.2 0.2 0.2
         rotate Y 90
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
-        translate 7 0.4 -9
+        translate -7 0.34 -2
+        scale 0.2 0.2 0.2
+        rotate Y 90
+}
+
+ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
+        translate 7 0.34 -9
         scale 0.2 0.2 0.2
         rotate Y -90
 }
 
 ObjectFile D:\UA\Semester7\ComputerGraphics\CppCode\RayTracingEngine\ObjectsData\Objects\knife.txt {
-        translate 7 0.4 3
+        translate 7 0.34 3
         scale 0.2 0.2 0.2
         rotate Y -90
 }

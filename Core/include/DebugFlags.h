@@ -15,6 +15,8 @@ private:
     static constexpr bool turnOffRefraction = false;
     static constexpr bool turnOffReflection = false;
     static constexpr bool turnOffEmission = false;
+    static constexpr bool turnOffAntiAliasing = true;
+
 
 public:
     DebugFlags(const DebugFlags &) = delete;
@@ -43,6 +45,10 @@ public:
 
     static bool getTurnOffShadows() {
         return turnOffShadows;
+    }
+
+    static const bool getTurnOffAntiAliasing() {
+        return turnOffAntiAliasing;
     }
 
     static bool getTurnOffRefraction() {

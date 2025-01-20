@@ -1,11 +1,11 @@
 material glass {
-    indexOfRefraction 0.3 0.3 0.5
+    indexOfRefraction 0.01 0.01 0.6
     ambientLightFactor 0.1
     defusedLightFactor 0.3
     roughness 0.01
     transparency 0.90
     shininess 0.3
-    speedOfLight 1000.0
+    speedOfLight 40000.0
     texture default
 }
 

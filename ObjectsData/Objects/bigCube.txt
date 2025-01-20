@@ -6,12 +6,21 @@ material sky {
     transparency 0.0
     shininess 0.0
     speedOfLight 10000.0
-    texture marble
 }
+
+material room {
+    indexOfRefraction 0.4 0.30 0.20
+    defusedLightFactor 0.8
+    specularLightFactor 0.2
+    roughness 0.6
+    ambientLightFactor 0.3
+    texture woodPlanksOrientedNormalized
+}
+
 
 shape Cube {
     transformations {
-        scale 10000 10000 10000
+        scale 1000 1000 1000
         translate 0 0 -0.5
     }
     material sky
