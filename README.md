@@ -1,5 +1,7 @@
 # raytracing engine for Computer Grapfic Course
 
+for Course: I-Computer Graphics at the University of Antwerpen (UA)
+
 includes:
 - tranformation
   - transaltion
