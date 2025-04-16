@@ -40,9 +40,9 @@ int main() {
 
 
     Parser parser;
-    std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Objects\\streetLight\\streetLightPole.txt");
+    //std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Objects\\streetLight\\streetLightPole.txt");
 
-    //std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\dinnerScene");
+    std::vector<std::shared_ptr<HitObject>> vector = parser.ParseFile("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Scenes\\dinnerScene");
     std::vector<std::shared_ptr<LightSource>> lightVector = parser.ParseLights("D:\\UA\\Semester7\\ComputerGraphics\\CppCode\\RayTracingEngine\\ObjectsData\\Lights\\lights.txt");
 
 

@@ -24,13 +24,13 @@ void TextureFactory::registerDefaultTextures() {
     });
 
     registerTexture("gradient", [](double x, double y, double z) {
-        return Color3((x + 1) / 2, (y + 1) / 2, (z + 1) / 2); // Normalize [-1, 1] to [0, 1]
+        return Color3((x + 1) / 2, (y + 1) / 2, (z + 1) / 2);
     });
 
     registerTexture("radial", [](double x, double y, double z) {
-        double dist = sqrt(x * x + y * y + z * z); // Euclidean distance from origin
-        dist = std::clamp(dist, 0.0, 1.0);         // Ensure distance stays within [0, 1]
-        return Color3(dist, dist, dist);           // Grayscale gradient
+        double dist = sqrt(x * x + y * y + z * z);
+        dist = std::clamp(dist, 0.0, 1.0);
+        return Color3(dist, dist, dist);
     });
 
     registerTexture("marble", [](double x, double y, double z) {
@@ -117,7 +117,7 @@ void TextureFactory::registerDefaultTextures() {
             val = (val << 13) ^ val;
             double r = 1.0 - ((val * (val * val * 15731 + 789221) + 1376312589)
                               & 0x7fffffff) / 1073741824.0;
-            return r; // [0..1]
+            return r;
         };
         int plankIndex = static_cast<int>(std::floor(coord * plankCount));
         double variation = (pseudoRandom(plankIndex) - 0.5) * 0.08;
@@ -211,7 +211,6 @@ void TextureFactory::registerDefaultTextures() {
                        std::clamp(finalColor.getGreen() + highlight, 0.0, 1.0),
                        std::clamp(finalColor.getBlue() + highlight, 0.0, 1.0));
 
-        // Return our subtle wood-desk color
         return finalColor;
     });
 
@@ -261,31 +260,24 @@ void TextureFactory::registerDefaultTextures() {
 
 
     registerTexture("porcelain", [](double x, double y, double z) {
-            // Scale the coordinates for fine control over line spacing
             double scaledX = x * 8.0;
             double scaledY = y * 8.0;
             double scaledZ = z * 8.0;
 
-            // Subtle sine wave pattern to introduce light blue lines
             double pattern = 0.5 + 0.5 * std::sin(scaledX + std::sin(scaledY) * 0.3);
 
-            // Add gentle turbulence for soft variation
             auto softTurbulence = [](double xx, double yy, double zz) {
                 return 0.1 * std::sin(xx * 5.0) + 0.1 * std::sin(yy * 5.0) + 0.1 * std::sin(zz * 5.0);
             };
             double noise = softTurbulence(scaledX, scaledY, scaledZ);
 
-            // Blend the pattern with the turbulence
             double finalPattern = pattern + noise * 0.2;
 
-            // Base soft blue colors
             Color3 baseColor(0.85, 0.9, 1.0);  // Light blue
             Color3 lineColor(0.8, 0.85, 0.95); // Subtler blue for lines
 
-            // Blend colors based on the pattern
             Color3 finalColor = finalPattern * lineColor + (1.0 - finalPattern) * baseColor;
 
-            // Clamp colors to ensure they remain in range
             finalColor.set(std::clamp(finalColor.getRed(), 0.0, 1.0),
                            std::clamp(finalColor.getGreen(), 0.0, 1.0),
                            std::clamp(finalColor.getBlue(), 0.0, 1.0));
